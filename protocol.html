@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FORGE Protocol v2.4 — Home Gym Edition</title>
+
+<!-- PWA Meta Tags -->
+<meta name="application-name" content="FORGE Protocol">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FORGE">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="FORGE Protocol v2.4 — 12-Week Hypertrophy, Metabolic & Mobility Program">
+
+<!-- Inline PWA Manifest -->
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22FORGE%20Protocol%20v2.4%22%2C%22short_name%22%3A%22FORGE%22%2C%22description%22%3A%2212-Week%20Hypertrophy%20%2B%20Metabolic%20%2B%20Mobility%20Protocol%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230a0a0a%22%2C%22theme_color%22%3A%22%230a0a0a%22%2C%22orientation%22%3A%22portrait%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%2520viewBox%3D'0%25200%252096%252096'%253E%253Crect%2520width%3D'96'%2520height%3D'96'%2520rx%3D'18'%2520fill%3D'%25230a0a0a'%2F%253E%253Ctext%2520x%3D'50%2525'%2520y%3D'62%2525'%2520font-family%3D'Arial%2520Black%2Csans-serif'%2520font-size%3D'52'%2520font-weight%3D'900'%2520fill%3D'%2523f5a623'%2520text-anchor%3D'middle'%253EF%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%2296x96%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --carbon: #111114;
+    --steel: #1a1a20;
+    --iron: #252530;
+    --gunmetal: #2e2e3a;
+    --ash: #4a4a58;
+    --mist: #8a8a9a;
+    --chalk: #c8c8d8;
+    --white: #f0f0f8;
+    --amber: #f5a623;
+    --amber-dim: #c4821b;
+    --red: #e84040;
+    --green: #3dd68c;
+    --blue: #4a9eff;
+    --purple: #9b6dff;
+    --teal: #2dd4bf;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--chalk);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+    padding: 60px 20px;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(245,166,35,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,166,35,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px; color: var(--amber);
+    letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 20px; opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(72px, 15vw, 160px);
+    font-weight: 900; line-height: 0.85;
+    color: var(--white); letter-spacing: -2px;
+    text-transform: uppercase; opacity: 0;
+    animation: fadeUp 0.6s ease 0.4s forwards;
+  }
+
+  .hero-title span { color: var(--amber); }
+
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(16px, 2.5vw, 24px);
+    font-weight: 300; color: var(--mist);
+    letter-spacing: 5px; text-transform: uppercase;
+    margin-top: 16px; opacity: 0;
+    animation: fadeUp 0.6s ease 0.6s forwards;
+  }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 50px;
+    flex-wrap: wrap; justify-content: center;
+    opacity: 0; animation: fadeUp 0.6s ease 0.8s forwards;
+  }
+
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px; font-weight: 700;
+    color: var(--amber); display: block;
+  }
+  .hero-stat-label { font-size: 11px; letter-spacing: 3px; color: var(--ash); text-transform: uppercase; }
+
+  .divider { width: 1px; height: 60px; background: var(--iron); margin: 0 10px; align-self: center; }
+
+  .equipment-strip {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    justify-content: center; margin-top: 28px;
+    opacity: 0; animation: fadeUp 0.6s ease 1s forwards;
+  }
+
+  .eq-pill {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 12px; border: 1px solid rgba(245,166,35,0.3);
+    color: var(--amber); background: rgba(245,166,35,0.06);
+    border-radius: 20px;
+  }
+
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,10,0.96);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--iron);
+    padding: 0 20px; display: flex; gap: 2px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--ash); background: none; border: none;
+    padding: 15px 14px; cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { color: var(--chalk); }
+  .nav-btn.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+  .section { display: none; animation: fadeIn 0.4s ease; }
+  .section.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+
+  .section-header { margin-bottom: 50px; }
+  .section-eyebrow {
+    font-family: 'Courier Prime', monospace; font-size: 11px;
+    color: var(--amber); letter-spacing: 4px;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 900; text-transform: uppercase;
+    line-height: 0.9; color: var(--white);
+  }
+  .section-title span { color: var(--amber); }
+
+  .card {
+    background: var(--carbon); border: 1px solid var(--iron);
+    border-radius: 2px; padding: 28px; margin-bottom: 20px;
+    position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--amber);
+  }
+  .card.green::before { background: var(--green); }
+  .card.blue::before { background: var(--blue); }
+  .card.red::before { background: var(--red); }
+  .card.purple::before { background: var(--purple); }
+  .card.teal::before { background: var(--teal); }
+
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--white); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: 'Courier Prime', monospace; font-size: 10px;
+    letter-spacing: 2px; padding: 3px 8px; border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .badge-amber { background: rgba(245,166,35,0.15); color: var(--amber); }
+  .badge-green { background: rgba(61,214,140,0.15); color: var(--green); }
+  .badge-red { background: rgba(232,64,64,0.15); color: var(--red); }
+  .badge-blue { background: rgba(74,158,255,0.15); color: var(--blue); }
+  .badge-purple { background: rgba(155,109,255,0.15); color: var(--purple); }
+  .badge-teal { background: rgba(45,212,191,0.15); color: var(--teal); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .data-table th {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--amber); border-bottom: 1px solid var(--iron);
+    padding: 10px 12px; text-align: left;
+  }
+  .data-table td {
+    padding: 11px 12px; border-bottom: 1px solid rgba(42,42,52,0.5);
+    color: var(--chalk); vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .eq-icon {
+    font-family: 'Courier Prime', monospace; font-size: 10px;
+    padding: 2px 6px; border-radius: 2px; margin-left: 4px;
+    white-space: nowrap;
+    background: rgba(245,166,35,0.1); color: var(--amber);
+    border: 1px solid rgba(245,166,35,0.2);
+  }
+  .eq-kb { background: rgba(74,158,255,0.1); color: var(--blue); border-color: rgba(74,158,255,0.2); }
+  .eq-bb { background: rgba(155,109,255,0.1); color: var(--purple); border-color: rgba(155,109,255,0.2); }
+  .eq-bw { background: rgba(61,214,140,0.1); color: var(--green); border-color: rgba(61,214,140,0.2); }
+  .eq-row { background: rgba(45,212,191,0.1); color: var(--teal); border-color: rgba(45,212,191,0.2); }
+  .eq-bike { background: rgba(245,166,35,0.1); color: var(--amber); border-color: rgba(245,166,35,0.2); }
+
+  .macro-bar-wrap { margin: 14px 0 6px; }
+  .macro-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--mist); margin-bottom: 5px; }
+  .macro-bar { height: 5px; background: var(--iron); border-radius: 3px; overflow: hidden; }
+  .macro-fill { height: 100%; border-radius: 3px; }
+  .fill-protein { background: var(--amber); }
+  .fill-carb { background: var(--blue); }
+  .fill-fat { background: var(--purple); }
+
+  .phase-timeline {
+    display: flex; gap: 0; margin-bottom: 40px;
+    position: relative;
+  }
+  .phase-timeline::before {
+    content: ''; position: absolute; top: 24px;
+    left: 0; right: 0; height: 1px;
+    background: var(--iron); z-index: 0;
+  }
+  .phase-item {
+    flex: 1; text-align: center; position: relative;
+    z-index: 1; cursor: pointer; padding-bottom: 16px;
+  }
+  .phase-dot {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--iron); border: 2px solid var(--gunmetal);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 16px; color: var(--ash);
+    transition: all 0.3s;
+  }
+  .phase-item.active .phase-dot {
+    background: var(--amber); border-color: var(--amber);
+    color: var(--black); box-shadow: 0 0 20px rgba(245,166,35,0.4);
+  }
+  .phase-label {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 13px;
+    font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--ash); transition: color 0.3s;
+  }
+  .phase-item.active .phase-label { color: var(--amber); }
+  .phase-weeks { font-size: 11px; color: var(--gunmetal); margin-top: 3px; transition: color 0.3s; }
+  .phase-item.active .phase-weeks { color: var(--mist); }
+  .phase-content { display: none; }
+  .phase-content.active { display: block; }
+
+  .info-box {
+    background: rgba(245,166,35,0.06);
+    border: 1px solid rgba(245,166,35,0.2);
+    border-radius: 2px; padding: 18px 22px; margin-bottom: 20px;
+    font-size: 14px; color: var(--chalk); line-height: 1.7;
+  }
+  .info-box.red { background: rgba(232,64,64,0.06); border-color: rgba(232,64,64,0.2); }
+  .info-box.green { background: rgba(61,214,140,0.06); border-color: rgba(61,214,140,0.2); }
+  .info-box.blue { background: rgba(74,158,255,0.06); border-color: rgba(74,158,255,0.2); }
+  .info-box.teal { background: rgba(45,212,191,0.06); border-color: rgba(45,212,191,0.2); }
+  .info-box strong { color: var(--amber); }
+  .info-box.red strong { color: var(--red); }
+  .info-box.green strong { color: var(--green); }
+  .info-box.blue strong { color: var(--blue); }
+  .info-box.teal strong { color: var(--teal); }
+
+  .workout-day {
+    background: var(--carbon); border: 1px solid var(--iron);
+    border-radius: 2px; overflow: hidden; margin-bottom: 12px;
+  }
+  .workout-day-header {
+    padding: 14px 20px; background: var(--steel);
+    border-bottom: 1px solid var(--iron);
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .workout-day-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px; color: var(--white);
+  }
+  .workout-day-body { padding: 18px 20px; }
+
+  .stat-box {
+    background: var(--carbon); border: 1px solid var(--iron);
+    padding: 22px; text-align: center;
+  }
+  .stat-box-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 38px; font-weight: 700; color: var(--amber); display: block;
+  }
+  .stat-box-label { font-size: 11px; letter-spacing: 2px; color: var(--ash); text-transform: uppercase; margin-top: 4px; }
+
+  .metric-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 13px 0; border-bottom: 1px solid var(--iron);
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-name { font-size: 14px; color: var(--chalk); flex: 1; }
+  .metric-target { font-family: 'Courier Prime', monospace; font-size: 13px; color: var(--green); }
+
+  ul.plain { list-style: none; padding: 0; }
+  ul.plain li {
+    padding: 7px 0 7px 18px; position: relative;
+    font-size: 14px; color: var(--chalk); line-height: 1.5;
+    border-bottom: 1px solid rgba(42,42,52,0.4);
+  }
+  ul.plain li:last-child { border-bottom: none; }
+  ul.plain li::before {
+    content: '▸'; position: absolute; left: 0;
+    color: var(--amber); font-size: 10px; top: 9px;
+  }
+
+  /* YouTube link button */
+  .yt-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: 'Courier Prime', monospace; font-size: 10px;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: #ff4444; background: rgba(255,68,68,0.08);
+    border: 1px solid rgba(255,68,68,0.25);
+    border-radius: 2px; padding: 3px 8px;
+    text-decoration: none; margin-top: 6px;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .yt-link:hover {
+    background: rgba(255,68,68,0.18);
+    border-color: rgba(255,68,68,0.5);
+    color: #ff6666;
+  }
+  .yt-link::before { content: '▶'; font-size: 8px; }
+
+  /* MOBILITY specific */
+  .mob-block {
+    background: var(--carbon); border: 1px solid var(--iron);
+    border-radius: 2px; overflow: hidden; margin-bottom: 16px;
+  }
+  .mob-block-header {
+    padding: 14px 20px; display: flex;
+    justify-content: space-between; align-items: center;
+    cursor: pointer; border-bottom: 1px solid var(--iron);
+    background: var(--steel);
+  }
+  .mob-block-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px; font-weight: 700;
+    text-transform: uppercase; color: var(--teal);
+  }
+  .mob-block-body { padding: 18px 20px; }
+  .mob-duration {
+    font-family: 'Courier Prime', monospace; font-size: 12px;
+    color: var(--mist); letter-spacing: 1px;
+  }
+
+  .mob-exercise {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 12px 0; border-bottom: 1px solid rgba(42,42,52,0.4);
+  }
+  .mob-exercise:last-child { border-bottom: none; }
+  .mob-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px; font-weight: 700; color: var(--teal);
+    min-width: 28px; line-height: 1;
+  }
+  .mob-name {
+    font-size: 14px; font-weight: 600; color: var(--white);
+    margin-bottom: 3px;
+  }
+  .mob-detail { font-size: 12px; color: var(--mist); line-height: 1.5; }
+  .mob-sets {
+    margin-left: auto; min-width: 100px; text-align: right;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px; color: var(--amber);
+  }
+
+  hr.thin { border: none; border-top: 1px solid var(--iron); margin: 24px 0; }
+
+  p { margin-bottom: 12px; color: var(--chalk); font-size: 14px; line-height: 1.7; }
+
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; text-transform: uppercase;
+    color: var(--white); letter-spacing: 1px;
+    margin-bottom: 12px; margin-top: 24px;
+  }
+
+  .highlight { color: var(--amber); font-weight: 600; }
+  .text-green { color: var(--green); }
+  .text-red { color: var(--red); }
+  .text-blue { color: var(--blue); }
+  .text-teal { color: var(--teal); }
+  .text-mist { color: var(--mist); font-size: 13px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .footnote {
+    font-size: 12px; color: var(--ash); margin-top: 30px;
+    padding-top: 20px; border-top: 1px solid var(--iron); line-height: 1.6;
+  }
+
+  /* EQ legend */
+  .eq-legend {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;
+    padding: 14px 18px; background: var(--steel);
+    border: 1px solid var(--iron); border-radius: 2px;
+  }
+  .eq-legend-title {
+    font-family: 'Courier Prime', monospace; font-size: 10px;
+    color: var(--ash); letter-spacing: 2px; text-transform: uppercase;
+    width: 100%; margin-bottom: 6px;
+  }
+
+  /* sup card */
+  .sup-card {
+    background: var(--carbon); border: 1px solid var(--iron);
+    padding: 20px; border-radius: 2px;
+  }
+  .sup-name {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 18px;
+    font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px;
+  }
+  .sup-dose { font-family: 'Courier Prime', monospace; font-size: 13px; color: var(--amber); margin-bottom: 8px; }
+  .sup-desc { font-size: 13px; color: var(--mist); line-height: 1.6; }
+
+  /* row/bike specific callout */
+  .cardio-card {
+    border: 1px solid var(--iron); background: var(--carbon);
+    padding: 20px 22px; border-radius: 2px; margin-bottom: 12px;
+    border-left: 3px solid var(--teal);
+  }
+  .cardio-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 17px;
+    font-weight: 700; text-transform: uppercase; color: var(--teal);
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-tag">// Home Gym Edition v2.4 — 45M / 205 lbs / 18% BF</div>
+    <div class="hero-title">FORGE<br><span>Protocol</span></div>
+    <div class="hero-sub">3-Month Hypertrophy + Metabolic + Mobility</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-num">12</span><span class="hero-stat-label">Weeks</span></div>
+      <div class="divider"></div>
+      <div class="hero-stat"><span class="hero-stat-num">3</span><span class="hero-stat-label">Phases</span></div>
+      <div class="divider"></div>
+      <div class="hero-stat"><span class="hero-stat-num">~168</span><span class="hero-stat-label">lbs Lean Mass</span></div>
+      <div class="divider"></div>
+      <div class="hero-stat"><span class="hero-stat-num">5+</span><span class="hero-stat-label">Days/Week</span></div>
+    </div>
+    <div class="equipment-strip">
+      <span class="eq-pill">Barbell + Rack</span>
+      <span class="eq-pill">Pull-Up Bar</span>
+      <span class="eq-pill">Dumbbells</span>
+      <span class="eq-pill">Kettlebell</span>
+      <span class="eq-pill">Concept 2 Rower</span>
+      <span class="eq-pill">Rogue AeroBike</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <button class="nav-btn active" onclick="showSection('overview',this)">Overview</button>
+  <button class="nav-btn" onclick="showSection('training',this)">Training</button>
+  <button class="nav-btn" onclick="showSection('nutrition',this)">Nutrition</button>
+  <button class="nav-btn" onclick="showSection('metabolic',this)">Metabolic</button>
+  <button class="nav-btn" onclick="showSection('mobility',this)">Mobility</button>
+  <button class="nav-btn" onclick="showSection('compounds',this)">Compounds</button>
+  <button class="nav-btn" onclick="showSection('shoulder',this)">Shoulder Rehab</button>
+  <button class="nav-btn" onclick="showSection('tracking',this)">Tracking</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     OVERVIEW
+═══════════════════════════════════════════════ -->
+<div id="overview" class="section active">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">// Program Foundation</div>
+      <div class="section-title">Strategic<br><span>Overview</span></div>
+    </div>
+
+    <div class="info-box teal">
+      <strong>v2.4 UPDATE:</strong> Methylfolate (5-MTHF) 1 mg/day added — completes the methyl donor triad with TMG and NMN. PQQ 20 mg/day added — stimulates mitochondrial biogenesis via PGC-1α. Ubiquinol 100 mg/day confirmed and added to protocol — provides electron carrier substrate synergistic with PQQ. All three taken at breakfast with the fat-soluble stack.
+    </div>
+
+    <div class="info-box">
+      <strong>GOAL:</strong> Body recomposition on a <strong>Low-Carb / Modified Ketogenic Diet</strong> — build lean muscle while reducing body fat from ~18% to ~13–14%. Net carbs are set at <strong>100g/day</strong>, consistent across all days, with a fiber carb limit of 50g. Dinner carbs come from broccoli, broccolini, and onion — whole food vegetable sources that are nutrient-dense, anti-inflammatory, and minimally processed. Breakfast and lunch remain virtually carb-free. At 100g net carbs with high fat, 230g protein, Cardarine, and retatrutide-driven fat oxidation, a significant fat-burning state is maintained throughout the day. Shoulder safety is maintained throughout.
+    </div>
+
+    <div class="grid-4" style="margin-bottom:30px;">
+      <div class="stat-box"><span class="stat-box-num">168</span><div class="stat-box-label">Lean Body Mass (lbs)</div></div>
+      <div class="stat-box"><span class="stat-box-num">~2,780</span><div class="stat-box-label">Daily Calories</div></div>
+      <div class="stat-box"><span class="stat-box-num">230g</span><div class="stat-box-label">Daily Protein</div></div>
+      <div class="stat-box"><span class="stat-box-num">100g</span><div class="stat-box-label">Net Carbs Daily</div></div>
+    </div>
+
+    <!-- Equipment legend -->
+    <div class="eq-legend">
+      <div class="eq-legend-title">Equipment Key</div>
+      <span class="eq-icon">DB</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Dumbbell</span>
+      <span class="eq-icon eq-bb">BB</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Barbell</span>
+      <span class="eq-icon eq-kb">KB</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Kettlebell</span>
+      <span class="eq-icon eq-bw">BW</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Bodyweight / Pull-up Bar</span>
+      <span class="eq-icon eq-row">ROW</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Concept 2 Rower</span>
+      <span class="eq-icon eq-bike">BIKE</span><span style="font-size:12px;color:var(--mist);"> Rogue AeroBike</span>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Program Philosophy</div>
+        <ul class="plain">
+          <li>Low-Carb / Modified Ketogenic Diet — 100g net carbs daily, consistent across all days, sourced from low-glycemic whole foods. Zero grains, sugar, or refined starch at any time. Sufficient carbs to support training performance and increase caloric intake while maintaining significant fat-oxidizing conditions.</li>
+          <li>Free weights demand stabilizer activation = greater hypertrophic stimulus than machines</li>
+          <li>Rower and AeroBike replace all machine cardio — both are entirely shoulder-safe (rower requires cautious grip — use light resistance, overhand grip, no wrist curl)</li>
+          <li>GH peptide synergy: keto keeps insulin chronically suppressed, maximizing the GH pulse amplitude from your pre-bed CJC-1295 + Ipamorelin injection every night</li>
+          <li>Mobility routine integrated daily — critical for aging connective tissue and tendon recovery</li>
+        </ul>
+      </div>
+      <div class="card green">
+        <div class="card-title">3-Phase Structure</div>
+        <ul class="plain">
+          <li><strong class="highlight">Phase 1 (Wks 1–4):</strong> Anatomical Adaptation. Master free-weight movement patterns. Shoulder stabilization. Volume over intensity.</li>
+          <li><strong class="highlight">Phase 2 (Wks 5–8):</strong> Hypertrophy Peak. Load increases, advanced techniques (pauses, tempo, drop sets). Biceps rehab loading begins.</li>
+          <li><strong class="highlight">Phase 3 (Wks 9–12):</strong> Metabolic Intensification. Barbell complexes, KB circuits, rower/bike intervals. Density and conditioning peak.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card red">
+      <div class="card-title">⚠ Right Shoulder — Biceps Tendinitis</div>
+      <p>All barbell bench press, barbell curls, behind-the-neck movements are <strong class="text-red">removed entirely</strong>. On the rower: use a light-to-moderate resistance damper setting (3–5) and a relaxed overhand grip — do not pull into extreme elbow flexion. Direct biceps training resumes Week 6 minimum with hammer curls (neutral grip) only. See Shoulder Rehab tab.</p>
+    </div>
+
+    <div class="info-box blue">
+      <strong>MEDICAL DISCLAIMER:</strong> Informational only. All compounds, dosing, and health monitoring must be supervised by your licensed physician. Consult a sports medicine physician or orthopedist regarding your biceps tendinitis before beginning.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     TRAINING
+═══════════════════════════════════════════════ -->
+<div id="training" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">// Resistance Training Protocol</div>
+      <div class="section-title">Training<br><span>Program</span></div>
+    </div>
+
+    <div class="eq-legend">
+      <div class="eq-legend-title">Equipment Key</div>
+      <span class="eq-icon">DB</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Dumbbell</span>
+      <span class="eq-icon eq-bb">BB</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Barbell</span>
+      <span class="eq-icon eq-kb">KB</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Kettlebell</span>
+      <span class="eq-icon eq-bw">BW</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Bodyweight / Pull-up Bar</span>
+      <span class="eq-icon eq-row">ROW</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Concept 2 Rower</span>
+      <span class="eq-icon eq-bike">BIKE</span><span style="font-size:12px;color:var(--mist);"> Rogue AeroBike</span>
+    </div>
+
+    <!-- Phase selector -->
+    <div class="phase-timeline" id="phaseTimeline">
+      <div class="phase-item active" onclick="showPhase(1)">
+        <div class="phase-dot">1</div>
+        <div class="phase-label">Foundation</div>
+        <div class="phase-weeks">Weeks 1–4</div>
+      </div>
+      <div class="phase-item" onclick="showPhase(2)">
+        <div class="phase-dot">2</div>
+        <div class="phase-label">Hypertrophy</div>
+        <div class="phase-weeks">Weeks 5–8</div>
+      </div>
+      <div class="phase-item" onclick="showPhase(3)">
+        <div class="phase-dot">3</div>
+        <div class="phase-label">Intensification</div>
+        <div class="phase-weeks">Weeks 9–12</div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 1 ── -->
+    <div class="phase-content active" id="phase1">
+      <div class="info-box">
+        <strong>Phase 1 Goal:</strong> Establish free-weight movement patterns, connective tissue resilience, and shoulder stabilization. <strong>Weeks 1–4: 3 working sets per exercise maximum</strong>, 12–15 reps, RPE 6–7. No sets to failure. Rest 60–75 sec. This is intentionally sub-maximal — retatrutide titration, keto adaptation, and the initial peptide loading phase create significant systemic load. Prioritize consistency and movement quality over intensity. Every session begins with 5 min on the AeroBike or 500m easy row as warm-up.
+      </div>
+
+      <div class="two-col">
+        <div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Monday — Push (Chest / Triceps / Delts)</span>
+              <span class="badge badge-amber">SHOULDER SAFE</span>
+            </div>
+            <div class="workout-day-body">
+              <table class="data-table">
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>DB Flat Press (neutral grip, elbows 45°)</td><td><span class="eq-icon">DB</span></td><td>3×12–15</td><td>Slow 3-sec descent</td></tr>
+                  <tr><td>DB Incline Press (30° bench or floor angle)</td><td><span class="eq-icon">DB</span></td><td>3×12</td><td>Neutral grip, no flare</td></tr>
+                  <tr><td>DB Chest Fly (flat, slow eccentric)</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Slight elbow bend, don't overstretch</td></tr>
+                  <tr><td>DB Lateral Raise (seated or standing)</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Pain-free arc only, light weight</td></tr>
+                  <tr><td>KB/DB Overhead Tricep Extension (1 arm)</td><td><span class="eq-icon">DB</span><span class="eq-icon eq-kb">KB</span></td><td>3×15/side</td><td>Elbow stable, full extension</td></tr>
+                  <tr><td>Diamond Push-Up</td><td><span class="eq-icon eq-bw">BW</span></td><td>3×12</td><td>Elbows in, tricep isolation</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Tuesday — Pull (Back / Rear Delts)</span>
+              <span class="badge badge-green">HYPERTROPHY</span>
+            </div>
+            <div class="workout-day-body">
+              <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:12px;">⚠ Rower warm-up: 3 min at easy pace (damper 3–4). No aggressive drive through the biceps on right arm — let back do the work.</div>
+              <table class="data-table">
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>Neutral-Grip Pull-Up (or band-assisted)</td><td><span class="eq-icon eq-bw">BW</span></td><td>3×6–10</td><td>Full hang, controlled descent</td></tr>
+                  <tr><td>BB Bent-Over Row (overhand, hip hinge)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×10–12</td><td>Keep chest up, drive elbows back</td></tr>
+                  <tr><td>Single-Arm DB Row (brace on bench)</td><td><span class="eq-icon">DB</span></td><td>3×12/side</td><td>Full ROM, slow return</td></tr>
+                  <tr><td>KB Gorilla Row (alternating)</td><td><span class="eq-icon eq-kb">KB</span></td><td>3×10/side</td><td>Feet wide, hinge position</td></tr>
+                  <tr><td>Face Pull sub: Band/DB Rear Delt Row (elbows wide)</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Prone on incline bench</td></tr>
+                  <tr><td>Prone Y-T-W (light DB or bodyweight)</td><td><span class="eq-icon">DB</span></td><td>2×10 each</td><td>Scapular control — rehab focus</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Wednesday — Legs (Quad Focus)</span>
+              <span class="badge badge-blue">STRENGTH + SIZE</span>
+            </div>
+            <div class="workout-day-body">
+              <table class="data-table">
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>BB Back Squat (in rack)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×10–12</td><td>Below parallel, brace tight. Use safeties.</td></tr>
+                  <tr><td>DB Goblet Squat</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Hold DB at chest, vertical torso</td></tr>
+                  <tr><td>DB Walking Lunge</td><td><span class="eq-icon">DB</span></td><td>3×12/leg</td><td>DBs at sides, neutral grip</td></tr>
+                  <tr><td>KB Front Rack Squat (light)</td><td><span class="eq-icon eq-kb">KB</span></td><td>3×10</td><td>Excellent mobility drill + hypertrophy</td></tr>
+                  <tr><td>DB/BB Split Squat (rear foot elevated)</td><td><span class="eq-icon">DB</span></td><td>3×10/leg</td><td>DBs in hand, torso vertical</td></tr>
+                  <tr><td>Standing Calf Raise (BB or DB loaded)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×15–20</td><td>Full stretch at bottom, pause</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Thursday — Active Recovery</span>
+              <span class="badge badge-amber">RECOVERY</span>
+            </div>
+            <div class="workout-day-body">
+              <ul class="plain">
+                <li><span class="eq-icon eq-bike">BIKE</span> or <span class="eq-icon eq-row">ROW</span> — 25–35 min Zone 2, easy pace. AeroBike preferred (no shoulder involvement). Row at light damper if chosen.</li>
+                <li>Full daily mobility routine (see Mobility tab)</li>
+                <li>Shoulder rehab protocol</li>
+                <li>Foam rolling, contrast shower, 8+ hrs sleep priority</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Friday — Upper Body (Arms + Shoulders)</span>
+              <span class="badge badge-purple">ISOLATION</span>
+            </div>
+            <div class="workout-day-body">
+              <table class="data-table">
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>DB Seated Shoulder Press (neutral grip)</td><td><span class="eq-icon">DB</span></td><td>3×10–12</td><td>Pain-free ROM, no shrug at top</td></tr>
+                  <tr><td>DB Lateral Raise</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Light weight, slow tempo</td></tr>
+                  <tr><td>DB Upright Row (wide grip, elbow height)</td><td><span class="eq-icon">DB</span></td><td>3×12</td><td>Only if pain-free</td></tr>
+                  <tr><td>Close-Grip Push-Up</td><td><span class="eq-icon eq-bw">BW</span></td><td>3×15</td><td>Tricep focus, elbows track back</td></tr>
+                  <tr><td>DB Skull Crusher (EZ grip)</td><td><span class="eq-icon">DB</span></td><td>3×12</td><td>Lying on bench, careful elbow position</td></tr>
+                  <tr><td>DB Hammer Curl (LEFT arm only, Wks 1–5)</td><td><span class="eq-icon">DB</span></td><td>3×12</td><td>Right side: eccentric-only at light load from Wk 3</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Saturday — Legs (Posterior Chain)</span>
+              <span class="badge badge-green">GLUTES / HAMS</span>
+            </div>
+            <div class="workout-day-body">
+              <table class="data-table">
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>BB Romanian Deadlift</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×10–12</td><td>Hip hinge, flat back, feel stretch</td></tr>
+                  <tr><td>DB Single-Leg Romanian Deadlift</td><td><span class="eq-icon">DB</span></td><td>3×10/leg</td><td>Balance challenge, hamstring emphasis</td></tr>
+                  <tr><td>BB Hip Thrust (shoulders on bench)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×15</td><td>Pad the barbell. Full glute lockout.</td></tr>
+                  <tr><td>KB Swing (two-hand)</td><td><span class="eq-icon eq-kb">KB</span></td><td>3×15</td><td>Explosive hip hinge, posterior chain drive</td></tr>
+                  <tr><td>Nordic Curl (feet under rack bar)</td><td><span class="eq-icon eq-bw">BW</span></td><td>2×3</td><td>6-sec eccentric descent only. Do not progress reps until Week 4. Hamstring connective tissue must adapt before loading increases.</td></tr>
+                  <tr><td>Plank + Dead Bug alternating</td><td><span class="eq-icon eq-bw">BW</span></td><td>3×45s + 3×10/side</td><td>Core stability, anti-extension</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Sunday — Full REST</span>
+              <span class="badge badge-amber">RECOVERY</span>
+            </div>
+            <div class="workout-day-body">
+              <ul class="plain">
+                <li>No structured training</li>
+                <li>Morning mobility flow (15 min — see Mobility tab)</li>
+                <li>CJC-1295 + Ipamorelin before bed — maximize GH during deep sleep</li>
+                <li>Meal prep for the week, hydration focus</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- end phase1 -->
+
+    <!-- ── PHASE 2 ── -->
+    <div class="phase-content" id="phase2">
+      <div class="info-box">
+        <strong>Phase 2 Goal:</strong> Peak hypertrophy. Load increases, reps 8–12, RPE 7–8.5. Rest 75–90 sec. Introduce tempo training (3-1-1 cadence on key lifts), drop sets on last isolation set. Biceps work resumes right side Week 6. Barbell work increases in volume. <strong>Planned deload: Days 1–3 of Week 5</strong> (first 3 days of Phase 2) — 50% volume, 60% intensity, no failure. Three consecutive days of sub-maximal training allows connective tissue, joints, and the CNS to recover from Phase 1 accumulation before Phase 2 loading begins. Resume normal training Day 4 of Week 5.
+      </div>
+
+      <div class="card">
+        <div class="card-title">Phase 2 — Progressive Changes</div>
+        <table class="data-table">
+          <thead><tr><th>Variable</th><th>Phase 1</th><th>Phase 2</th></tr></thead>
+          <tbody>
+            <tr><td>Sets per exercise</td><td>3–4</td><td>4–5</td></tr>
+            <tr><td>Rep range</td><td>12–15</td><td>8–12</td></tr>
+            <tr><td>BB Squat load</td><td>Technique priority</td><td>+15–20% from Wk 4 weight</td></tr>
+            <tr><td>BB Romanian Deadlift</td><td>Moderate load</td><td>Push toward 60–70% 1RM</td></tr>
+            <tr><td>Pull-ups</td><td>Bodyweight or assisted</td><td>Add weight via DB between legs or belt</td></tr>
+            <tr><td>KB Swings</td><td>Technique + endurance</td><td>Heavier KB, more explosive</td></tr>
+            <tr><td>Biceps (right side)</td><td>None (or eccentric only)</td><td>Wk 6+: Hammer curl neutral grip</td></tr>
+            <tr><td>Techniques</td><td>Straight sets</td><td>Drop sets (DB isolation), paused reps (BB squat, RDL)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="two-col">
+        <div class="card green">
+          <div class="card-title">Key Phase 2 Exercise Upgrades</div>
+          <ul class="plain">
+            <li><strong class="highlight">BB Squat:</strong> Introduce paused squat (2-sec pause at bottom) 1 set per session from Week 6</li>
+            <li><strong class="highlight">Pull-Ups:</strong> Add weighted variation — hold DB between feet or use belt (Week 6+)</li>
+            <li><strong class="highlight">BB Bent-Over Row:</strong> Switch to underhand grip (supinated) to target lower lats more — if shoulder is pain-free</li>
+            <li><strong class="highlight">KB Swings:</strong> Progress to single-arm swings Week 7 for oblique and stabilizer development</li>
+            <li><strong class="highlight">Nordic Curl:</strong> Increase reps to 8–10. Add a 2-sec pause at the bottom of the descent</li>
+            <li><strong class="highlight">DB Press:</strong> Introduce tempo — 3-second descent, 1-second pause at chest, explosive up</li>
+          </ul>
+        </div>
+        <div class="card blue">
+          <div class="card-title">Week 7–8 Advanced Techniques</div>
+          <ul class="plain">
+            <li>Drop sets on final set of: DB lateral raise, DB hammer curl, DB fly, DB skull crusher</li>
+            <li>Superset: BB RDL + Nordic Curl (posterior chain giant set)</li>
+            <li>Superset: DB press + DB fly (chest pre-exhaust)</li>
+            <li>Rest-pause: final set of pull-ups — hit failure, rest 15 sec, hit 2–3 more reps</li>
+            <li>Increase BB hip thrust load toward bodyweight on bar</li>
+            <li>Add 15–20 min AeroBike Zone 2 post-weight session 2x per week</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- end phase2 -->
+
+    <!-- ── PHASE 3 ── -->
+    <div class="phase-content" id="phase3">
+      <div class="info-box">
+        <strong>Phase 3 Goal:</strong> Metabolic intensification — barbell complexes, KB circuits, rower/bike intervals replace isolated cardio. Supersets and tri-sets dominate. 4–5 sets, 10–15 reps, RPE 8–9. Goal: preserve and grow muscle while dramatically ramping caloric expenditure and fat loss. <strong>Planned deload: Days 1–3 of Week 9</strong> (first 3 days of Phase 3) — 50% volume, 60% intensity, no failure. Three consecutive recovery days after Phase 2's peak loading allows full tissue repair and CNS recovery before the metabolic intensification begins. Resume Phase 3 programming Day 4 of Week 9.
+      </div>
+
+      <div class="card">
+        <div class="card-title">Phase 3 Weekly Split — Density Focus</div>
+        <table class="data-table">
+          <thead><tr><th>Day</th><th>Session Type</th><th>Primary Method</th></tr></thead>
+          <tbody>
+            <tr><td>Monday</td><td>Push Supersets</td><td>DB Press + DB Fly superset / DB Shoulder + Tricep superset</td></tr>
+            <tr><td>Tuesday</td><td>Pull Supersets</td><td>Pull-Up + BB Row superset / KB Row + Rear Delt tri-set</td></tr>
+            <tr><td>Wednesday</td><td>Legs Giant Sets</td><td>BB Squat + DB Lunge + KB Swing per round (3 rounds)</td></tr>
+            <tr><td>Thursday</td><td>Active Recovery</td><td>30–35 min AeroBike Zone 2 + full mobility routine</td></tr>
+            <tr><td>Friday</td><td>Full Upper Body Compound</td><td>Barbell and DB compound movements, moderate RPE</td></tr>
+            <tr><td>Saturday</td><td>Metabolic Circuit (no shoulder)</td><td>Rower + KB + Bodyweight interval circuit (see Metabolic tab)</td></tr>
+            <tr><td>Sunday</td><td>Full Rest</td><td>Morning mobility flow only</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-box green">
+        <strong>Phase 3 Saturday Barbell / KB Metabolic Circuit:</strong> 5 rounds. 40 sec on / 20 sec off. No rest between movements in a round. 90 sec between rounds. Movements: <span class="eq-icon eq-row">ROW</span> 250m max effort → <span class="eq-icon eq-kb">KB</span> Goblet Squat → <span class="eq-icon eq-kb">KB</span> Single-Arm Swing (right side only if shoulder pain-free) → <span class="eq-icon eq-bw">BW</span> Step-Ups on bench → <span class="eq-icon eq-bike">BIKE</span> 30s max sprint. Duration: ~28–32 min.
+      </div>
+
+      <div class="info-box teal">
+        <strong>Phase 3 Barbell Complex (Fridays — added after main work):</strong> All movements with same barbell, no rest between exercises, 60 sec rest between rounds. 4 rounds × 6 reps each: <span class="eq-icon eq-bb">BB</span> RDL → BB Bent-Over Row → BB Hang Clean (power) → BB Front Squat → BB Good Morning. Use ~40–50% of squat 1RM. Outstanding metabolic and hypertrophic stimulus with zero shoulder stress.
+      </div>
+    </div><!-- end phase3 -->
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     NUTRITION
+═══════════════════════════════════════════════ -->
+<div id="nutrition" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">// Ketogenic Nutritional Strategy</div>
+      <div class="section-title">Keto<br><span>Meal Plan</span></div>
+    </div>
+
+    <div class="info-box teal">
+      <strong>Approach — Low-Carb / Modified Ketogenic Diet + Retatrutide Protocol:</strong> Three meals per day structured around breakfast (eggs, bacon, avocado), lunch (custom protein shake + Brunswick brisling sardines with jalapeño), and dinner (protein + fat + low-glycemic carbohydrates). Net carbs set at <strong>100g/day</strong>, consistent across all days — an increase from the previous strict keto ceiling that meaningfully raises total caloric intake and supports training performance. The shake uses 1 cup HEB Whole Lactose-Free Milk + 1 cup water — same recipe every day. At 100g net carbs with high training volume, Cardarine, and retatrutide-driven fat oxidation, the body will remain in a significant fat-burning state. The low-insulin environment continues to amplify your CJC-1295 + Ipamorelin GH pulse each night.
+    </div>
+
+    <div class="info-box blue">
+      <strong>Keto Adaptation Window:</strong> Weeks 1–3 are the adaptation phase. Expect reduced training performance, possible brain fog, and fatigue as your body shifts from glucose to fat and ketones as primary fuel. This is normal. Push through it. By Week 4 you will be fat-adapted and performance rebounds. Cardarine accelerates this adaptation by upregulating fat oxidation pathways immediately. Electrolytes are critical during this window — sodium, potassium, and magnesium daily without exception.
+    </div>
+
+    <div class="grid-4" style="margin-bottom:30px;">
+      <div class="stat-box"><span class="stat-box-num">~2,780</span><div class="stat-box-label">Daily Calories</div></div>
+      <div class="stat-box"><span class="stat-box-num">2,300</span><div class="stat-box-label">Rest Day Cal</div></div>
+      <div class="stat-box"><span class="stat-box-num">230g</span><div class="stat-box-label">Daily Protein</div></div>
+      <div class="stat-box"><span class="stat-box-num">100g</span><div class="stat-box-label">Net Carbs Daily</div></div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Daily Macros <span class="badge badge-amber">ALL DAYS</span></div>
+        <div class="macro-bar-wrap">
+          <div class="macro-label"><span>Protein — 230g</span><span>920 kcal / 33%</span></div>
+          <div class="macro-bar"><div class="macro-fill fill-protein" style="width:33%"></div></div>
+        </div>
+        <div class="macro-bar-wrap">
+          <div class="macro-label"><span>Net Carbs — 100g</span><span>400 kcal / 14%</span></div>
+          <div class="macro-bar"><div class="macro-fill fill-carb" style="width:14%"></div></div>
+        </div>
+        <div class="macro-bar-wrap">
+          <div class="macro-label"><span>Fat — ~140–160g</span><span>~1,350 kcal / ~49%</span></div>
+          <div class="macro-bar"><div class="macro-fill fill-fat" style="width:49%"></div></div>
+        </div>
+        <p style="margin-top:14px;font-size:13px;color:var(--mist)">Same macro target every day — no training/rest day distinction. Carbs sourced from low-glycemic whole foods: shake milk (~12g), vegetables (~30–40g), nuts/avocado (~10–15g), and small amounts of berries or legumes as desired (~15–20g). Zero grains, sugar, or refined starch.</p>
+      </div>
+      <div class="card blue">
+        <div class="card-title">Calorie Breakdown</div>
+        <div class="metric-row"><span class="metric-name">Protein (230g)</span><span class="metric-target">920 kcal</span></div>
+        <div class="metric-row"><span class="metric-name">Net Carbs (100g)</span><span class="metric-target">400 kcal</span></div>
+        <div class="metric-row"><span class="metric-name">Fat (~155g)</span><span class="metric-target">~1,395 kcal</span></div>
+        <div class="metric-row"><span class="metric-name">Daily Total</span><span class="metric-target">~2,715 kcal</span></div>
+        <p style="margin-top:14px;font-size:13px;color:var(--mist)">~385 kcal increase vs the previous strict keto plan — addresses retatrutide-driven caloric suppression and provides more fuel for high-volume training. Retatrutide will naturally moderate total intake; this ceiling gives you room to eat adequately without restriction.</p>
+      </div>
+    </div>
+
+    <div class="card green" style="margin-bottom:20px;">
+      <div class="card-title">Keto-Specific Fat Sources — Priority List</div>
+      <div class="two-col" style="margin-top:4px;">
+        <ul class="plain">
+          <li><strong class="highlight">Animal fats:</strong> Grass-fed beef, fatty cuts (ribeye, 80/20 ground beef, lamb), pastured pork belly, duck fat</li>
+          <li><strong class="highlight">Eggs:</strong> Whole eggs daily — yolk is the keto athlete's multivitamin</li>
+          <li><strong class="highlight">Fatty fish:</strong> Salmon, mackerel, sardines — omega-3 rich, anti-inflammatory, critical for tendon repair</li>
+          <li><strong class="highlight">Butter / ghee:</strong> Cook everything in these. Grass-fed preferred.</li>
+        </ul>
+        <ul class="plain">
+          <li><strong class="highlight">Avocado + avocado oil:</strong> Monounsaturated fats, potassium-rich (helps with keto electrolyte loss)</li>
+          <li><strong class="highlight">Nuts &amp; seeds:</strong> Macadamia nuts (best keto nut — highest fat, lowest carb), pecans, walnuts, Brazil nuts</li>
+          <li><strong class="highlight">MCT oil / coconut oil:</strong> Rapidly converted to ketones — useful pre-training for quick fuel</li>
+          <li><strong class="highlight">Heavy cream:</strong> Coffee, sauces — adds fat without meaningful carbs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <div class="card-title">⚕ Retatrutide — 3-Meal Protocol <span class="badge badge-red">GLP-1/GIP/GCG Tri-Agonist</span></div>
+      <p>Retatrutide is a triple agonist (GLP-1, GIP, glucagon receptor) — significantly more potent than semaglutide or tirzepatide for appetite suppression and fat loss. Three meals per day is appropriate and realistic on this compound. The appetite suppression creates a natural caloric deficit on top of the keto structure. <strong class="highlight">Key considerations:</strong> eat slowly (GLP-1 slows gastric emptying — overeating causes significant nausea), prioritize protein density at every meal since volume is limited, and never skip the pre-bed collagen/protein — muscle preservation is critical given the strong appetite suppression.</p>
+      <ul class="plain" style="margin-top:8px;">
+        <li><strong class="highlight">Meal spacing:</strong> ~5–6 hours between meals. Roughly 8 AM → 1–2 PM → 7 PM works well on training days.</li>
+        <li><strong class="highlight">If nauseated:</strong> Reduce meal volume. Split the protein shake into two portions if needed. Never force food through nausea — listen to the drug.</li>
+        <li><strong class="highlight">Protein priority:</strong> If you can only finish part of a meal, prioritize protein over fat. Fat can be made up elsewhere; protein loss on retatrutide accelerates muscle wasting.</li>
+      </ul>
+    </div>
+
+    <div class="card blue" style="margin-bottom:20px;">
+      <div class="card-title">🥤 Your Custom Protein Shake — Macro Breakdown</div>
+      <table class="data-table" style="margin-bottom:14px;">
+        <thead><tr><th>Ingredient</th><th>Protein</th><th>Net Carbs</th><th>Fat</th><th>Kcal</th></tr></thead>
+        <tbody>
+          <tr><td>Nutri-Cost Grass-Fed Whey (1 scoop)</td><td>25g</td><td>~2g</td><td>~2g</td><td>~120</td></tr>
+          <tr><td>Nutri-Cost Casein (1 scoop)</td><td>~24g</td><td>~3g</td><td>~1g</td><td>~110</td></tr>
+          <tr><td>Sports Research Collagen Peptides (1 scoop)</td><td>~10g</td><td>0g</td><td>0g</td><td>~45</td></tr>
+          <tr><td>Wholesome Wellness Multi Collagen (1 scoop)</td><td>~10g</td><td>0g</td><td>0g</td><td>~45</td></tr>
+          <tr><td>HEB Whole Lactose-Free Milk (1 cup) + Water (1 cup)</td><td>~8g</td><td>~12g</td><td>~8g</td><td>~150</td></tr>
+          <tr><td>Super Coffee Creamer (3 tbsp)</td><td>~3g</td><td>~3g</td><td>~4g</td><td>~60</td></tr>
+          <tr style="background:rgba(245,166,35,0.06);"><td><strong>SHAKE TOTAL</strong></td><td><strong>~80g</strong></td><td><strong>~20g</strong></td><td><strong>~15g</strong></td><td><strong>~530 kcal</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="info-box" style="margin-bottom:0;padding:12px 16px;font-size:13px;">
+        The shake contributes ~20g net carbs (from 1 cup milk + creamer trace) — leaving ~80g of carb budget for dinner. Dinner carbs come from broccoli, broccolini, and onion — combine freely to reach the daily 100g target, keeping fiber carbs at or below 50g. Same shake recipe every day. ~80g of high-quality multi-source protein including whey, casein, and collagen from two sources — the nutritional backbone of the protocol.
+      </div>
+    </div>
+
+    <hr class="thin">
+    <h3>3-Meal Daily Plan — 100g Net Carbs (All Days)</h3>
+    <table class="data-table" style="margin-bottom:12px;">
+      <thead><tr><th>Meal</th><th>Time</th><th>Foods</th><th>Approx Macros</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Meal 1 — Breakfast</strong></td>
+          <td>8:00 AM</td>
+          <td>
+            4–5 whole eggs scrambled in 1–2 tbsp grass-fed butter<br>
+            4–5 strips thick-cut bacon<br>
+            ½ whole avocado (sliced or mashed)<br>
+            Black coffee or coffee with heavy cream (no sugar)<br>
+            <span class="text-mist" style="font-size:12px;">Optional: dash of hot sauce, salt + pepper, fresh herbs</span>
+          </td>
+          <td>P: ~42g / C: ~3g / F: ~60g / ~720 kcal</td>
+        </tr>
+        <tr>
+          <td><strong>Meal 2 — Lunch / Shake + Sardines</strong></td>
+          <td>1:00–2:00 PM<br><span class="text-mist" style="font-size:12px;">(ideally within 60 min post-training)</span></td>
+          <td>
+            <strong>Custom Protein Shake (same every day):</strong><br>
+            1 scoop Nutri-Cost Grass-Fed Whey + 1 scoop Nutri-Cost Casein<br>
+            1 scoop Sports Research Collagen Peptides<br>
+            1 scoop Wholesome Wellness Multi Collagen<br>
+            1 cup HEB Whole Lactose-Free Milk + 1 cup water<br>
+            3 tbsp Super Coffee Creamer — blend until smooth<br><br>
+            <strong>+ 1 tin Brunswick Wild Caught Gourmet Brisling Sardines topped with jalapeño slices</strong><br>
+            <span class="text-mist" style="font-size:12px;">Eat over arugula or straight from the tin. Jalapeño adds capsaicin with zero carbs. Daily EPA/DHA for tendon recovery.</span>
+          </td>
+          <td>P: ~103g / C: ~22g / F: ~27g / ~745 kcal</td>
+        </tr>
+        <tr>
+          <td><strong>Meal 3 — Dinner</strong></td>
+          <td>7:00–8:00 PM<br><span class="text-mist" style="font-size:12px;">(2+ hrs before peptide injection)</span></td>
+          <td>
+            10–12 oz ribeye, 80/20 ground beef, lamb, salmon, or mackerel<br>
+            2 cups roasted vegetables (broccoli, cauliflower, asparagus, Brussels sprouts) in olive oil + butter<br>
+            Mixed greens salad with olive oil + ACV<br>
+            <strong>+ Dinner carb sources — combine to reach ~75g daily net carb total (50g fiber carb max):</strong><br>
+            &nbsp;• <strong>Broccoli</strong> — steamed or roasted (~6g net carbs per cup, ~5g fiber per cup)<br>
+            &nbsp;• <strong>Broccolini</strong> — steamed or sautéed in olive oil (~4g net carbs per cup, ~3g fiber per cup)<br>
+            &nbsp;• <strong>Onion</strong> — sautéed, caramelized, or roasted (~9g net carbs per medium onion, ~2g fiber)<br>
+            <span class="text-mist" style="font-size:12px;">Combine generously — e.g. 3 cups broccoli + 2 cups broccolini + 1 large onion = ~40–45g net carbs with ~25–30g fiber. Together with shake (~22g) and breakfast (~3g) this approaches the 100g daily target. Season with salt, olive oil, garlic, or herbs. Note: reaching 100g net carbs from vegetables alone requires very large portions — if appetite is suppressed on retatrutide and portions are smaller, hitting 75–80g daily is acceptable.</span>
+            Salt generously for electrolytes<br>
+            <span class="text-mist" style="font-size:12px;">Eat slowly — retatrutide slows gastric emptying. Stop at satisfaction.</span>
+          </td>
+          <td>P: ~72g / C: ~75g / F: ~55g / ~1,055 kcal</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="info-box green" style="margin-bottom:24px;">
+      <strong>Daily Total: ~P: 217g / Net C: ~75–100g / Fiber Carbs ≤50g / F: ~142g / ~2,400–2,520 kcal</strong> — broccoli, broccolini, and onion are naturally high in fiber, so practical dinner portions land in the 40–75g net carb range from vegetables alone. The 50g fiber carb ceiling keeps digestive load manageable on retatrutide, which slows gastric emptying. If appetite suppression reduces dinner volume, 75–85g total daily net carbs is fully acceptable. Protein from the shake + sardines lunch remains the non-negotiable daily priority.
+    </div>
+
+    <div class="info-box red">
+      <strong>⚠ Electrolyte Protocol — Non-Negotiable:</strong> Even at 100g carbs, elevated training volume, retatrutide-driven metabolism, and a predominantly whole-food diet require consistent electrolyte replacement. Daily targets: <strong>Sodium: 3,000–5,000 mg</strong> (salt food generously), <strong>Potassium: 3,000–4,500 mg</strong> (avocado, leafy greens, broccoli, lite salt), <strong>Magnesium: 300–500 mg</strong> (magnesium bisglycinate supplement — confirmed in stack). Use LMNT, Redmond Re-Lyte, or DIY electrolyte mix.
+    </div>
+
+    <div class="two-col">
+      <div class="card green">
+        <div class="card-title">Priority Foods — Anti-Inflammatory & Low-Glycemic</div>
+        <ul class="plain">
+          <li>Fatty fish (salmon, mackerel, sardines) — daily or near-daily. Omega-3s directly therapeutic for tendon inflammation.</li>
+          <li>Turmeric + black pepper (curcumin) — daily. Potent COX-2 inhibitor, pairs with KPV and Quercetin for triple NF-κB suppression.</li>
+          <li>Ginger — tea or fresh daily. Zero-carb anti-inflammatory.</li>
+          <li>Broccoli — primary dinner vegetable and carb source. High in sulforaphane (anti-inflammatory, anti-cancer), Vitamin C, and fiber. ~6g net carbs per cup. Steam or roast. Large portions needed to approach the 100g daily carb target.</li>
+          <li>Broccolini — milder, tender stalks, similar nutrient profile to broccoli. ~4g net carbs per cup. Sauté in olive oil with garlic.</li>
+          <li>Onion — caramelized, sautéed, or roasted. Adds flavor and quercetin (natural NF-κB inhibitor — synergizes with your Quercetin supplement). ~9g net carbs per medium onion.</li>
+          <li>Bone broth — collagen, electrolytes, gut health. 1–2 cups/day. Sip between meals.</li>
+          <li>Collagen peptides (in shake) + Vitamin C (at lunch) — daily tendon repair substrate delivery.</li>
+          <li>Brazil nuts (2–3 daily) — selenium, zero net carb impact.</li>
+        </ul>
+      </div>
+      <div class="card red">
+        <div class="card-title">HARD AVOID</div>
+        <ul class="plain">
+          <li>All grains (rice, oats, bread, pasta) — not part of this protocol</li>
+          <li>Sugar and sweeteners that spike insulin (honey, agave, maltodextrin, dextrose, high-fructose corn syrup)</li>
+          <li>Refined/processed carbs (chips, crackers, breakfast cereals, white bread)</li>
+          <li>Legumes — not part of the dinner carb protocol</li>
+          <li>Berries, fruit — not part of the dinner carb protocol</li>
+          <li>Alcohol — suppresses GH, blunts protein synthesis, inflames tendons</li>
+          <li>Seed oils (canola, soybean, corn oil) — replace with butter, ghee, olive oil, avocado oil</li>
+          <li>Packaged snacks with hidden maltodextrin, dextrose, or sugar alcohols</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="card-title">Keto &amp; Your Compound Protocol — Synergy Notes</div>
+      <ul class="plain">
+        <li><strong class="highlight">Retatrutide + Keto:</strong> Retatrutide (GLP-1/GIP/GCG triple agonist) drives fat oxidation via the glucagon receptor — a mechanism that directly overlaps with and amplifies ketosis. The combination of retatrutide + strict keto + Cardarine creates a triple fat-mobilization stack that is exceptionally powerful for body recomposition. The 3-meal structure enforced by retatrutide's appetite suppression also keeps insulin low the vast majority of the day, further amplifying the GH pulse from your evening peptide injection.</li>
+        <li><strong class="highlight">Testosterone + Keto:</strong> Dietary fat is the direct precursor to steroid hormones including testosterone. A high-fat keto diet provides ample cholesterol and saturated fat substrate for hormone production — complementary to TRT.</li>
+        <li><strong class="highlight">GH Peptides + Keto:</strong> CJC-1295 and Ipamorelin cause the largest GH pulse when blood glucose and insulin are lowest. Keto keeps insulin chronically suppressed — meaning your pre-bed peptide injection fires into a maximally receptive hormonal environment every single night.</li>
+        <li><strong class="highlight">Cardarine + Keto:</strong> GW-501516 activates PPARδ which upregulates fat oxidation. On keto, fat is already the primary fuel — Cardarine amplifies this synergistically, accelerating fat loss especially during fasted AM AeroBike sessions.</li>
+        <li><strong class="highlight">Protein &amp; Gluconeogenesis:</strong> At 230g protein/day you are at the upper end of keto-safe protein intake. This level is necessary to protect muscle on TRT + high training volume. Gluconeogenesis from excess protein is demand-driven and will not significantly kick you out of ketosis given your activity level. Monitor blood ketones if concerned — target ≥0.5 mmol/L.</li>
+        <li><strong class="highlight">Keto Adaptation &amp; Cardio:</strong> Once fat-adapted (Weeks 3–4+), fasted Zone 2 on the AeroBike becomes extraordinarily efficient — your body burns fat almost exclusively at this intensity. This is where keto + Cardarine + fasted cardio creates the most powerful fat loss stack in the program.</li>
+      </ul>
+    </div>
+
+    <div class="info-box" style="margin-top:20px;">
+      <strong>Hydration:</strong> Minimum 1 gallon (3.8L) water daily — keto increases urinary water loss. Add electrolytes to every liter. Bone broth counts toward daily fluid intake. Avoid diet sodas with citric acid or aspartame in large quantities — they can blunt ketone production in some individuals.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     METABOLIC
+═══════════════════════════════════════════════ -->
+<div id="metabolic" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">// Cardio & Fat Loss Strategy</div>
+      <div class="section-title">Metabolic<br><span>Conditioning</span></div>
+    </div>
+
+    <div class="info-box teal">
+      <strong>Equipment Update:</strong> All previous treadmill, elliptical, sled, and battle rope cardio has been replaced with the <strong>Concept 2 Rower</strong> and <strong>Rogue AeroBike</strong>. Both are zero shoulder impact. The rower also activates the posterior chain making it an excellent complement to hypertrophy training. Cardarine synergy protocols remain identical.
+    </div>
+
+    <div class="two-col" style="margin-bottom:20px;">
+      <div class="cardio-card">
+        <div class="cardio-title">Concept 2 Rower — Protocol Guidelines</div>
+        <ul class="plain">
+          <li><strong class="text-teal">Damper setting:</strong> 3–5 for steady state (lower = more cardiovascular demand). 5–7 for intervals.</li>
+          <li><strong class="text-teal">Right shoulder:</strong> Use relaxed overhand grip. Do not aggressively curl the right wrist at the finish. Let the back and legs do the work.</li>
+          <li><strong class="text-teal">Zone 2 pace:</strong> ~500m split of 2:30–2:50/500m. Heart rate 120–135 bpm.</li>
+          <li><strong class="text-teal">Interval pace:</strong> ~500m split of 1:45–2:05/500m. All-out effort.</li>
+          <li><strong class="text-teal">Calories:</strong> Moderate 30-min row burns ~270–320 kcal at bodyweight of 205 lbs.</li>
+        </ul>
+      </div>
+      <div class="cardio-card">
+        <div class="cardio-title">Rogue AeroBike — Protocol Guidelines</div>
+        <ul class="plain">
+          <li><strong class="text-amber">Zero shoulder involvement</strong> — preferred choice when shoulder is flaring. Hands rest on stationary or moving handles.</li>
+          <li><strong class="text-amber">Zone 2 pace:</strong> 60–70 RPM at moderate resistance. HR 120–135 bpm.</li>
+          <li><strong class="text-amber">HIIT pace:</strong> Max RPM sprint for 20–30 sec intervals. Resistance set moderately high.</li>
+          <li><strong class="text-amber">Calories:</strong> 20-min moderate session burns ~250–300 kcal.</li>
+          <li><strong class="text-amber">Fasted cardio:</strong> AeroBike is the default fasted AM tool — minimal joint stress, easy to ramp up.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Cardio Structure by Phase</div>
+      <table class="data-table">
+        <thead><tr><th>Phase</th><th>Type</th><th>Freq</th><th>Duration</th><th>Tool</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Phase 1</strong><br><span class="text-mist">Wks 1–4</span></td>
+            <td>LISS (Zone 2)</td>
+            <td>4–5x/wk</td>
+            <td>30–40 min</td>
+            <td><span class="eq-icon eq-bike">BIKE</span> or <span class="eq-icon eq-row">ROW</span></td>
+            <td>Fasted AM or post-weights. Bike preferred for shoulder safety. Row at easy damper.</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 2</strong><br><span class="text-mist">Wks 5–8</span></td>
+            <td>LISS + 2x MISS</td>
+            <td>5x/wk</td>
+            <td>30–35 LISS, 25 MISS</td>
+            <td><span class="eq-icon eq-bike">BIKE</span> + <span class="eq-icon eq-row">ROW</span></td>
+            <td>MISS on Rower post-weights 2x. LISS on Bike fasted AM. Alternate tools each day.</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 3</strong><br><span class="text-mist">Wks 9–12</span></td>
+            <td>LISS + HIIT intervals</td>
+            <td>5–6x/wk</td>
+            <td>25 LISS, 20 HIIT</td>
+            <td><span class="eq-icon eq-bike">BIKE</span> + <span class="eq-icon eq-row">ROW</span></td>
+            <td>HIIT: Bike (30s max / 90s easy × 8) or Rower (250m max / 90s rest × 6). 2x/week HIIT max.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Phase 3 — Rower HIIT Protocol</h3>
+    <div class="info-box teal">
+      <strong>6 × 250m Row Intervals:</strong> Set damper to 6. Row 250m at maximum effort (~45–55 sec). Rest 90 seconds (feet up, walk). Repeat 6 times. Total session ~15–18 min. Targets VO2max, burns ~200–240 kcal post-EPOC effect, zero shoulder stress. Record each split — aim for &lt;2% drop in pace from round 1 to 6.
+    </div>
+
+    <h3>Phase 3 — AeroBike Tabata Variation</h3>
+    <div class="info-box">
+      <strong>AeroBike Tabata (Thursdays, Phase 3 only):</strong> 8 rounds × 20 sec max sprint / 10 sec passive rest. Total: 4 minutes. Can repeat 2–3 times with 3 min full rest between sets. Brutal metabolic demand in short window. Pair with 15 min Zone 2 cool-down row after.
+    </div>
+
+    <h3>Weekly Overview — 100g Net Carbs / All Days</h3>
+    <table class="data-table" style="margin-bottom:16px;">
+      <thead><tr><th>Day</th><th>Training</th><th>Calories</th><th>Net Carbs</th><th>Cardio Tool</th></tr></thead>
+      <tbody>
+        <tr><td>Monday</td><td>Push (weights)</td><td>~2,520</td><td>~100g (shake: ~22g + dinner carb source: ~75g + breakfast: ~3g)</td><td>Pre-training: black coffee. Intra: electrolytes only.</td></tr>
+        <tr><td>Tuesday</td><td>Pull (weights)</td><td>~2,520</td><td>~100g</td><td>500m Row warm-up + optional 20 min post Bike</td></tr>
+        <tr><td>Wednesday</td><td>Legs (weights)</td><td>~2,520</td><td>~100g</td><td>5 min Bike warm-up + optional 20 min post Row</td></tr>
+        <tr><td>Thursday</td><td>Active Recovery</td><td>~2,520</td><td>~100g</td><td>30–40 min fasted Bike Zone 2</td></tr>
+        <tr><td>Friday</td><td>Upper Body (weights)</td><td>~2,520</td><td>~100g</td><td>500m Row warm-up</td></tr>
+        <tr><td>Saturday</td><td>Legs + Metabolic</td><td>~2,520</td><td>~100g</td><td>Row/Bike HIIT circuit (see Phase 3)</td></tr>
+        <tr><td>Sunday</td><td>Full Rest</td><td>~2,520</td><td>~100g</td><td>30 min easy fasted Bike or walk</td></tr>
+      </tbody>
+    </table>
+    <p class="text-mist">Daily average: ~2,400–2,520 kcal. Carbs are uniform across all days at up to 100g net (50g fiber carb max), concentrated at dinner from broccoli, broccolini, and onion. Breakfast and lunch remain virtually carb-free, preserving fasted AM fat oxidation. Note: reaching 100g net carbs from vegetables alone requires large dinner portions — 75–85g daily is a realistic target on retatrutide-suppressed appetite.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MOBILITY — NEW TAB
+═══════════════════════════════════════════════ -->
+<div id="mobility" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">// Daily Mobility & Flexibility Protocol</div>
+      <div class="section-title">Mobility<br><span>Routine</span></div>
+    </div>
+
+    <div class="info-box teal">
+      <strong>Why Mobility Matters Here:</strong> At 45, connective tissue recovery lags significantly behind muscle recovery — especially with elevated anabolics and high training frequency. Biceps tendinitis is often worsened by restricted thoracic extension, tight pec minor, and poor glenohumeral mobility. This daily routine addresses the root causes, accelerates tendon healing, enhances squat and deadlift depth, and reduces injury risk system-wide.
+    </div>
+
+    <div class="two-col" style="margin-bottom:20px;">
+      <div class="card teal">
+        <div class="card-title">Daily Mobility Schedule</div>
+        <div class="metric-row"><span class="metric-name">Morning (every day)</span><span class="metric-target">15 min — Wake-Up Flow</span></div>
+        <div class="metric-row"><span class="metric-name">Pre-Training (training days)</span><span class="metric-target">10 min — Dynamic Warm-Up</span></div>
+        <div class="metric-row"><span class="metric-name">Post-Training (training days)</span><span class="metric-target">10 min — Cool-Down + Fascial Release</span></div>
+        <div class="metric-row"><span class="metric-name">Thursday / Sunday</span><span class="metric-target">25–30 min — Full Mobility Session</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Focus Areas by Priority</div>
+        <ul class="plain">
+          <li><strong class="text-teal">1 — Thoracic spine</strong>: Extension and rotation. Key for shoulder health and pressing mechanics.</li>
+          <li><strong class="text-teal">2 — Pec minor / anterior shoulder</strong>: Chronic tightness compresses the bicipital groove.</li>
+          <li><strong class="text-teal">3 — Hip flexors + posterior chain</strong>: Critical for squat depth, RDL form, and pelvic tilt.</li>
+          <li><strong class="text-teal">4 — Ankle dorsiflexion</strong>: Limits squat mechanics, often neglected in men over 40.</li>
+          <li><strong class="text-teal">5 — Lat / overhead mobility</strong>: Needed for pull-ups, pressing, and safe barbell work.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MORNING FLOW -->
+    <div class="mob-block">
+      <div class="mob-block-header">
+        <span class="mob-block-title">☀ Morning Wake-Up Flow — 15 min (Every Day)</span>
+        <span class="mob-duration">Daily / No Equipment</span>
+      </div>
+      <div class="mob-block-body">
+        <div class="mob-exercise">
+          <div class="mob-num">01</div>
+          <div><div class="mob-name">Cat-Cow + Spinal Wave</div><div class="mob-detail">On hands and knees. Slowly undulate through full spinal flexion → extension. Breathe deep. 10 slow cycles.<br><a class="yt-link" href="https://www.youtube.com/watch?v=te1gCNSUO4s" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">10 reps<br>slow breath</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">02</div>
+          <div><div class="mob-name">90/90 Hip Switch</div><div class="mob-detail">Seated on floor. Both legs at 90°. Rotate hips side to side, letting knees fall. Pause 3 sec at each end range. Unlocks hip capsule and piriformis.<br><a class="yt-link" href="https://www.youtube.com/watch?v=HUZimFZJZWU" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">10 reps/side<br>3-sec hold</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">03</div>
+          <div><div class="mob-name">Thoracic Rotation (Thread the Needle)</div><div class="mob-detail">From quadruped. One arm reaches under body rotating thoracic spine. Hold 3 sec, return. Critical for shoulder health — tight T-spine stresses the bicipital groove.<br><a class="yt-link" href="https://www.youtube.com/watch?v=JPK24P1JD6s" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">8 reps/side<br>3-sec hold</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">04</div>
+          <div><div class="mob-name">World's Greatest Stretch (Lunge + Rotation)</div><div class="mob-detail">Forward lunge, same-side hand on floor, opposite arm reach to ceiling, rotate through T-spine. Best single mobility drill: opens hip flexors, groin, thoracic spine simultaneously.<br><a class="yt-link" href="https://www.youtube.com/watch?v=-CiWQ2IvY34" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">5 reps/side<br>3-sec hold</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">05</div>
+          <div><div class="mob-name">Doorframe Pec Stretch / Banded Pec Minor Opener</div><div class="mob-detail">Both arms at 90° against doorframe, lean forward gently. Hold 30 sec. Releases pec minor which impinges the bicipital groove when tight. Do NOT force range — gentle sustained pressure.<br><a class="yt-link" href="https://www.youtube.com/watch?v=M850sCj9LHQ" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">3 × 30 sec<br>each arm angle</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">06</div>
+          <div><div class="mob-name">Deep Squat Hold (counterbalance)</div><div class="mob-detail">Hold onto rack upright or doorframe. Sink into full squat, heels down, stay 60 sec. Enhances ankle dorsiflexion, hip flexor length, and squat mechanics simultaneously.<br><a class="yt-link" href="https://www.youtube.com/watch?v=Cae4zP3k_M0" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">2 × 60 sec<br>hold</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">07</div>
+          <div><div class="mob-name">Child's Pose + Lat Reach</div><div class="mob-detail">Knees wide, arms extended forward (or one arm at a time reaching for diagonal). Deep breath into side ribs. Decompresses lumbar spine, stretches lats and teres major.<br><a class="yt-link" href="https://www.youtube.com/watch?v=BBZOrpOymEc" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">2 × 30 sec/side</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">08</div>
+          <div><div class="mob-name">Neck & Cervical Mobility (slow circles)</div><div class="mob-detail">Gentle cervical circles, ear-to-shoulder tilts, chin tucks. Important for shoulder girdle neural tension.<br><a class="yt-link" href="https://www.youtube.com/watch?v=nXOhRptPYnA" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">5 circles<br>each direction</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRE-TRAINING -->
+    <div class="mob-block">
+      <div class="mob-block-header">
+        <span class="mob-block-title">⚡ Pre-Training Dynamic Warm-Up — 10 min (Training Days)</span>
+        <span class="mob-duration">Before Every Session</span>
+      </div>
+      <div class="mob-block-body">
+        <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:14px;">Start with 5 min AeroBike (easy) or 500m easy row to elevate core temperature before beginning this sequence.</div>
+        <div class="mob-exercise">
+          <div class="mob-num">01</div>
+          <div><div class="mob-name">Arm Circles — Forward + Backward</div><div class="mob-detail">Small to large, progressively increasing ROM. Warms up the glenohumeral joint and rotator cuff. 20 reps each direction.<br><a class="yt-link" href="https://www.youtube.com/watch?v=6i4f6LDg23Q" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">20 fwd<br>20 back</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">02</div>
+          <div><div class="mob-name">Band Pull-Apart (or towel pull-apart)</div><div class="mob-detail">Light resistance band at chest height. Arms straight. Pull apart to full extension behind back. Activates posterior cuff, sets scapula. Do before every upper body session.<br><a class="yt-link" href="https://www.youtube.com/watch?v=KvlCAx2Fk2U" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">2 × 20 reps</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">03</div>
+          <div><div class="mob-name">Thoracic Extension over foam roller / barbell</div><div class="mob-detail">Lay upper back over a foam roller or padded barbell placed horizontally at rack height. Segment by segment extension. 5 positions along T-spine, 30 sec each. Game-changer for bench and overhead pressing mechanics.<br><a class="yt-link" href="https://www.youtube.com/watch?v=JqKX3os8sjw" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">5 positions<br>5 sec each</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">04</div>
+          <div><div class="mob-name">Hip Circle + Leg Swing (sagittal + frontal)</div><div class="mob-detail">Hold rack upright. Swing leg forward/back 15 reps, then side-to-side 15 reps. Both legs. Activates glutes and hip flexors before leg work.<br><a class="yt-link" href="https://www.youtube.com/watch?v=T6j7BpxeqqU" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">15 reps/direction<br>each leg</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">05</div>
+          <div><div class="mob-name">Inchworm + Push-Up</div><div class="mob-detail">Stand, hinge to floor, walk out to plank, 1 push-up, walk hands back, stand. Activates shoulders, core, hamstrings, lats dynamically.<br><a class="yt-link" href="https://www.youtube.com/watch?v=r1KI2TDGf3c" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">6 reps<br>slow and controlled</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">06</div>
+          <div><div class="mob-name">Goblet Squat (light KB) — as mobility drill</div><div class="mob-detail">Use KB to counterbalance. Elbows push knees out at bottom. 5 sec hold at depth. Best squat warm-up available with your equipment.<br><a class="yt-link" href="https://www.youtube.com/watch?v=kk8RnOLzngc" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">2 × 8 reps<br>5-sec bottom hold</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST-TRAINING COOL-DOWN -->
+    <div class="mob-block">
+      <div class="mob-block-header">
+        <span class="mob-block-title">🌙 Post-Training Cool-Down + Fascial Release — 10 min</span>
+        <span class="mob-duration">After Every Training Session</span>
+      </div>
+      <div class="mob-block-body">
+        <div class="mob-exercise">
+          <div class="mob-num">01</div>
+          <div><div class="mob-name">Pigeon Pose (or Figure-4 stretch on floor)</div><div class="mob-detail">Hip external rotation. 60 sec per side. Critical after squats and hip hinge work. Releases piriformis and hip capsule.<br><a class="yt-link" href="https://www.youtube.com/watch?v=0zyhKn7b29I" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">60 sec/side</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">02</div>
+          <div><div class="mob-name">Couch Stretch (hip flexor)</div><div class="mob-detail">Rear knee on floor, foot against wall or rack upright. Tall torso. 60 sec per side. Counters the compressive hip flexor shortening from heavy squats and riding the AeroBike.<br><a class="yt-link" href="https://www.youtube.com/watch?v=WKo4APrwfXQ" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">60 sec/side</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">03</div>
+          <div><div class="mob-name">Doorframe Pec Stretch (post-push day only)</div><div class="mob-detail">Single-arm doorframe stretch. Elbow at 90°, lean into opening. Critical post-pressing to restore pec minor length and decompress bicipital groove.<br><a class="yt-link" href="https://www.youtube.com/watch?v=Dmm8_S23I74" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">2 × 30 sec/side<br>push days only</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">04</div>
+          <div><div class="mob-name">Lat Stretch (hanging or bent-over)</div><div class="mob-detail">Hang from pull-up bar with relaxed arms — 30 sec passive hang decompresses spine, stretches lats. OR kneel, arm on bench, lateral lean stretch.<br><a class="yt-link" href="https://www.youtube.com/watch?v=BBZOrpOymEc" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">2 × 30 sec</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">05</div>
+          <div><div class="mob-name">Supine Twist (spinal decompression)</div><div class="mob-detail">On floor. One knee pulled across body to floor. Arms out T-shape. Breathe deeply. Decompresses the spine after loading, improves thoracic rotation.<br><a class="yt-link" href="https://www.youtube.com/watch?v=mNdJti7ZwKI" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">30 sec/side</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">06</div>
+          <div><div class="mob-name">Box Breathing / Nervous System Reset</div><div class="mob-detail">4 sec inhale, 4 hold, 4 exhale, 4 hold. 2 minutes. Shifts from sympathetic to parasympathetic — critical for recovery, cortisol management, and GH optimization post-training.<br><a class="yt-link" href="https://www.youtube.com/watch?v=tEmt1Znux58" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">2 min<br>4-4-4-4 pattern</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THURSDAY / SUNDAY FULL SESSION -->
+    <div class="mob-block">
+      <div class="mob-block-header">
+        <span class="mob-block-title">🔄 Full Mobility Session — 25–30 min (Thursdays + Sundays)</span>
+        <span class="mob-duration">Recovery Days Only</span>
+      </div>
+      <div class="mob-block-body">
+        <div class="info-box teal" style="margin-bottom:16px;">This is your deep tissue and full-ROM session. Combine all elements from the morning flow + post-training cool-down, then add the advanced work below. Best performed after a warm shower to maximize tissue pliability.</div>
+        <div class="mob-exercise">
+          <div class="mob-num">01</div>
+          <div><div class="mob-name">Full Morning Flow Sequence (exercises 01–08 above)</div><div class="mob-detail">Begin with the complete morning wake-up routine as foundation. See Morning Flow section above for all individual video links.<br><a class="yt-link" href="https://www.youtube.com/watch?v=te1gCNSUO4s" target="_blank">Start with Cat-Cow</a></div></div>
+          <div class="mob-sets">Full routine<br>~10 min</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">02</div>
+          <div><div class="mob-name">Seated Hamstring + Calf Stretch (straddle)</div><div class="mob-detail">Legs extended, reach forward over each leg, then center. Hold 45 sec each position. Add ankle dorsiflexion circles in the stretch position.<br><a class="yt-link" href="https://www.youtube.com/watch?v=gVk6e7p7tTs" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">3 positions<br>45 sec each</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">03</div>
+          <div><div class="mob-name">Thoracic Windmill Stretch (side-lying)</div><div class="mob-detail">Side-lying. Top leg bent at 90°, held by lower hand. Top arm opens to ceiling, follow with eyes. 10 slow reps per side. Profound T-spine rotation ROM builder.<br><a class="yt-link" href="https://www.youtube.com/watch?v=WFscbHHX8Xc" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">10 reps/side<br>slow exhale</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">04</div>
+          <div><div class="mob-name">Ankle Dorsiflexion Wall Drill</div><div class="mob-detail">Stand ~4 inches from wall. Drive knee to touch wall without heel rising. If it touches easily, move foot back. Critical for squat depth and knee health. Repeat 10x each side.<br><a class="yt-link" href="https://www.youtube.com/watch?v=Y1IZXkdPPdw" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">10 reps/side<br>measure progress</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">05</div>
+          <div><div class="mob-name">Deep Hip Flexor + Quad Stretch (kneeling lunge)</div><div class="mob-detail">Rear knee on padded floor. Front foot forward. Squeeze glute of rear leg. Lean torso tall or slightly back. 60 sec. Then add a lateral torso lean away from the rear leg — adds IT band + TFL stretch.<br><a class="yt-link" href="https://www.youtube.com/watch?v=nTJaGnjUkTY" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">60 sec/side<br>+ 30 sec lateral</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">06</div>
+          <div><div class="mob-name">Shoulder CARS (Controlled Articular Rotations)</div><div class="mob-detail">Stand tall. Slowly rotate the shoulder through its full pain-free range of motion (all directions) with active muscular tension. 3 slow rotations each direction. Maintains joint health and builds proprioception in the shoulder capsule — excellent for biceps tendinitis recovery.<br><a class="yt-link" href="https://www.youtube.com/watch?v=2hyNG1U5wYs" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">3 reps each<br>direction per side</div>
+        </div>
+        <div class="mob-exercise">
+          <div class="mob-num">07</div>
+          <div><div class="mob-name">Parasympathetic Breathing Finish</div><div class="mob-detail">4-7-8 breathing (4 sec inhale, 7 hold, 8 exhale). 5 cycles. Maximally downregulates cortisol and activates recovery. Do this before the pre-bed peptide injection on rest days.<br><a class="yt-link" href="https://www.youtube.com/watch?v=gz4G31LGyog" target="_blank">Watch Demo</a></div></div>
+          <div class="mob-sets">5 cycles<br>4-7-8 pattern</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card green">
+        <div class="card-title">Mobility Progression by Phase</div>
+        <table class="data-table">
+          <thead><tr><th>Phase</th><th>Focus Emphasis</th></tr></thead>
+          <tbody>
+            <tr><td>Phase 1 (Wks 1–4)</td><td>Thoracic extension, pec minor, shoulder CAR's — foundation for safe pressing and pulling</td></tr>
+            <tr><td>Phase 2 (Wks 5–8)</td><td>Add deep squat loading, increase passive stretch duration, introduce loaded stretches (KB goblet squat bottom hold)</td></tr>
+            <tr><td>Phase 3 (Wks 9–12)</td><td>Maximize full ROM in all lifts, barbell overhead mobility, increased depth in hip hinge patterns, challenge thoracic rotation under load</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card teal">
+        <div class="card-title">Key Mobility Tools</div>
+        <ul class="plain">
+          <li><strong class="text-teal">Foam roller or PVC pipe:</strong> T-spine extension, thoracic mobilization. Can use a barbell in the rack at hip height.</li>
+          <li><strong class="text-teal">Light resistance band:</strong> Pull-aparts, external rotations, overhead mobility — therapeutic for shoulder</li>
+          <li><strong class="text-teal">Kettlebell (light):</strong> Counterbalance deep squat, goblet squat mobility holds, Turkish Get-Up (Phase 2+) for full-body integrated mobility</li>
+          <li><strong class="text-teal">Pull-up bar:</strong> Passive hangs — decompresses spine and shoulders in seconds</li>
+          <li><strong class="text-teal">Lacrosse ball or tennis ball:</strong> Pec minor, lat, glute medius trigger point release (highly recommended)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box green">
+      <strong>Turkish Get-Up (Phase 2+, Fridays):</strong> The single best full-body mobility + stability drill available with a KB. 3 reps per side with a light KB (16–20 kg) added to Friday's session from Week 5. Improves shoulder stability, hip mobility, thoracic rotation, and core integration simultaneously. One of the most beneficial exercises for a 45-year-old with shoulder issues when performed correctly. &nbsp;<a class="yt-link" href="https://www.youtube.com/watch?v=JFrItinMcyQ" target="_blank">Watch Full Tutorial</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     COMPOUNDS
+═══════════════════════════════════════════════ -->
+<div id="compounds" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">// Exogenous Compound Protocol</div>
+      <div class="section-title">Compound<br><span>Stack</span></div>
+    </div>
+
+    <div class="info-box red">
+      <strong>⚠ PHYSICIAN SUPERVISION REQUIRED:</strong> All compounds listed below must be managed by a licensed physician. This section is purely informational — designed to help you understand the mechanisms and time each compound optimally with training and nutrition. Not medical advice. This is one of the most sophisticated peptide stacks in clinical use — ensure your prescribing physician is fully aware of every compound being run simultaneously.
+    </div>
+
+    <!-- HORMONES + METABOLIC -->
+    <h3>Hormonal & Metabolic Compounds</h3>
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="sup-card">
+        <div class="sup-name">Testosterone Cypionate</div>
+        <div class="sup-dose">20 mg/day — 140 mg/week Total | Daily SubQ/IM</div>
+        <div class="sup-desc">Maintains testosterone in physiological-to-supraphysiological range (~600–900 ng/dL). Restores the anabolic environment required for hypertrophy, recovery speed, and joint health. <strong style="color:var(--chalk)">Daily 20 mg injections produce the most stable serum testosterone levels achievable</strong> — eliminating the peaks and troughs of less frequent dosing protocols entirely. Near-flat serum T curves mean consistently lower estrogen conversion per dose, more predictable mood and libido, and tighter hormonal control. An excellent administration strategy that reflects sophisticated TRT management.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Cardarine (GW-501516)</div>
+        <div class="sup-dose">10 mg/day — PPARδ Agonist</div>
+        <div class="sup-desc">Dramatically upregulates fat oxidation by activating PPARδ — makes fat the primary fuel substrate. Synergizes powerfully with keto and fasted cardio. At 10 mg daily, you are at the lower effective dose — sufficient for robust fat oxidation benefits with a more conservative long-term exposure profile. <strong style="color:var(--chalk)">Take 30–45 min before fasted AeroBike or Rower.</strong> Cycle 8 weeks on / 4 weeks off. Long-term human safety data is limited — physician oversight essential.</div>
+      </div>
+    </div>
+
+    <!-- GH AXIS -->
+    <h3>Growth Hormone Axis Peptides</h3>
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="sup-card">
+        <div class="sup-name">CJC-1295</div>
+        <div class="sup-dose">250 mcg daily — GHRH Analog</div>
+        <div class="sup-desc">Growth Hormone Releasing Hormone analog — extends the amplitude and duration of natural GH pulses. Does not spike GH acutely but amplifies the entire GH release window. <strong style="color:var(--chalk)">Inject 30–60 min before sleep, 2+ hrs after last meal.</strong> Keto keeps insulin suppressed, maximizing GH secretion. Stack with Ipamorelin for synergistic pulse.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Ipamorelin</div>
+        <div class="sup-dose">250 mcg daily — Selective GHRP</div>
+        <div class="sup-desc">Clean GH secretagogue — triggers a strong, pulsatile GH release with no meaningful cortisol or prolactin elevation (unlike GHRP-6 or GHRP-2). <strong style="color:var(--chalk)">Combine with CJC-1295 in a single pre-sleep subcutaneous injection.</strong> Together these produce the most robust natural GH pulse achievable — driving fat loss, tendon collagen synthesis, and muscle tissue repair every night.</div>
+      </div>
+    </div>
+
+    <!-- TISSUE REPAIR & ANTI-INFLAMMATORY PEPTIDES -->
+    <h3>Tissue Repair, Anti-Inflammatory & Recovery Peptides</h3>
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="sup-card">
+        <div class="sup-name">BPC-157</div>
+        <div class="sup-dose">250–500 mcg/day — Body Protection Compound</div>
+        <div class="sup-desc">Pentadecapeptide derived from gastric juice with extraordinary evidence for tendon, ligament, muscle, nerve, and gut healing. Upregulates growth hormone receptor expression and directly accelerates fibroblast proliferation in tendons. <strong style="color:var(--chalk)">This is the single most important peptide for your right shoulder biceps tendinitis.</strong> Administered subcutaneously — systemic delivery ensures the peptide reaches the shoulder via circulation. Once or twice daily dosing. Combines synergistically with TB-500 for maximal repair. Oral BPC-157 is also available for targeted gut effects if needed alongside the subQ protocol.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">TB-500 (Thymosin Beta-4)</div>
+        <div class="sup-dose">2–2.5 mg 2x/week — Systemic Tissue Repair</div>
+        <div class="sup-desc">A synthetic fragment of Thymosin Beta-4 that promotes actin upregulation, cell migration, and angiogenesis in damaged tissue. Where BPC-157 works locally and acutely, TB-500 works systemically and builds new vascular networks to injured areas. <strong style="color:var(--chalk)">The BPC-157 + TB-500 combination is the gold standard peptide stack for tendon and soft tissue repair.</strong> Subcutaneous injection. Typically cycled 10 weeks on / 6 weeks off. Particularly effective for the shoulder — works on both the tendon and the surrounding tissue.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">GHK-Cu (Copper Peptide)</div>
+        <div class="sup-dose">2.5 mg — Subcutaneous Injection | Abdominal Fat</div>
+        <div class="sup-desc">A naturally occurring copper-binding tripeptide with powerful collagen synthesis, wound healing, and anti-inflammatory properties. Upregulates decorin and other proteoglycans critical for tendon matrix integrity. Also has documented anti-aging effects on skin, hair follicle cycling, and nerve tissue. <strong style="color:var(--chalk)">Administered subcutaneously into abdominal fat at 2.5 mg</strong> — the abdominal subcutaneous depot provides reliable, consistent absorption and is the most practical daily injection site. GHK-Cu works systemically from any subQ site, making abdominal injection fully effective for driving collagen matrix remodeling throughout the body including the shoulder tendon. Highly synergistic with the GH peptides — elevated IGF-1 from CJC-1295/Ipamorelin + systemic GHK-Cu creates an extraordinary collagen synthesis environment.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">KPV</div>
+        <div class="sup-dose">Typically 200–500 mcg/day — Alpha-MSH Fragment</div>
+        <div class="sup-desc">A tripeptide fragment of alpha-melanocyte stimulating hormone (α-MSH) with potent anti-inflammatory and gut-protective properties. Acts on melanocortin receptors to suppress NF-κB and reduce systemic inflammation. Particularly relevant on a keto + retatrutide protocol as it supports GI motility and reduces gut inflammation — retatrutide slows gastric emptying and GHK-Cu + BPC-157 benefit from reduced systemic inflammatory burden. <strong style="color:var(--chalk)">Oral or subcutaneous.</strong> Oral dosing provides targeted gut effects; subQ provides systemic anti-inflammatory action.</div>
+      </div>
+    </div>
+
+    <!-- HORMONAL OPTIMIZATION -->
+    <h3>Hormonal Optimization & Fertility Axis</h3>
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="sup-card">
+        <div class="sup-name">Kisspeptin-10</div>
+        <div class="sup-dose">200 mcg — Mon / Wed / Fri | GnRH Pulse Trigger</div>
+        <div class="sup-desc">A neuropeptide that directly activates GnRH (gonadotropin-releasing hormone) neurons in the hypothalamus, triggering downstream LH and FSH release. On TRT, your LH and FSH are suppressed by negative feedback. Kisspeptin-10 bypasses this suppression upstream. <strong style="color:var(--chalk)">200 mcg subcutaneous injection on Monday, Wednesday, and Friday evenings</strong> — 3x/week pulsatile dosing mirrors the body's natural episodic GnRH release pattern, preserving HPG axis sensitivity and supporting testicular function without requiring HCG. The every-other-day schedule prevents receptor desensitization that can occur with daily administration. An emerging and sophisticated approach to HPG axis maintenance during TRT.</div>
+      </div>
+    </div>
+
+    <!-- MITOCHONDRIAL & LONGEVITY PEPTIDES -->
+    <h3>Mitochondrial Function & Longevity Peptides</h3>
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="sup-card">
+        <div class="sup-name">SS-31 (Elamipretide)</div>
+        <div class="sup-dose">2–10 mg/day — Mitochondria-Targeted Antioxidant</div>
+        <div class="sup-desc">A tetrapeptide that targets the inner mitochondrial membrane, stabilizing cardiolipin and dramatically improving mitochondrial electron transport chain efficiency. Reduces mitochondrial ROS production and improves ATP synthesis capacity. <strong style="color:var(--chalk)">Directly relevant for training performance and recovery</strong> — higher mitochondrial efficiency means better endurance on the AeroBike and Rower, faster ATP regeneration between sets, and reduced muscle damage oxidative stress. Also shows strong cardioprotective effects. Subcutaneous injection. Particularly powerful in combination with MOTS-c.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">MOTS-c</div>
+        <div class="sup-dose">5–10 mg 2–3x/week — Mitochondrial-Derived Peptide</div>
+        <div class="sup-desc">A mitochondrial-derived peptide encoded in mitochondrial DNA that acts as a metabolic regulator — activating AMPK, improving insulin sensitivity, enhancing fatty acid oxidation, and mimicking many of the metabolic benefits of exercise at the cellular level. <strong style="color:var(--chalk)">Profoundly synergistic with keto + Cardarine</strong> — all three target fat oxidation via different but complementary mechanisms. Also upregulates physical endurance capacity. Subcutaneous injection. Time around training for maximum metabolic benefit. Emerging research suggests strong anti-aging effects at the cellular level.</div>
+      </div>
+    </div>
+
+    <!-- TIMING TABLE -->
+    <div class="card">
+      <div class="card-title">Full Compound Timing Protocol — Daily Schedule</div>
+      <table class="data-table">
+        <thead><tr><th>Time / Frequency</th><th>Compound(s)</th><th>Route</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Morning — fasted, 30–45 min pre-cardio</td>
+            <td>Cardarine</td>
+            <td>Oral</td>
+            <td>Peak PPARδ fat oxidation during AeroBike/Rower session</td>
+          </tr>
+          <tr>
+            <td>Morning — training days</td>
+            <td>MOTS-c</td>
+            <td>SubQ injection</td>
+            <td>AMPK activation + fat oxidation enhancement timed around exercise</td>
+          </tr>
+          <tr>
+            <td>Daily — every morning</td>
+            <td>Testosterone Cypionate 20 mg</td>
+            <td>SubQ or IM injection</td>
+            <td>Daily dosing produces maximally stable serum T — eliminates peak/trough cycles entirely. Consistent androgen signaling 24/7 with minimal per-dose E2 conversion</td>
+          </tr>
+          <tr>
+            <td>Daily or 2–3x/week</td>
+            <td>BPC-157</td>
+            <td>SubQ injection (systemic)</td>
+            <td>Continuous tendon repair signaling via systemic circulation — most critical during active rehab phase</td>
+          </tr>
+          <tr>
+            <td>2x/week</td>
+            <td>TB-500</td>
+            <td>SubQ injection</td>
+            <td>Systemic tissue repair + angiogenesis. Pairs with BPC-157 for gold-standard tendon healing</td>
+          </tr>
+          <tr>
+            <td>Daily</td>
+            <td>GHK-Cu (2.5 mg)</td>
+            <td>SubQ injection (abdominal fat)</td>
+            <td>Systemic collagen matrix remodeling. Abdominal subQ depot provides consistent daily absorption — works systemically to support shoulder tendon repair and whole-body tissue regeneration</td>
+          </tr>
+          <tr>
+            <td>Daily</td>
+            <td>KPV</td>
+            <td>Oral or SubQ</td>
+            <td>Systemic anti-inflammation + GI protection. Oral = gut-targeted; SubQ = systemic anti-inflammatory</td>
+          </tr>
+          <tr>
+            <td>Daily</td>
+            <td>SS-31</td>
+            <td>SubQ injection</td>
+            <td>Mitochondrial membrane stabilization, ATP efficiency, reduced oxidative stress post-training</td>
+          </tr>
+          <tr>
+            <td>Mon / Wed / Fri — Evening (pulsatile timing)</td>
+            <td>Kisspeptin-10 — 200 mcg</td>
+            <td>SubQ injection</td>
+            <td>3x/week dosing mirrors natural pulsatile GnRH release patterns. Evening injection preserves HPG axis sensitivity and LH/FSH pulsatility during TRT without daily suppression of the axis</td>
+          </tr>
+          <tr style="background:rgba(245,166,35,0.06);">
+            <td><strong>Pre-Bed — 2+ hrs after dinner, low insulin</strong></td>
+            <td><strong>CJC-1295 250 mcg + Ipamorelin 250 mcg (combined)</strong></td>
+            <td><strong>SubQ injection</strong></td>
+            <td><strong>Maximum GH pulse during slow-wave sleep. Keto + retatrutide = chronically low insulin = maximally receptive environment every single night</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PEPTIDE SYNERGY MAP -->
+    <div class="card teal" style="margin-top:20px;">
+      <div class="card-title">Peptide Synergy Map — How This Stack Works Together</div>
+      <ul class="plain">
+        <li><strong class="text-teal">Tendon Repair Stack:</strong> BPC-157 (local fibroblast proliferation) + TB-500 (systemic angiogenesis + actin remodeling) + GHK-Cu (collagen matrix integrity) + CJC-1295/Ipamorelin (IGF-1 elevation) = the most comprehensive tendon healing protocol available. All four mechanisms are complementary and non-overlapping.</li>
+        <li><strong class="text-teal">Fat Loss / Metabolic Stack:</strong> Keto + Cardarine (PPARδ) + MOTS-c (AMPK) + Retatrutide (GLP-1/GIP/GCG) + SS-31 (mitochondrial efficiency) = fat oxidation targeted from five independent pathways simultaneously. This is an extraordinary metabolic environment.</li>
+        <li><strong class="text-teal">GH Axis Stack:</strong> CJC-1295 (GHRH amplification) + Ipamorelin (clean GH pulse) + Kisspeptin-10 (upstream HPG axis support) + Testosterone Cypionate (androgen base) = comprehensive anabolic signaling across both the GH and androgen axes.</li>
+        <li><strong class="text-teal">Anti-Inflammation Stack:</strong> KPV (NF-κB suppression via melanocortin receptors) + BPC-157 (gut-brain inflammation axis) + TB-500 (tissue cytokine reduction) + Quercetin (NF-κB + histamine blockade) + daily sardines/fish oil/krill EPA/DHA = inflammation controlled at the innate, intracellular, and tissue levels simultaneously, creating ideal conditions for tendon repair.</li>
+        <li><strong class="text-teal">Mitochondrial / Longevity Stack:</strong> SS-31 (inner mitochondrial membrane stabilization) + MOTS-c (mitochondrial-derived metabolic signaling) + NMN + NAD⁺ injection + Niacinamide (NAD⁺ axis from three angles) + Resveratrol (sirtuin activation) = cellular aging slowdown and performance enhancement at the organelle and gene expression level.</li>
+      </ul>
+    </div>
+
+    <div class="card green" style="margin-top:20px;">
+        <div class="card-title">Ancillaries to Discuss with Doctor</div>
+        <ul class="plain">
+          <li><strong class="highlight">Anastrozole (0.25–0.5mg EOD):</strong> If E2 &gt;30–40 pg/mL on bloodwork. Prevents gyno, water retention, mood issues.</li>
+          <li><strong class="highlight">HCG (250–500 IU 2x/wk):</strong> Maintains intratesticular T and testicular volume during TRT — consider alongside or instead of Kisspeptin-10, discuss with physician.</li>
+          <li><strong class="highlight">Vitamin D3 (confirmed in stack):</strong> Monitor 25-OH-D3 quarterly — target 60–80 ng/mL at 10,000 IU/day.</li>
+          <li><strong class="highlight">TUDCA 500mg (confirmed in stack):</strong> Liver and hepatic protection — confirmed in daily micronutrient protocol. Monitor AST/ALT every 6–8 weeks.</li>
+        </ul>
+      </div>
+
+    <!-- ── MICRONUTRIENTS ── -->
+    <hr class="thin" style="margin-top:36px;">
+    <h3>Daily Micronutrient & Supplement Stack</h3>
+
+    <div class="info-box teal">
+      <strong>Stack Overview:</strong> This micronutrient protocol now hits NAD⁺ metabolism from three independent angles (NMN at breakfast, NAD⁺ subQ injection on training days, Niacinamide at lunch), the complete methyl donor triad (TMG + NMN + Methylfolate), and mitochondrial optimization from five independent mechanisms (PQQ biogenesis, Ubiquinol electron transport, SS-31 membrane efficiency, MOTS-c metabolic signaling, NMN/NAD⁺ substrate supply). Timing is deliberate throughout — see the daily schedule table below.
+    </div>
+
+    <!-- NAD+ LONGEVITY CLUSTER -->
+    <h3 style="margin-top:0;">NAD⁺ Metabolism & Cellular Energy</h3>
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="sup-card">
+        <div class="sup-name">Beta-NMN</div>
+        <div class="sup-dose">500 mg/day — Oral | NAD⁺ Precursor</div>
+        <div class="sup-desc">Nicotinamide Mononucleotide — a direct precursor to NAD⁺ that bypasses rate-limiting conversion steps. Elevates intracellular NAD⁺ to support mitochondrial function, sirtuin activation (SIRT1/3), DNA repair, and metabolic efficiency. <strong style="color:var(--chalk)">Take in the morning.</strong> Synergizes powerfully with Resveratrol (activates SIRT1 which requires NAD⁺) and NAD⁺ injection. The three together — NMN + Resveratrol + NAD⁺ subQ — create a comprehensive NAD⁺ axis supplementation strategy hitting production, utilization, and direct repletion simultaneously.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">NAD⁺</div>
+        <div class="sup-dose">25 mg — Subcutaneous Injection, 3×/week</div>
+        <div class="sup-desc">Direct NAD⁺ administration via subcutaneous injection bypasses gastrointestinal conversion entirely — delivering NAD⁺ systemically for immediate cellular uptake. 3×/week dosing maintains elevated NAD⁺ pools between oral NMN doses. <strong style="color:var(--chalk)">Inject on training days (Mon/Wed/Fri) for maximum overlap with elevated metabolic demand.</strong> SubQ NAD⁺ injections can cause a transient flushing sensation — this is normal and typically brief. Synergizes with SS-31 for comprehensive mitochondrial support.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Niacinamide (Vitamin B3)</div>
+        <div class="sup-dose">500 mg/day — Oral | NAD⁺ Precursor via Salvage Pathway</div>
+        <div class="sup-desc">Nicotinamide/Niacinamide is converted to NAD⁺ via the salvage pathway — a complementary route to NMN's biosynthesis pathway. Together they raise NAD⁺ from two independent angles. Also has direct anti-inflammatory effects, supports skin barrier function (synergizes with GHK-Cu for skin health), and may have mild PARP-1 inhibition effects that support DNA repair. <strong style="color:var(--chalk)">Note: high-dose niacinamide can inhibit sirtuins at doses above 1g — your 500mg dose is safe and effective.</strong> <strong style="color:var(--chalk)">Take in the afternoon (with lunch shake)</strong> — separated from morning NMN to reduce direct competition at the NAMPT enzyme level in the salvage pathway, allowing NMN's biosynthesis route to work unimpeded in the AM before niacinamide's salvage route kicks in later.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Resveratrol</div>
+        <div class="sup-dose">100 mg/day — Oral | Sirtuin Activator</div>
+        <div class="sup-desc">A polyphenol found in grape skin that activates SIRT1 — a NAD⁺-dependent deacetylase that regulates longevity pathways, mitochondrial biogenesis, and inflammation. Works best when NAD⁺ levels are elevated (hence the synergy with NMN + NAD⁺ injection). Also activates AMPK, complementing MOTS-c. <strong style="color:var(--chalk)">Take with a fat-containing meal</strong> — resveratrol is fat-soluble and absorption increases dramatically with dietary fat. Breakfast (eggs, bacon, avocado) is the ideal time.</div>
+      </div>
+    </div>
+
+    <!-- CARDIOVASCULAR & LIPID -->
+    <h3>Cardiovascular, Lipid & Omega-3 Support</h3>
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="sup-card">
+        <div class="sup-name">Sports Research Triple Strength Fish Oil</div>
+        <div class="sup-dose">1 softgel/day — ~1,250 mg EPA+DHA</div>
+        <div class="sup-desc">High-concentration triglyceride-form omega-3 — the most bioavailable form. EPA and DHA suppress COX-2 (same target as NSAIDs but without the gut damage), reduce systemic inflammation, support cardiovascular health, and are directly therapeutic for tendon healing. <strong style="color:var(--chalk)">Combined with your daily Brunswick sardines</strong>, you're hitting a very strong daily EPA/DHA dose that will meaningfully suppress the inflammation driving your biceps tendinitis. Take with your fattiest meal (breakfast or dinner).</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Krill Oil</div>
+        <div class="sup-dose">1,000 mg with 200 mg Phospholipids + Astaxanthin</div>
+        <div class="sup-desc">Krill-derived omega-3s are bound to phospholipids — which allows them to cross the blood-brain barrier more efficiently and integrate into cell membranes faster than triglyceride-form fish oil. The phospholipid fraction also supports mitochondrial membrane integrity, complementing SS-31. <strong style="color:var(--chalk)">Astaxanthin (the natural carotenoid in krill)</strong> is one of the most potent fat-soluble antioxidants known — anti-inflammatory, neuroprotective, and shown to reduce exercise-induced oxidative damage. This is an excellent complement to the fish oil, not a redundancy. Take with breakfast.</div>
+      </div>
+    </div>
+
+    <!-- ANTI-INFLAMMATORY & CELLULAR PROTECTION -->
+    <h3>Anti-Inflammatory & Cellular Protection</h3>
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="sup-card">
+        <div class="sup-name">Quercetin</div>
+        <div class="sup-dose">800 mg/day — Oral | Flavonoid / Senolytic</div>
+        <div class="sup-desc">A flavonoid with broad-spectrum anti-inflammatory, antioxidant, and emerging senolytic (clears senescent "zombie" cells) properties. Inhibits histamine release, NF-κB activation, and COX/LOX inflammatory enzymes. <strong style="color:var(--chalk)">Highly synergistic with your KPV peptide</strong> — both suppress NF-κB via different mechanisms, creating additive anti-inflammatory effect. Also acts as a zinc ionophore — drives zinc into cells where it supports immune function and testosterone signaling, now directly relevant given your confirmed zinc picolinate supplementation. Take with a fat-containing meal for best absorption.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Vitamin C</div>
+        <div class="sup-dose">500 mg/day — Oral | Antioxidant / Collagen Co-factor</div>
+        <div class="sup-desc">Essential cofactor for collagen hydroxylation — collagen cannot be synthesized without Vitamin C. This is especially critical given your daily collagen peptides in the protein shake and your BPC-157/GHK-Cu injections all driving collagen synthesis. <strong style="color:var(--chalk)">Take 45 min before your shoulder rehab session</strong> alongside your shake collagen peptides to maximize tendon collagen deposition during the subsequent loading window. Also supports adrenal function, immune health, and acts as a cofactor for carnitine biosynthesis — relevant for fat oxidation on keto.</div>
+      </div>
+    </div>
+
+    <!-- HORMONAL, METHYLATION & NERVE -->
+    <h3>Methylation, Hormonal & Neurological Support</h3>
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="sup-card">
+        <div class="sup-name">Trimethylglycine (TMG / Betaine)</div>
+        <div class="sup-dose">750 mg/day — Oral | Methyl Donor</div>
+        <div class="sup-desc">A universal methyl donor that supports the methylation cycle — the biochemical process responsible for gene expression, neurotransmitter synthesis, homocysteine clearance, and creatine biosynthesis. <strong style="color:var(--chalk)">Especially important on a large peptide + NMN protocol</strong> because NMN → NAD⁺ conversion consumes methyl groups, which TMG replenishes. Also shown to increase lean body mass and power output as a standalone ergogenic in research. Supports liver health via betaine-homocysteine methyltransferase — relevant given the metabolic load of your full compound stack. <strong style="color:var(--chalk)">Take with breakfast</strong> — alongside NMN so methyl group replenishment begins immediately as NAD⁺ production ramps up.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Magnesium Bisglycinate</div>
+        <div class="sup-dose">280 mg/day — Oral | Electrolyte / Sleep / Enzyme</div>
+        <div class="sup-desc">The most bioavailable form of magnesium — bound to glycine, which also has independent calming and sleep-enhancing effects. Magnesium is a cofactor in over 300 enzymatic reactions including ATP synthesis, protein synthesis, muscle relaxation, and melatonin production. <strong style="color:var(--chalk)">Critical on keto</strong> — ketosis causes renal magnesium wasting, and your elevated training volume and retatrutide-driven metabolic rate increase demand further. The bisglycinate form is gentle on the gut — important given retatrutide's GI effects. <strong style="color:var(--chalk)">Take 30–60 min before bed</strong> to support deep sleep quality, which is when your GH peptide injection is working.</div>
+      </div>
+    </div>
+
+    <!-- VITAMIN D3+K2 & ZINC -->
+    <h3>Hormonal Foundation</h3>
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="sup-card">
+        <div class="sup-name">Vitamin D3 + K2</div>
+        <div class="sup-dose">2 Sports Research softgels/day — D3 + MK-7 K2</div>
+        <div class="sup-desc">Sports Research D3+K2 provides D3 (typically 5,000 IU per softgel) with MK-7 form K2 (100 mcg per softgel) in organic coconut oil for optimal fat-soluble absorption. <strong style="color:var(--chalk)">At 2 softgels: ~10,000 IU D3 + 200 mcg K2 daily.</strong> D3 at this level is appropriate for a 205 lb male with a history of potential deficiency — confirm via 25-OH-D3 serum level (target 60–80 ng/mL). K2 (MK-7) directs calcium into bones and away from arterial walls — critical when supplementing high-dose D3. D3 also directly supports testosterone production and androgen receptor sensitivity, making it foundational to your TRT protocol. Take with your fattiest meal.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Sports Research Zinc Picolinate</div>
+        <div class="sup-dose">30 mg/day — Oral | Androgen Support / Immune / Enzyme</div>
+        <div class="sup-desc">Zinc picolinate is the most bioavailable form of zinc — picolinic acid chelation dramatically improves intestinal absorption compared to zinc oxide or sulfate. Zinc is a critical cofactor for testosterone biosynthesis (required for Leydig cell function), 5-alpha reductase activity, and androgen receptor expression. <strong style="color:var(--chalk)">Especially important on keto and high training volume</strong> — both deplete zinc through sweat and renal excretion. Also essential for DNA repair, immune function, and wound healing. Directly complements your Quercetin — Quercetin acts as a zinc ionophore, driving this supplemental zinc into cells where it is needed most. <strong style="color:var(--chalk)">Take with dinner</strong> — away from calcium (dairy, D3) and iron which compete for absorption. Zinc at 30 mg is well within the safe upper limit (40 mg) and will not suppress copper at this dose given your GHK-Cu copper peptide is providing some systemic copper.</div>
+      </div>
+    </div>
+
+    <!-- MITOCHONDRIAL BIOGENESIS & METHYLATION -->
+    <h3>Mitochondrial Biogenesis & Advanced Methylation</h3>
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="sup-card">
+        <div class="sup-name">Methylfolate (5-MTHF)</div>
+        <div class="sup-dose">1 mg/day — Oral | Active Folate / Methyl Cycle Regenerator</div>
+        <div class="sup-desc">The fully active, pre-methylated form of folate — bypasses the MTHFR enzyme entirely and enters the methylation cycle immediately. Approximately 40–60% of the population carries MTHFR variants that impair folic acid conversion, making 5-MTHF the clinically superior form regardless. <strong style="color:var(--chalk)">Critical cofactor in the methyl donor triad:</strong> TMG donates methyl groups, NMN consumes them during NAD⁺ biosynthesis, and methylfolate regenerates the cycle by driving homocysteine → methionine conversion. This closes the loop that TMG alone cannot fully complete. Also essential for neurotransmitter synthesis (serotonin, dopamine, norepinephrine), DNA methylation, and gene expression regulation. <strong style="color:var(--chalk)">Take with breakfast alongside TMG and NMN</strong> — all three work the same methylation pathway and benefit from concurrent dosing.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">PQQ (Pyrroloquinoline Quinone)</div>
+        <div class="sup-dose">20 mg/day — Oral | Mitochondrial Biogenesis / Redox Cofactor</div>
+        <div class="sup-desc">One of the only compounds with demonstrated ability to stimulate <strong style="color:var(--chalk)">mitochondrial biogenesis</strong> — literally increasing the number of mitochondria per cell — via PGC-1α activation. This is a fundamentally different mechanism from every other compound in your mitochondrial stack: SS-31 improves membrane efficiency, MOTS-c enhances metabolic signaling, NMN/NAD⁺ provides substrate — PQQ grows the mitochondria themselves. Also functions as a redox cofactor with potent antioxidant properties, reducing mitochondrial oxidative stress independently of its biogenesis effects. <strong style="color:var(--chalk)">Take with breakfast</strong> — fat-soluble, absorbs optimally with dietary fat. Works synergistically with Ubiquinol: PQQ grows new mitochondria, Ubiquinol provides the electron carrier those new mitochondria need to generate ATP efficiently.</div>
+      </div>
+      <div class="sup-card">
+        <div class="sup-name">Ubiquinol (CoQ10 — Reduced Form)</div>
+        <div class="sup-dose">100 mg/day — Oral | Electron Carrier / Mitochondrial ATP Production</div>
+        <div class="sup-desc">Ubiquinol is the active, reduced form of CoQ10 — far superior bioavailability compared to ubiquinone, particularly in individuals over 40 where conversion capacity declines. CoQ10 is the essential electron carrier in the mitochondrial electron transport chain (Complex I–III), directly enabling ATP synthesis. Without adequate CoQ10, mitochondria cannot efficiently convert substrate into energy regardless of how well-optimized the rest of the chain is. <strong style="color:var(--chalk)">Especially important at 45:</strong> endogenous CoQ10 production declines significantly with age, and statin use (if ever applicable) depletes it further. <strong style="color:var(--chalk)">Synergy with PQQ is direct and powerful</strong> — PQQ stimulates biogenesis of new mitochondria, Ubiquinol provides the electron carrier substrate those new mitochondria require to function at full capacity. Also has documented cardioprotective and neuroprotective effects. <strong style="color:var(--chalk)">Take with breakfast</strong> — fat-soluble, requires dietary fat for absorption.</div>
+      </div>
+    </div>
+
+    <!-- LIVER SUPPORT -->
+    <h3>Liver & Hepatic Protection</h3>
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="sup-card">
+        <div class="sup-name">TUDCA (Tauroursodeoxycholic Acid)</div>
+        <div class="sup-dose">500 mg/day — Oral | Hepatoprotective / Mitochondrial</div>
+        <div class="sup-desc">A bile acid derivative with potent hepatoprotective properties — reduces endoplasmic reticulum stress, inhibits hepatocyte apoptosis, and improves mitochondrial membrane permeability in liver cells. <strong style="color:var(--chalk)">Essential given your compound stack complexity:</strong> Cardarine (PPARδ agonist with known hepatic effects at sustained doses in animal models), daily testosterone, retatrutide, and 11 peptides create significant cumulative liver metabolic load. TUDCA directly counteracts the hepatotoxicity mechanisms most relevant to this protocol. Also shown to improve insulin sensitivity and reduce inflammation systemically. <strong style="color:var(--chalk)">Take with breakfast</strong> — fat-soluble, optimal with dietary fat. Monitor liver enzymes (AST, ALT) every 6–8 weeks on the bloodwork panel already in place.</div>
+      </div>
+    </div>
+      <div class="card-title">Daily Micronutrient Timing Schedule</div>
+      <table class="data-table">
+        <thead><tr><th>Time</th><th>Supplement(s)</th><th>Why This Timing</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Breakfast (8 AM)</strong><br><span class="text-mist">With eggs, bacon, avocado</span></td>
+            <td>
+              Beta-NMN 500 mg<br>
+              Methylfolate (5-MTHF) 1 mg<br>
+              Resveratrol 100 mg<br>
+              TMG 750 mg<br>
+              Quercetin 800 mg<br>
+              PQQ 20 mg<br>
+              Ubiquinol 100 mg<br>
+              Vitamin D3+K2 (2 softgels)<br>
+              Sports Research Fish Oil (1 softgel)<br>
+              Krill Oil 1,000 mg<br>
+              TUDCA 500 mg
+            </td>
+            <td>NMN, TMG, and Methylfolate taken together as the complete methyl donor triad — TMG donates, NMN consumes, methylfolate regenerates the cycle. All fat-soluble supplements (D3, K2, Resveratrol, Quercetin, PQQ, Ubiquinol, fish oil, krill, TUDCA) absorb optimally with fat from eggs, bacon, and avocado. PQQ + Ubiquinol taken together at breakfast maximizes their synergistic effect — PQQ begins stimulating mitochondrial biogenesis while Ubiquinol provides electron carrier substrate for both existing and newly generated mitochondria.</td>
+          </tr>
+          <tr>
+            <td><strong>Lunch (1–2 PM)</strong><br><span class="text-mist">With protein shake + sardines</span></td>
+            <td>
+              Niacinamide 500 mg<br>
+              Vitamin C 500 mg
+            </td>
+            <td>Niacinamide taken ~5–6 hours after NMN — minimizes NAMPT enzyme competition, allowing the salvage pathway to activate after the NMN biosynthesis window has run its course. Vitamin C taken with the shake's collagen peptides (Sports Research + Wholesome Wellness) for maximum collagen hydroxylation and tendon deposition during the post-lunch/post-workout window.</td>
+          </tr>
+          <tr>
+            <td><strong>Training Days — Morning</strong><br><span class="text-mist">Mon / Wed / Fri</span></td>
+            <td>NAD⁺ 25 mg (SubQ injection)</td>
+            <td>Injected on training days to overlap with peak metabolic demand. SubQ NAD⁺ bypasses GI conversion for direct systemic repletion. Synergizes with SS-31 peptide for comprehensive mitochondrial support on high-demand days.</td>
+          </tr>
+          <tr>
+            <td><strong>Dinner (7–8 PM)</strong><br><span class="text-mist">With evening meal</span></td>
+            <td>Sports Research Zinc Picolinate 30 mg</td>
+            <td>Taken with dinner and away from D3/K2 (taken at breakfast) — calcium and vitamin D compete with zinc absorption. Evening timing also avoids competition with the morning NMN/TMG cluster. Zinc picolinate is best absorbed with food. The quercetin taken at breakfast will still be circulating and will act as a zinc ionophore, driving this dinner-dosed zinc into cells throughout the evening.</td>
+          </tr>
+          <tr>
+            <td><strong>Pre-Bed (9:00–9:30 PM)</strong><br><span class="text-mist">30–60 min before peptide injection</span></td>
+            <td>Magnesium Bisglycinate 280 mg</td>
+            <td>Bisglycinate form crosses the blood-brain barrier — the glycine component enhances sleep architecture and complements melatonin. Deep sleep is when your CJC-1295 + Ipamorelin GH pulse fires. Maximizing sleep quality directly maximizes your GH peptide ROI.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SYNERGY CALLOUT -->
+    <div class="card teal" style="margin-top:20px;">
+      <div class="card-title">Micronutrient × Peptide Synergy Highlights</div>
+      <ul class="plain">
+        <li><strong class="text-teal">NAD⁺ Triple Stack (NMN + NAD⁺ injection + Niacinamide) × SS-31 + MOTS-c:</strong> All five target mitochondrial function from independent angles — precursor supply, direct repletion, sirtuin activation (NMN/Resveratrol), membrane efficiency (SS-31), and metabolic signaling (MOTS-c). This is one of the most comprehensive mitochondrial optimization stacks assembled.</li>
+        <li><strong class="text-teal">Quercetin + KPV:</strong> Dual-layer NF-κB anti-inflammation — Quercetin blocks histamine release and NF-κB transcription directly. KPV suppresses NF-κB via melanocortin receptor signaling. Together they hit the same master inflammatory pathway from two independent receptor systems, creating additive suppression. Quercetin also acts as a zinc ionophore — now more meaningful with your confirmed zinc picolinate in the stack.</li>
+        <li><strong class="text-teal">Fish Oil + Krill Oil + Brunswick Sardines:</strong> Three daily omega-3 sources delivering a substantial combined EPA/DHA dose — meaningful therapeutic anti-inflammatory effect on the biceps tendinitis every single day. Krill astaxanthin also protects these polyunsaturated fatty acids from oxidation in vivo.</li>
+        <li><strong class="text-teal">Zinc Picolinate + Quercetin:</strong> Quercetin is a zinc ionophore — it transports zinc across cell membranes into the cytoplasm where it is biologically active. Taking quercetin at breakfast and zinc picolinate at dinner means quercetin is still circulating when the zinc arrives in the bloodstream, driving it intracellularly for maximum utilization. Zinc then supports testosterone biosynthesis, androgen receptor sensitivity, DNA repair, immune function, and wound healing — all directly relevant to your TRT protocol and shoulder recovery.</li>
+        <li><strong class="text-teal">TMG + NMN + Methylfolate — Complete Methyl Donor Triad:</strong> TMG donates methyl groups, NMN consumes them during NAD⁺ biosynthesis via the methylation pathway, and methylfolate (5-MTHF) regenerates the cycle by converting homocysteine back to methionine. All three taken at breakfast closes the methylation loop completely — no component can do this alone. This triad supports gene expression, neurotransmitter synthesis, DNA repair, and homocysteine clearance simultaneously.</li>
+        <li><strong class="text-teal">PQQ + Ubiquinol + SS-31 + MOTS-c + NMN/NAD⁺ — Five-Angle Mitochondrial Stack:</strong> PQQ stimulates biogenesis (more mitochondria via PGC-1α). Ubiquinol provides electron carrier substrate for those mitochondria. SS-31 stabilizes the inner mitochondrial membrane and reduces ROS. MOTS-c activates AMPK for metabolic signaling. NMN + NAD⁺ injection supplies the substrate fuel. Each mechanism is independent and non-overlapping — this is one of the most comprehensive mitochondrial optimization stacks assembled in a clinical context.</li>
+        <li><strong class="text-teal">NMN (Morning) + Niacinamide (Afternoon):</strong> Separated by ~5–6 hours to minimize NAMPT enzyme competition between the biosynthesis and salvage pathways. NMN activates in the morning, Niacinamide activates in the afternoon — together providing sustained NAD⁺ elevation across the full waking day rather than competing at the same enzyme simultaneously.</li>
+        <li><strong class="text-teal">Vitamin C + Collagen Peptides (shake) + BPC-157 + GHK-Cu:</strong> All four converge on tendon collagen synthesis — substrate (collagen peptides), cofactor (Vitamin C), growth signaling (BPC-157), and matrix remodeling (GHK-Cu). This is a daily, around-the-clock collagen synthesis environment targeting your right shoulder.</li>
+        <li><strong class="text-teal">Magnesium + CJC-1295/Ipamorelin + Keto:</strong> Keto depletes magnesium. Magnesium deficiency reduces sleep quality. Sleep quality determines GH pulse amplitude. Replacing magnesium with bisglycinate pre-bed completes the loop — better sleep = bigger GH pulse = more fat loss and tissue repair from your peptide injection.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="card-title">Bloodwork Every 6–8 Weeks</div>
+      <div class="grid-2" style="margin-top:8px;">
+        <ul class="plain">
+          <li>Total + Free Testosterone</li>
+          <li>Estradiol (sensitive assay)</li>
+          <li>LH, FSH (track Kisspeptin-10 effectiveness)</li>
+          <li><strong>IGF-1 — target 200–350 ng/mL.</strong> Above 400 ng/mL warrants CJC-1295/Ipamorelin dose reduction or cycling break. First critical draw at Week 6.</li>
+          <li>CBC — hematocrit/hemoglobin (T raises RBC — see blood donation note below)</li>
+          <li>PSA (prostate)</li>
+          <li>Serum Copper + Ceruloplasmin — monitor zinc/copper balance given 30mg zinc picolinate + daily GHK-Cu</li>
+        </ul>
+        <ul class="plain">
+          <li>Comprehensive Metabolic Panel — AST/ALT liver enzymes critical given Cardarine + full compound load. TUDCA confirmed in stack.</li>
+          <li>Lipid Panel (Cardarine may affect HDL)</li>
+          <li>Thyroid panel (T3, T4, TSH)</li>
+          <li>CRP / ESR — systemic inflammation tracking</li>
+          <li>25-OH Vitamin D3 — target 60–80 ng/mL</li>
+          <li>Blood ketones (optional) — target ≥0.5 mmol/L</li>
+        </ul>
+      </div>
+      <div class="info-box" style="margin-top:16px;padding:14px 18px;">
+        <strong>🩸 Blood Donation — Every 4 Months:</strong> Testosterone (even at TRT doses) stimulates erythropoiesis — elevating red blood cell count, hematocrit, and hemoglobin over time. Elevated hematocrit (&gt;52%) increases blood viscosity, cardiovascular strain, and clot risk. Donating whole blood every 4 months (~3x/year) is the most effective and beneficial method of managing RBC elevation — it reduces hematocrit, donates to those in need, and costs nothing. <strong>Target hematocrit: ≤50%.</strong> If hematocrit rises above 52% before the 4-month mark, donate sooner. Confirm eligibility with your donation center — TRT patients are typically eligible to donate. Track hematocrit at every bloodwork draw.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SHOULDER REHAB
+═══════════════════════════════════════════════ -->
+<div id="shoulder" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">// Injury Management Protocol</div>
+      <div class="section-title">Shoulder<br><span>Rehab</span></div>
+    </div>
+
+    <div class="info-box red">
+      <strong>Right Biceps Long Head Tendinitis:</strong> In an anabolic environment (TRT + elevated IGF-1), muscles outpace tendon adaptation — making rupture risk real under aggressive loading. All barbell bench press, barbell curls, and heavy overhead pressing are removed. Direct biceps work resumes Week 6 minimum with neutral-grip, pain-free movements only.
+    </div>
+
+    <div class="two-col">
+      <div class="card red">
+        <div class="card-title">AVOID — Aggravates the Tendon</div>
+        <ul class="plain">
+          <li>Barbell curls (supinated grip under load)</li>
+          <li>Barbell bench press (stretch-loads biceps tendon at bottom)</li>
+          <li>Behind-the-neck pressing or pulling</li>
+          <li>Dips (stretches tendon under load)</li>
+          <li>Supinated pull-ups until Week 8+</li>
+          <li>Rower with aggressive arm pull through full elbow flexion on right side</li>
+          <li>Any movement causing anterior shoulder pain or clicking</li>
+        </ul>
+      </div>
+      <div class="card green">
+        <div class="card-title">SAFE — Shoulder-Friendly Alternatives</div>
+        <ul class="plain">
+          <li>Neutral-grip pull-ups and rows (reduces bicep tendon stress)</li>
+          <li>DB flat/incline press with elbows at 45° (not flared)</li>
+          <li>AeroBike — zero shoulder involvement</li>
+          <li>Rower at light resistance, relaxed overhand grip — no aggressive arm curl</li>
+          <li>KB swings — posterior chain dominant, no bicep stress</li>
+          <li>Prone Y-T-W — actively therapeutic for shoulder stability</li>
+          <li>Hammer curls (neutral grip) from Week 6+ if pain-free</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Daily Shoulder Rehab Protocol (15–20 min)</h3>
+    <div class="info-box blue">
+      Perform every day — as part of your warm-up on training days, or standalone on rest days. <strong>This is non-optional.</strong> Consistency here determines whether you're doing full bilateral bicep work by Week 8 or Week 12.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Phase 1–2 (Weeks 1–8) — Daily Rehab Routine</div>
+      <table class="data-table">
+        <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Band External Rotation (arm at side, 0°)</td><td>Band</td><td>3×15 light</td><td>Infraspinatus/teres minor — protects bicipital groove</td></tr>
+          <tr><td>Band External Rotation (arm at 90°)</td><td>Band</td><td>3×15 light</td><td>Rotator cuff at functional angle</td></tr>
+          <tr><td>Prone Y-T-W (light DB or bodyweight)</td><td><span class="eq-icon">DB</span></td><td>2×10 each</td><td>Lower/mid trap, scapular stability</td></tr>
+          <tr><td>Sleeper Stretch</td><td>BW</td><td>3×30 sec/side</td><td>Internal rotation mobility, reduces anterior capsule tension</td></tr>
+          <tr><td>Cross-Body Posterior Capsule Stretch</td><td>BW</td><td>3×30 sec</td><td>Reduces superior humeral head migration</td></tr>
+          <tr><td>Wall Slides (arms on wall, slide up/down)</td><td>BW</td><td>2×12</td><td>Serratus anterior activation, scapular upward rotation — <a class="yt-link" href="https://www.youtube.com/watch?v=BiREOSisYWU" target="_blank">Watch Demo</a></td></tr>
+          <tr><td>DB Eccentric Bicep Curl (right arm, 8–10 lbs)</td><td><span class="eq-icon">DB</span></td><td>3×8 slow eccentrics</td><td>Weeks 3+: 4-sec descent. Tendon remodeling via eccentric loading — evidence-based tendinopathy treatment</td></tr>
+          <tr><td>Shoulder CAR's (from Mobility tab)</td><td>BW</td><td>3 reps/direction</td><td>Joint health, proprioception, capsule maintenance — <a class="yt-link" href="https://www.youtube.com/watch?v=2hyNG1U5wYs" target="_blank">Watch Demo</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Phase 3 — Return to Loading (Weeks 9–12)</div>
+      <table class="data-table">
+        <thead><tr><th>Week</th><th>Biceps Progression</th><th>Load Guideline</th></tr></thead>
+        <tbody>
+          <tr><td>Week 9</td><td>DB Hammer Curl (bilateral, seated) — both arms</td><td>50% of max. Stop at first hint of anterior shoulder pain</td></tr>
+          <tr><td>Week 10</td><td>Add incline DB curl (45°, neutral grip) if Week 9 pain-free</td><td>+5–10% vs Week 9. 3×10–12</td></tr>
+          <tr><td>Week 11</td><td>Add standing DB curl (neutral grip) at controlled tempo</td><td>Moderate load. 3-sec eccentric. No hyperextension at bottom.</td></tr>
+          <tr><td>Week 12</td><td>Bilateral loading integration — biceps fully programmed if pain-free throughout</td><td>Normal hypertrophy loading. Avoid supinated barbell curl indefinitely or until cleared by PT/physician</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-col">
+      <div class="card purple">
+        <div class="card-title">Therapeutic Additions</div>
+        <ul class="plain">
+          <li><strong class="highlight">BPC-157 (250–500 mcg/day SubQ systemic):</strong> Confirmed in your peptide stack — injected subcutaneously for systemic delivery, reaching the shoulder tendon via circulation. This is your most important peptide for the shoulder. Combined with TB-500 it forms the gold standard tissue repair protocol.</li>
+          <li><strong class="highlight">GHK-Cu (2.5 mg SubQ abdominal fat):</strong> Confirmed in your stack — injected into abdominal subcutaneous fat for consistent systemic absorption. Works throughout the body including the shoulder tendon via circulation. Synergizes with elevated IGF-1 from your GH peptides for enhanced collagen matrix remodeling.</li>
+          <li><strong class="highlight">Collagen Peptides + Vitamin C:</strong> 15–20g collagen + 500mg Vit C taken 45 min before shoulder rehab. Research shows this increases collagen deposition into tendons during subsequent loading.</li>
+          <li><strong class="highlight">Topical diclofenac gel:</strong> Applied to bicipital groove after training/rehab. Manages local inflammation without systemic NSAID issues.</li>
+          <li><strong class="highlight">Ice (10 min) after training. Heat in morning</strong> to warm tissue before loading sessions.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Professional Care Checklist</div>
+        <ul class="plain">
+          <li>Sports medicine MD or orthopedist within first 2 weeks — confirm diagnosis, rule out partial tear via ultrasound</li>
+          <li>Physical therapy 1–2x/wk for first 6 weeks if available</li>
+          <li>Consider PRP injection if tendinitis persists past Week 6 — compatible with TRT and peptide protocol</li>
+          <li>Avoid corticosteroid injections — weaken tendons long-term and counterproductive in your anabolic environment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     TRACKING
+═══════════════════════════════════════════════ -->
+<div id="tracking" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">// Progress Metrics & Adjustments</div>
+      <div class="section-title">Tracking &<br><span>Milestones</span></div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">12-Week Body Composition Targets</div>
+        <div class="metric-row"><span class="metric-name">Starting Weight</span><span class="metric-target">205 lbs</span></div>
+        <div class="metric-row"><span class="metric-name">Target End Weight</span><span class="metric-target">~198–202 lbs</span></div>
+        <div class="metric-row"><span class="metric-name">Starting Body Fat</span><span class="metric-target">~18%</span></div>
+        <div class="metric-row"><span class="metric-name">Target Body Fat</span><span class="metric-target">~13–14%</span></div>
+        <div class="metric-row"><span class="metric-name">Starting Fat Mass</span><span class="metric-target">~37 lbs</span></div>
+        <div class="metric-row"><span class="metric-name">Target Fat Mass</span><span class="metric-target">~27–28 lbs</span></div>
+        <div class="metric-row"><span class="metric-name">Starting LBM</span><span class="metric-target">~168 lbs</span></div>
+        <div class="metric-row"><span class="metric-name">Target LBM</span><span class="metric-target">170–174 lbs (+2–6 lbs)</span></div>
+      </div>
+      <div class="card green">
+        <div class="card-title">Weekly Tracking Protocol</div>
+        <ul class="plain">
+          <li>Weigh every morning (fasted, post-void) — track 7-day rolling average</li>
+          <li>Monthly measurements: waist, hips, chest, both arms, thighs</li>
+          <li>Progress photos every 4 weeks (same lighting + time)</li>
+          <li>Shoulder pain score 0–10 before and after each session</li>
+          <li>Rower + Bike performance: log 500m pace, wattage weekly</li>
+          <li>HRV if available (Whoop, Garmin, Oura) — tracks recovery quality</li>
+          <li>Bloodwork at Week 0, 6, and 12</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Phase-by-Phase Performance Milestones</h3>
+    <table class="data-table" style="margin-bottom:28px;">
+      <thead><tr><th>Milestone</th><th>Phase 1 (Wk 4)</th><th>Phase 2 (Wk 8)</th><th>Phase 3 (Wk 12)</th></tr></thead>
+      <tbody>
+        <tr><td>Weight</td><td>203–206 lbs</td><td>200–204 lbs</td><td>198–202 lbs</td></tr>
+        <tr><td>Est. Body Fat</td><td>~17%</td><td>~15–16%</td><td>~13–14%</td></tr>
+        <tr><td>Shoulder Pain</td><td>≤4/10 rest, ≤6 loaded</td><td>≤2/10 rest, ≤4 loaded</td><td>0–1 rest, 0–2 with direct work</td></tr>
+        <tr><td>BB Back Squat</td><td>Establish baseline</td><td>+10–15% load</td><td>+20–25% load</td></tr>
+        <tr><td>BB RDL</td><td>Establish baseline</td><td>+15–20% load</td><td>+25–30% load</td></tr>
+        <tr><td>Pull-Ups</td><td>4–6 clean reps</td><td>8–10 reps or weighted</td><td>10–12+ reps or +10–20 lbs weighted</td></tr>
+        <tr><td>500m Row</td><td>Establish baseline pace</td><td>-5 sec vs baseline</td><td>-10 sec vs baseline</td></tr>
+        <tr><td>AeroBike 20-min watts</td><td>Establish baseline</td><td>+10–15% avg watt</td><td>+20–25% avg watt</td></tr>
+        <tr><td>Mobility (deep squat)</td><td>30-sec hold, heel support ok</td><td>45-sec hold heels down</td><td>60-sec hold comfortable</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div class="card blue">
+        <div class="card-title">Supplement Stack Summary</div>
+        <table class="data-table">
+          <thead><tr><th>Supplement</th><th>Dose / Timing</th></tr></thead>
+          <tbody>
+            <tr><td>Whey Protein Isolate</td><td>1–2 scoops post-training</td></tr>
+            <tr><td>Collagen Peptides + Vit C</td><td>15–20g + 500mg, 45 min pre-rehab</td></tr>
+            <tr><td>Creatine Monohydrate</td><td>5g daily (any time)</td></tr>
+            <tr><td>Omega-3 Fish Oil</td><td>2–4g EPA/DHA with meals</td></tr>
+            <tr><td>Vitamin D3 + K2</td><td>3,000–5,000 IU D3 + 100–200 mcg K2 with breakfast</td></tr>
+            <tr><td>Magnesium Glycinate</td><td>300–400 mg pre-bed</td></tr>
+            <tr><td>Zinc</td><td>25–30 mg with dinner</td></tr>
+            <tr><td>Turmeric/Curcumin + BioPerine</td><td>500–1,000 mg daily</td></tr>
+            <tr><td>Tart Cherry Extract</td><td>480 mg post-training</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">Program Adjustment Rules — 100g Carb Target</div>
+        <ul class="plain">
+          <li><strong class="highlight">Weight drops &gt;1.5 lbs/wk after Wk 4:</strong> Add 20–25g fat to dinner. Increase broccoli/broccolini/onion portions to add more vegetable carbs. Muscle loss risk is real even on TRT.</li>
+          <li><strong class="highlight">Weight stalls 3+ weeks:</strong> Reduce daily fat by 15–20g. Keep protein at 230g and carbs at 100g — the carb target is supporting training performance and caloric adequacy on retatrutide.</li>
+          <li><strong class="highlight">Training performance crashes after Wk 4:</strong> Confirm dinner vegetables are being consumed in full portions (large servings of broccoli, broccolini, and onion to hit carb target). If insufficient, increase dinner volume or eat an additional serving of broccoli pre-workout. If still struggling after 2 weeks, check T3 bloodwork.</li>
+          <li><strong class="highlight">Shoulder pain &gt;6/10:</strong> Stop all pressing and pulling. Return to Phase 1 rehab protocol exclusively for 5–7 days.</li>
+          <li><strong class="highlight">Strength stalls 2+ weeks:</strong> Implement a 3-consecutive-day deload (50% volume, 60% intensity, no failure), then resume with +5% load. Verify sleep duration — GH peptide stack requires 7–9 hrs to deliver full benefit.</li>
+          <li><strong class="highlight">Every 4 weeks:</strong> Review energy, libido, sleep, and mood. If declining, check T3, E2, and Free T bloodwork. Increase dietary fat before adjusting protein or carbs.</li>
+          <li><strong class="highlight">Ketosis monitoring (optional):</strong> At 100g net carbs you may or may not be in ketosis — this is acceptable. Fat oxidation is driven by Cardarine + retatrutide + fasted cardio regardless of strict ketosis status.</li>
+          <li><strong class="highlight">Rower pace regresses:</strong> Reduce training volume 20% that week — likely accumulated fatigue.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footnote">
+      <strong>FORGE Protocol v2.4 — Home Gym Edition.</strong> Micronutrient stack updated: Methylfolate 1 mg, PQQ 20 mg, and Ubiquinol 100 mg added to complete the methyl donor triad and five-angle mitochondrial optimization stack. Full compound protocol: 20 mg testosterone cypionate daily, 10 mg cardarine, CJC-1295 250 mcg, ipamorelin 250 mcg, kisspeptin-10 200 mcg 3x/week, BPC-157, TB-500, GHK-Cu, KPV, SS-31, MOTS-c. Nutrition: 100g net carb max / 50g fiber carb max, dinner carbs from broccoli, broccolini, and onion. For educational and informational purposes only. Not medical advice. All pharmaceutical and dietary protocols must be managed by a licensed healthcare provider. Individual results vary.
+    </div>
+  </div>
+</div>
+
+<script>
+  function showSection(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: document.querySelector('.nav').offsetTop - 10, behavior: 'smooth' });
+  }
+
+  function showPhase(num) {
+    document.querySelectorAll('.phase-item').forEach((item, i) => {
+      item.classList.toggle('active', i === num - 1);
+    });
+    document.querySelectorAll('.phase-content').forEach((content, i) => {
+      content.classList.toggle('active', i === num - 1);
+    });
+  }
+
+  // ── PWA Install Prompt ──
+  let deferredPrompt;
+  const installBanner = document.getElementById('install-banner');
+  const installBtn = document.getElementById('install-btn');
+  const dismissBtn = document.getElementById('dismiss-btn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBanner.style.display = 'flex';
+  });
+
+  installBtn.addEventListener('click', async () => {
+    installBanner.style.display = 'none';
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+    }
+  });
+
+  dismissBtn.addEventListener('click', () => {
+    installBanner.style.display = 'none';
+    localStorage.setItem('forge-install-dismissed', '1');
+  });
+
+  // Don't show if already dismissed
+  if (localStorage.getItem('forge-install-dismissed')) {
+    installBanner.style.display = 'none';
+  }
+
+  // ── Service Worker Registration ──
+  if ('serviceWorker' in navigator) {
+    const swCode = `
+const CACHE = 'forge-v2.4';
+const OFFLINE_URL = location.href;
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE).then(cache => cache.add(OFFLINE_URL))
+  );
+  self.skipWaiting();
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(caches.keys().then(keys =>
+    Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+  ));
+  self.clients.claim();
+});
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    fetch(e.request).catch(() => caches.match(e.request))
+  );
+});
+    `;
+    const blob = new Blob([swCode], { type: 'application/javascript' });
+    const swUrl = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swUrl).catch(() => {});
+  }
+</script>
+
+<!-- PWA Install Banner -->
+<div id="install-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1a20;border-top:2px solid #f5a623;padding:14px 20px;z-index:9999;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -4px 24px rgba(0,0,0,0.6);">
+  <div style="display:flex;align-items:center;gap:12px;flex:1;">
+    <div style="width:42px;height:42px;background:#0a0a0a;border:2px solid #f5a623;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:#f5a623;flex-shrink:0;">F</div>
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;color:#f0f0f8;letter-spacing:0.5px;">FORGE Protocol</div>
+      <div style="font-size:12px;color:#8a8a9a;margin-top:1px;">Add to home screen for quick access</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="dismiss-btn" style="background:transparent;border:1px solid #4a4a58;color:#8a8a9a;padding:8px 14px;border-radius:6px;font-size:13px;cursor:pointer;font-family:'Barlow',sans-serif;">Not now</button>
+    <button id="install-btn" style="background:#f5a623;border:none;color:#0a0a0a;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">INSTALL</button>
+  </div>
+</div>
+
+</body>
+</html>
