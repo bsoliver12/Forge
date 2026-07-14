@@ -2030,6 +2030,12 @@
   .trk-tool{background:none;border:none;color:var(--mist);font-family:'Barlow',sans-serif;font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:0;-webkit-tap-highlight-color:transparent;}
   .trk-tool:active{color:var(--amber);}
   @media(min-width:600px){.trk-form-grid{grid-template-columns:repeat(3,1fr);}}
+  .trk-donation-status{display:none;margin:0 0 12px;padding:12px 14px;border-radius:8px;border:1px solid var(--iron);background:rgba(245,166,35,0.06);font-family:'Barlow',sans-serif;font-size:13px;color:var(--chalk);line-height:1.5;}
+  .trk-donation-status.show{display:block;}
+  .trk-donation-status.overdue{border-color:var(--red);background:rgba(232,64,64,0.08);}
+  .trk-donation-status b{color:var(--amber);}
+  .trk-donation-status.overdue b{color:var(--red);}
+  .trk-field select{width:100%;background:var(--carbon);border:1px solid var(--iron);color:var(--chalk);border-radius:6px;padding:8px 10px;font-family:'Barlow',sans-serif;font-size:13px;}
 </style>
 
     <div class="trk">
@@ -2043,8 +2049,10 @@
       <div class="trk-toggle">
         <button class="trk-tab active" data-set="dexa">Body Comp / DEXA</button>
         <button class="trk-tab" data-set="labs">Bloodwork</button>
+        <button class="trk-tab" data-set="donations">Blood Donation</button>
       </div>
       <div class="trk-form" id="trkForm" hidden></div>
+      <div class="trk-donation-status" id="trkDonationStatus"></div>
       <div class="trk-chips" id="trkChips"></div>
       <div class="trk-chart-wrap">
         <div class="trk-stat" id="trkStat"></div>
@@ -2335,6 +2343,13 @@ self.addEventListener('fetch', e => {
         {key:'creat', label:'Creatinine', unit:'mg/dL', dec:2, low:0.76, high:1.27},
         {key:'egfr',  label:'eGFR',       unit:'mL/min',dec:0, low:60,  high:120, dir:'up'}
       ]
+    },
+    donations: {
+      label: 'Blood Donation',
+      intervalDays: 120,
+      metrics: [
+        {key:'hct', label:'Hematocrit at Donation', unit:'%', dec:1, low:40, high:51, ceiling:52}
+      ]
     }
   };
 
@@ -2347,10 +2362,13 @@ self.addEventListener('fetch', e => {
       {date:'2026-05-11', tt:1121, ft:251.1, shbg:39.7, e2:58.5, hct:43.2, hgb:14.0, apob:128},
       {date:'2026-06-01', vitd:83.5, gluc:96, creat:1.84, egfr:46},
       {date:'2026-06-02', tt:862, e2:31, shbg:37, hct:47.1, hgb:15.7, hba1c:5.0, vitd:109, chol:273, ldl:192, hdl:63, tg:92, gluc:86, creat:1.49, egfr:59}
+    ],
+    donations: [
+      {date:'2026-05-04', method:'Whole Blood'}
     ]
   };
 
-  let state = {dexa:[], labs:[]};
+  let state = {dexa:[], labs:[], donations:[]};
   const ui = {set:'dexa', metric:'bf', formOpen:false};
 
   function load(){
@@ -2362,6 +2380,7 @@ self.addEventListener('fetch', e => {
     if(!ok){ state = JSON.parse(JSON.stringify(SEED)); save(); }
     if(!Array.isArray(state.dexa)) state.dexa = [];
     if(!Array.isArray(state.labs)) state.labs = [];
+    if(!Array.isArray(state.donations)) state.donations = [];
   }
   function save(){ try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e){} }
 
@@ -2517,8 +2536,9 @@ self.addEventListener('fetch', e => {
     const rows = state[ui.set].slice().sort((a,b)=> a.date<b.date?1:-1);
     if(!rows.length){ wrap.innerHTML='<div class="trk-none">No entries logged.</div>'; return; }
     rows.forEach(entry=>{
-      const chips = SETS[ui.set].metrics.filter(m=>entry[m.key]!=null&&entry[m.key]!=='').map(m=>
+      let chips = SETS[ui.set].metrics.filter(m=>entry[m.key]!=null&&entry[m.key]!=='').map(m=>
         '<span class="trk-eb">'+m.label+' <b>'+fmt(entry[m.key],m.dec)+'</b></span>').join('');
+      if(entry.method) chips = '<span class="trk-eb">Method <b>'+entry.method+'</b></span>' + chips;
       const row = el('div', {class:'trk-entry'});
       row.innerHTML = '<div class="trk-entry-h"><span class="trk-entry-date">'+shortDate(entry.date)+'</span>'+
         '<button class="trk-del" title="Delete entry">\u00D7</button></div><div class="trk-entry-body">'+chips+'</div>';
@@ -2538,6 +2558,13 @@ self.addEventListener('fetch', e => {
     const today = new Date().toISOString().slice(0,10);
     let html = '<div class="trk-form-row"><label>Date</label><input type="date" id="trkDate" value="'+today+'" max="'+today+'"></div>';
     html += '<div class="trk-form-grid">';
+    if(ui.set==='donations'){
+      html += '<div class="trk-field"><label>Method</label><select id="trkMethod">'+
+        '<option value="Whole Blood">Whole Blood</option>'+
+        '<option value="Power Red">Power Red (Double)</option>'+
+        '<option value="Therapeutic Phlebotomy">Therapeutic Phlebotomy</option>'+
+        '</select></div>';
+    }
     SETS[ui.set].metrics.forEach(m=>{
       html += '<div class="trk-field"><label>'+m.label+' <span>'+m.unit+'</span></label>'+
         '<input type="number" step="any" inputmode="decimal" data-key="'+m.key+'" placeholder="\u2014"></div>';
@@ -2558,6 +2585,8 @@ self.addEventListener('fetch', e => {
       const val = inp.value.trim();
       if(val!==''){ const num = Number(val); if(!isNaN(num)){ entry[inp.getAttribute('data-key')] = num; any = true; } }
     });
+    const methodSel = $('trkMethod');
+    if(methodSel){ entry.method = methodSel.value; any = true; }
     if(!any){ alert('Enter at least one value.'); return; }
     const existing = state[ui.set].find(e=>e.date===date);
     if(existing){ Object.assign(existing, entry); } else { state[ui.set].push(entry); }
@@ -2584,7 +2613,32 @@ self.addEventListener('fetch', e => {
     }
   }
 
-  function render(){ renderTabs(); renderChips(); renderChart(); renderEntries(); renderForm(); }
+  function renderDonationStatus(){
+    const box = $('trkDonationStatus');
+    if(ui.set!=='donations'){ box.className='trk-donation-status'; box.innerHTML=''; return; }
+    const rows = state.donations.slice().sort((a,b)=> a.date<b.date?1:-1);
+    if(!rows.length){
+      box.className = 'trk-donation-status show';
+      box.innerHTML = 'No donations logged yet. Target cadence: <b>every 4 months (~120 days)</b>, or sooner if hematocrit exceeds 52%.';
+      return;
+    }
+    const last = rows[0];
+    const lastDate = new Date(last.date+'T00:00:00');
+    const nextDue = new Date(lastDate.getTime() + SETS.donations.intervalDays*24*60*60*1000);
+    const today = new Date(new Date().toISOString().slice(0,10)+'T00:00:00');
+    const daysLeft = Math.round((nextDue - today)/(24*60*60*1000));
+    const overdue = daysLeft < 0;
+    const nextDueStr = shortDate(nextDue.toISOString().slice(0,10));
+    box.className = 'trk-donation-status show'+(overdue?' overdue':'');
+    let msg = 'Last donation: <b>'+shortDate(last.date)+'</b>'+(last.method?' ('+last.method+')':'')+'. ';
+    msg += overdue
+      ? 'Next donation was due <b>'+nextDueStr+'</b> ('+Math.abs(daysLeft)+' days overdue on the 4-month cadence).'
+      : 'Next donation due <b>'+nextDueStr+'</b> ('+daysLeft+' days out) on the 4-month cadence.';
+    msg += ' Donate sooner if hematocrit exceeds 52% before then.';
+    box.innerHTML = msg;
+  }
+
+  function render(){ renderTabs(); renderChips(); renderChart(); renderEntries(); renderForm(); renderDonationStatus(); }
 
   function init(){
     if(!$('trkChart')) return;
