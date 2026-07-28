@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>FORGE Protocol v2.9 — 8-Week Cut</title>
+<title>FORGE Protocol v3.0 — 8-Week Cut</title>
 
 <!-- PWA Meta Tags -->
 <meta name="application-name" content="FORGE Protocol">
@@ -12,10 +12,10 @@
 <meta name="apple-mobile-web-app-title" content="FORGE">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0a0a0a">
-<meta name="description" content="FORGE Protocol v2.9 — 8-Week Aggressive Cut, Lean Mass Preservation Protocol">
+<meta name="description" content="FORGE Protocol v3.0 — 8-Week Aggressive Cut, Lean Mass Preservation Protocol">
 
 <!-- Inline PWA Manifest -->
-<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22FORGE%20Protocol%20v2.9%22%2C%22short_name%22%3A%22FORGE%22%2C%22description%22%3A%228-Week%20Aggressive%20Cut%20%2B%20Lean%20Preservation%20Protocol%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230a0a0a%22%2C%22theme_color%22%3A%22%230a0a0a%22%2C%22orientation%22%3A%22portrait%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%2520viewBox%3D'0%25200%252096%252096'%253E%253Crect%2520width%3D'96'%2520height%3D'96'%2520rx%3D'18'%2520fill%3D'%25230a0a0a'%2F%253E%253Ctext%2520x%3D'50%2525'%2520y%3D'62%2525'%2520font-family%3D'Arial%2520Black%2Csans-serif'%2520font-size%3D'52'%2520font-weight%3D'900'%2520fill%3D'%2523f5a623'%2520text-anchor%3D'middle'%253EF%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%2296x96%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22FORGE%20Protocol%20v3.0%22%2C%22short_name%22%3A%22FORGE%22%2C%22description%22%3A%228-Week%20Aggressive%20Cut%20%2B%20Lean%20Preservation%20Protocol%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230a0a0a%22%2C%22theme_color%22%3A%22%230a0a0a%22%2C%22orientation%22%3A%22portrait%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%2520viewBox%3D'0%25200%252096%252096'%253E%253Crect%2520width%3D'96'%2520height%3D'96'%2520rx%3D'18'%2520fill%3D'%25230a0a0a'%2F%253E%253Ctext%2520x%3D'50%2525'%2520y%3D'62%2525'%2520font-family%3D'Arial%2520Black%2Csans-serif'%2520font-size%3D'52'%2520font-weight%3D'900'%2520fill%3D'%2523f5a623'%2520text-anchor%3D'middle'%253EF%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%2296x96%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
 
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -433,6 +433,7 @@
   }
 
   .highlight { color: var(--amber); font-weight: 600; }
+  .text-amber { color: var(--amber); }
   .text-green { color: var(--green); }
   .text-red { color: var(--red); }
   .text-blue { color: var(--blue); }
@@ -481,6 +482,20 @@
     font-weight: 700; text-transform: uppercase; color: var(--teal);
     margin-bottom: 10px;
   }
+
+  /* v3.0 — equipment additions for the commercial gym */
+  .eq-mach { background: rgba(232,64,64,0.10); color: var(--red); border-color: rgba(232,64,64,0.2); }
+  .eq-cbl  { background: rgba(45,212,191,0.10); color: var(--teal); border-color: rgba(45,212,191,0.2); }
+
+  /* v3.0 — training location tags */
+  .loc {
+    display: inline-block; font-family: 'Courier Prime', monospace;
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 2px; border: 1px solid; margin-left: 8px;
+    vertical-align: middle; white-space: nowrap;
+  }
+  .loc-home { color: var(--green); border-color: rgba(61,214,140,0.35); background: rgba(61,214,140,0.08); }
+  .loc-gym  { color: var(--blue);  border-color: rgba(74,158,255,0.35); background: rgba(74,158,255,0.08); }
 </style>
 </head>
 <body>
@@ -490,7 +505,7 @@
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div style="position:relative;z-index:1;">
-    <div class="hero-tag">// Home Gym Edition v2.8 — 45M / 207.6 lbs / 18.1% BF</div>
+    <div class="hero-tag">// Home + Commercial Gym Edition v3.0 — 45M / 207.6 lbs / 18.1% BF</div>
     <div class="hero-title">FORGE<br><span>Protocol</span></div>
     <div class="hero-sub">8-Week Aggressive Cut + Lean Preservation</div>
     <div class="hero-stats">
@@ -500,7 +515,7 @@
       <div class="divider"></div>
       <div class="hero-stat"><span class="hero-stat-num">162.2</span><span class="hero-stat-label">lbs Lean Mass</span></div>
       <div class="divider"></div>
-      <div class="hero-stat"><span class="hero-stat-num">5</span><span class="hero-stat-label">Active Days/Week</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">6</span><span class="hero-stat-label">Active Days/Week</span></div>
     </div>
     <div class="equipment-strip">
       <span class="eq-pill">Barbell + Rack</span>
@@ -509,6 +524,9 @@
       <span class="eq-pill">Kettlebell</span>
       <span class="eq-pill">Concept 2 Rower</span>
       <span class="eq-pill">Rogue AeroBike</span>
+      <span class="eq-pill">Gym: Leg Press / Hack</span>
+      <span class="eq-pill">Gym: Cable Stack</span>
+      <span class="eq-pill">Gym: Machines</span>
     </div>
   </div>
 </div>
@@ -536,6 +554,27 @@
     </div>
 
     <div class="info-box teal">
+      <strong>v3.0 UPDATE — SPLIT RESTRUCTURED FOR THE PAID GYM + 7/21 LABS:</strong> Commercial gym membership added, so the training week is rebuilt around two locations. <strong>Mon Push (home) &middot; Tue Pull (home) &middot; Wed Anterior Leg (paid gym) &middot; Thu Zone 2 + Core (home) &middot; Fri Shoulders/Arms + Chest &amp; Back Ancillary (paid gym) &middot; Sat Posterior Leg (home) &middot; Sun Complete Rest.</strong> <strong>Legs are now split anterior/posterior four days apart</strong> — quads on machines at the gym Wednesday, barbell hinge and glute work at home Saturday. Machine and cable work carries the quad day and the Friday isolation work; free weights anchor Mon/Tue/Sat. Conditioning folds into the end of Saturday as a KB or rower finisher, which keeps <strong>Thursday as the week's single protected recovery day</strong> — capped at conversational Zone 2 plus core, with five lifting sessions around it. <strong>Bloodwork 7/21/2026 (Ascension, PA Chrane) added to the Trend Tracker</strong> — full advanced panel including ApoB, Lp(a), NMR LipoProfile, hs-CRP, and cystatin C. Six new tracked metrics added: Lp(a), hs-CRP, cystatin C, LDL-P, HDL-P, and small LDL-P.
+    </div>
+
+    <div class="info-box red">
+      <strong>&#9673; 7/21/2026 LIPID RESULTS — READ BEFORE THE 7/31 VISIT:</strong> This panel moved meaningfully in the wrong direction and it is the most important thing in this document right now.
+      <ul style="margin:10px 0 0 18px;padding:0;line-height:1.75;">
+        <li><strong>ApoB 146 mg/dL</strong> (was 128 on 5/11) — up ~14% despite the v2.8 MUFA rebalance. Target for aggressive prevention is &lt;80; &lt;70 in the "extreme risk" tier the lab itself lists.</li>
+        <li><strong>LDL-P 2,468 nmol/L</strong> — the lab's "Very High" band starts at 2,000. <strong>Small LDL-P 771</strong> (high, &gt;527). <strong>LDL size 21.3 nm</strong> — still large/Pattern A, which is the one favorable note, but per the lab's own interpretive text particle size stops mattering once LDL-P is accounted for.</li>
+        <li><strong>Lp(a) 138.1 nmol/L</strong> — this is the new information and it changes the risk math. &ge;125 nmol/L is the lab's high-risk band. Lp(a) is ~90% genetically determined, does not respond to diet, exercise, or weight loss, and is an <em>independent</em> causal risk factor stacked on top of ApoB. It also inflates the numbers above: at ~138 nmol/L, roughly 15–20 mg/dL of the LDL-C 216 is Lp(a)-cholesterol, so "corrected" LDL-C is closer to ~198. That is a nuance, not a reprieve.</li>
+        <li><strong>hs-CRP 2.23 mg/L</strong> — the middle ("average risk") band, not the low band. Worth re-drawing when not within ~72h of a hard session, since training transiently elevates it.</li>
+        <li><strong>HDL-P 27.9 &micro;mol/L</strong> — below the low-normal cut (30.5), despite HDL-C 65 reading "normal." Particle count is the more informative measure of the two.</li>
+        <li><strong class="text-green">Genuinely good news:</strong> Triglycerides 97, <strong>LP-IR &lt;25</strong> (insulin-sensitive, top quartile), and the lipid comment about familial hypercholesterolemia is a screening prompt, not a finding.</li>
+      </ul>
+      <p style="margin-top:12px;"><strong>Why this matters more for you than for a generic LMHR:</strong> the triad of low TG / high HDL / high LDL on keto is the classic lean-mass-hyper-responder pattern, and the argument for tolerating it rests on the absence of plaque and the absence of other independent risk factors. You have <strong>neither</strong> — a non-zero LAD-localized CAC (Agatston 0.965, 7/2024), an Lp(a) in the high-risk band, ~4 pack-years of smoking history, and supraphysiologic testosterone. Four independent multipliers on top of an ApoB of 146. <strong>This is a cardiology-level conversation, not a nutrition-tweak conversation.</strong> Bring this panel and the CAC report to the 7/31 visit with PA Chrane and ask specifically about (1) lipid-lowering therapy given ApoB 146 + Lp(a) high + CAC &gt;0, (2) a repeat CAC to establish progression rate against the 2024 baseline, and (3) whether the ketogenic fat load is still the right vehicle for this cut.</p>
+    </div>
+
+    <div class="info-box green">
+      <strong>&#10003; CYSTATIN C 0.91 mg/L — THE KIDNEY QUESTION IS ANSWERED.</strong> This was the whole point of ordering it, and it resolved cleanly in your favor. Creatinine-based eGFR had been reading 46 (6/01) and 59 (6/02) — nominally CKD stage 3 territory — on creatinine values of 1.84 and 1.49. Cystatin C is not produced by muscle, so it bypasses the confounding entirely. At 0.91 mg/L, CKD-EPI cystatin C puts eGFR at roughly <strong>90–95 mL/min/1.73m&sup2;</strong>, i.e. normal. <strong>Interpretation: the low creatinine-based eGFR was a 162 lb lean-mass artifact, not kidney disease.</strong> Keep cystatin C (not creatinine) as the kidney metric of record going forward, and make sure it is the number that follows you into any chart where a creatinine eGFR of 46 is still sitting.
+    </div>
+
+    <div class="info-box teal">
       <strong>v2.9 UPDATE:</strong> <strong>TRT restructured to a twice-weekly split — 50 mg Monday + 110 mg Thursday (160 mg/wk)</strong>, replacing the prior daily micro-dose scheme; all pharmacokinetic notes updated for peak/trough and draw-timing. <strong>hCG (Pregnyl) 400 IU Mon/Wed/Fri (1,200 IU/wk) added as an active compound</strong> (intratesticular T + fertility support), now running alongside Kisspeptin-10. <strong>New interactive Trend Tracker</strong> added to the Tracking tab — log DEXA and bloodwork over time and see the trends charted, saved on-device. Pre-loaded with your 2/22 &amp; 5/16 DEXA and 5/11 lab baselines.
     </div>
 
@@ -546,7 +585,7 @@
     <div class="info-box red">
       <strong>⚑ v2.8 EVIDENCE REVIEW — 4 ITEMS TO DISCUSS WITH DR. TRIANTIS:</strong> This version cross-references the stack against current peer-reviewed data. <span style="color:var(--green)"><strong>✓ Cardarine (GW-501516) has been discontinued as of v2.8</strong></span> — its multi-organ rodent carcinogenicity and absent long-term human safety data made it the single biggest contradiction in a longevity protocol, and it's now removed entirely. Four items remain flagged for physician review — <em>doses set by your physician have NOT been changed here; these are discussion points, not self-directed edits.</em>
       <ol style="margin:10px 0 0 18px;padding:0;line-height:1.7;">
-        <li><strong>ApoB 128 mg/dL is the most important longevity number here and it's elevated.</strong> Optimal for aggressive prevention is &lt;80 (many lipidologists target &lt;60–70 for high-risk). The heavy saturated-fat sourcing (80/20 beef, bacon, heavy cream, duck fat) works against it. Nutrition tab now rebalances fat sources toward monounsaturated without leaving keto.</li>
+        <li><strong>ApoB is the most important longevity number here and it is now 146 mg/dL (7/21/2026), up from 128 on 5/11.</strong> Optimal for aggressive prevention is &lt;80 (many lipidologists target &lt;60–70 for high-risk). The heavy saturated-fat sourcing (80/20 beef, bacon, heavy cream, duck fat) works against it. Nutrition tab now rebalances fat sources toward monounsaturated without leaving keto.</li>
         <li><strong>Supraphysiologic testosterone:</strong> Free T was already <em>over</em> range (251) at the prior weekly dose; the current 160 mg/wk split keeps you supraphysiologic. The marginal LBM-preservation benefit above high-normal is modest; the hematocrit and lipid/ApoB costs are not. Worth reconciling the target range with your physician.</li>
         <li><strong>Reflexive anastrozole:</strong> current TRT evidence favors <em>tolerating</em> higher estradiol in men (it's cardio-, bone-, and libido-protective) and using an AI only for clear symptoms — not for an over-range number alone. E2 58.5 on a standard assay does not by itself warrant an AI.</li>
         <li><strong>Ocrelizumab (Ocrevus) is absent from this document.</strong> B-cell depletion impairs humoral immunity — directly relevant to a ~15-injectable stack (infection risk, injection-site hygiene, IgG monitoring). Added to Compounds + bloodwork panels as a safety layer.</li>
@@ -572,7 +611,15 @@
       <span class="eq-icon eq-kb">KB</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Kettlebell</span>
       <span class="eq-icon eq-bw">BW</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Bodyweight / Pull-up Bar</span>
       <span class="eq-icon eq-row">ROW</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Concept 2 Rower</span>
-      <span class="eq-icon eq-bike">BIKE</span><span style="font-size:12px;color:var(--mist);"> Rogue AeroBike</span>
+      <span class="eq-icon eq-bike">BIKE</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Rogue AeroBike</span>
+      <span class="eq-icon eq-mach">MCH</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Machine (commercial gym)</span>
+      <span class="eq-icon eq-cbl">CBL</span><span style="font-size:12px;color:var(--mist);"> Cable stack (commercial gym)</span>
+      <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--iron);">
+        <span class="loc loc-home" style="margin-left:0;">Home Gym</span>
+        <span style="font-size:12px;color:var(--mist);margin-right:10px;"> Mon &middot; Tue &middot; Thu &middot; Sat</span>
+        <span class="loc loc-gym" style="margin-left:0;">Paid Gym</span>
+        <span style="font-size:12px;color:var(--mist);"> Wed &middot; Fri</span>
+      </div>
     </div>
 
     <div class="two-col">
@@ -598,7 +645,7 @@
 
     <div class="card red">
       <div class="card-title">⚠ Right Shoulder — Biceps Tendinitis</div>
-      <p>All barbell bench press, barbell curls, behind-the-neck movements are <strong class="text-red">removed entirely</strong>. On the rower: use a light-to-moderate resistance damper setting (3–5) and a relaxed overhand grip — do not pull into extreme elbow flexion. Direct biceps training resumes Week 6 minimum with hammer curls (neutral grip) only. See Shoulder Rehab tab.</p>
+      <p>All barbell bench press, barbell curls, behind-the-neck movements are <strong class="text-red">removed entirely</strong>. On the rower: use a light-to-moderate resistance damper setting (3–5) and a relaxed overhand grip — do not pull into extreme elbow flexion. Direct biceps training resumes Week 6 minimum with hammer curls (neutral grip) only. See Shoulder Rehab tab. On the rower: use a light-to-moderate resistance damper setting (3–5) and a relaxed overhand grip — do not pull into extreme elbow flexion. Direct biceps training resumes Week 6 minimum with hammer curls (neutral grip) only. See Shoulder Rehab tab.</p>
     </div>
 
     <div class="info-box blue">
@@ -624,7 +671,15 @@
       <span class="eq-icon eq-kb">KB</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Kettlebell</span>
       <span class="eq-icon eq-bw">BW</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Bodyweight / Pull-up Bar</span>
       <span class="eq-icon eq-row">ROW</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Concept 2 Rower</span>
-      <span class="eq-icon eq-bike">BIKE</span><span style="font-size:12px;color:var(--mist);"> Rogue AeroBike</span>
+      <span class="eq-icon eq-bike">BIKE</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Rogue AeroBike</span>
+      <span class="eq-icon eq-mach">MCH</span><span style="font-size:12px;color:var(--mist);margin-right:10px;"> Machine (commercial gym)</span>
+      <span class="eq-icon eq-cbl">CBL</span><span style="font-size:12px;color:var(--mist);"> Cable stack (commercial gym)</span>
+      <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--iron);">
+        <span class="loc loc-home" style="margin-left:0;">Home Gym</span>
+        <span style="font-size:12px;color:var(--mist);margin-right:10px;"> Mon &middot; Tue &middot; Thu &middot; Sat</span>
+        <span class="loc loc-gym" style="margin-left:0;">Paid Gym</span>
+        <span style="font-size:12px;color:var(--mist);"> Wed &middot; Fri</span>
+      </div>
     </div>
 
     <!-- Phase selector -->
@@ -649,7 +704,37 @@
     <!-- ── PHASE 1 ── -->
     <div class="phase-content active" id="phase1">
       <div class="info-box">
-        <strong>Phase 1 Goal:</strong> Aggressive fat-loss launch on a held LBM. <strong>Weeks 1–3: 3 working sets per exercise maximum</strong>, 10–12 reps, RPE 7–8. No sets to failure. Rest 75–90 sec. Strength loads held at current capacity — the training stimulus here is for muscle preservation, not progression. Retatrutide is already at steady 2.5–3 mg/wk (no titration), so GI symptoms should be manageable. Prioritize protein at every meal, movement quality, and full recovery between sessions. Every session begins with 5 min on the AeroBike or 500m easy row as warm-up.
+        <strong>Phase 1 Goal:</strong> Aggressive fat-loss launch on a held LBM. <strong>Weeks 1&ndash;3: 3 working sets per exercise maximum</strong>, 10&ndash;12 reps, RPE 7&ndash;8. No sets to failure. Rest 75&ndash;90 sec. Strength loads held at current capacity &mdash; the training stimulus here is for muscle preservation, not progression. Retatrutide is already at steady 2.5&ndash;3 mg/wk (no titration), so GI symptoms should be manageable. Prioritize protein at every meal, movement quality, and full recovery between sessions. Every session begins with 5 min easy bike/row (home) or 5 min treadmill/elliptical (gym) as warm-up.
+      </div>
+
+      <div class="card">
+        <div class="card-title">v3.0 Weekly Structure &mdash; Two Locations</div>
+        <table class="data-table">
+          <thead><tr><th>Day</th><th>Session</th><th>Where</th><th>Primary Stimulus</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Monday</strong></td><td>Push &mdash; Chest / Triceps / Delts</td><td><span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Free-weight hypertrophy</td></tr>
+            <tr><td><strong>Tuesday</strong></td><td>Pull &mdash; Back / Rear Delts</td><td><span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Free-weight hypertrophy</td></tr>
+            <tr><td><strong>Wednesday</strong></td><td>Anterior Leg &mdash; Quad-dominant</td><td><span class="loc loc-gym" style="margin-left:0;">Paid Gym</span></td><td>Machine load, low spinal cost</td></tr>
+            <tr><td><strong>Thursday</strong></td><td>Active Recovery + Zone 2 + Core</td><td><span class="loc loc-home" style="margin-left:0;">Home</span></td><td><strong>Low</strong> systemic stress &mdash; the only deload valve in the week</td></tr>
+            <tr><td><strong>Friday</strong></td><td>Shoulders + Arms + Chest/Back Ancillary</td><td><span class="loc loc-gym" style="margin-left:0;">Paid Gym</span></td><td>Cable/machine isolation</td></tr>
+            <tr><td><strong>Saturday</strong></td><td>Posterior Leg &mdash; Hamstring / Glute / Calf</td><td><span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Free-weight hinge + KB conditioning finisher</td></tr>
+            <tr><td><strong>Sunday</strong></td><td>Complete Rest</td><td>&mdash;</td><td>Full recovery</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-box teal">
+        <strong>Legs are now split anterior / posterior &mdash; here is how that changes the week:</strong> Wednesday (gym, quad-dominant) and Saturday (home, hinge-dominant) sit four days apart, which is close to ideal for two lower-body sessions. That split resolves the biggest hole in the previous version.
+        <ul style="margin:10px 0 0 18px;padding:0;line-height:1.7;">
+          <li><strong>The Wednesday posterior-insurance block is gone.</strong> It existed only because hamstrings and glutes had zero weekly stimulus. Saturday now does that job properly, with real volume. Wednesday is purely anterior. <strong>Calf work moved to Saturday</strong> &mdash; the gastroc is posterior and belongs on the hinge day.</li>
+          <li><strong>Thursday is now the only recovery lever in the week</strong> and it matters more than it did before. It sits between Wednesday's quads and Saturday's hamstrings, with Friday's upper session in between. It stays capped at conversational Zone 2 &mdash; no intervals, no circuits. If you are dragging, cut it to mobility and a walk. That is the correct response, not a missed session.</li>
+          <li><strong>Conditioning moved to the end of Saturday.</strong> KB swings and rower intervals are hip-hinge patterns, so they belong on the posterior day anyway &mdash; you get the metabolic work without adding a separate session, and complete rest on Sunday follows immediately.</li>
+          <li><strong>Core stays on Thursday.</strong> It costs nothing on a Zone 2 day and steals no sets from a lifting session in a deficit. Saturday ends with one brief anti-extension pair only.</li>
+        </ul>
+      </div>
+
+      <div class="info-box red">
+        <strong>&#9873; Honest tradeoff in this restructure:</strong> You are now at <strong>five resistance sessions and one true rest day</strong>. That is a lot of training to recover from in an aggressive deficit &mdash; recovery capacity, not training volume, is now the binding constraint. Two things to hold to: <strong>(1) Thursday stays easy.</strong> The moment it becomes a "might as well add intervals" day, the week has no deload valve at all. <strong>(2) Watch the Wednesday&ndash;Saturday interaction.</strong> Bulgarian split squats and walking lunges on Wednesday leave hamstrings and glutes sore into Friday; if Saturday's RDL feels compromised two weeks running, cut Wednesday's unilateral work to two sets rather than cutting Saturday. <strong>If lean mass slips on the next DEXA, the fix is more food or fewer sets &mdash; not more sessions.</strong>
       </div>
 
       <div class="two-col">
@@ -657,19 +742,32 @@
 
           <div class="workout-day">
             <div class="workout-day-header">
-              <span class="workout-day-title">Monday — Push (Chest / Triceps / Delts)</span>
+              <span class="workout-day-title">Monday &mdash; Push (Chest / Triceps / Delts) <span class="loc loc-home">Home Gym</span></span>
               <span class="badge badge-amber">SHOULDER SAFE</span>
             </div>
             <div class="workout-day-body">
+              <div class="info-box teal" style="padding:12px 14px;font-size:13px;margin-bottom:12px;">
+                <strong>v3.1 &mdash; Bench press dropped, DB flat press intensified instead.</strong> Barbell bench press was tried as a staged reintroduction and then pulled at your call once you flagged the real constraint: your dumbbells top out below where a straight-load DB press keeps progressing you. That's a legitimate problem, but it has better fixes than adding a barbell that stretch-loads the exact tendon you're managing. The four techniques below add difficulty <em>without adding weight</em> &mdash; use one per session, not all four at once:
+                <table class="data-table" style="margin-top:10px;">
+                  <thead><tr><th>Technique</th><th>How</th><th>Why it works without more weight</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Tempo press</strong></td><td>5-sec eccentric, 2-sec dead pause at chest (no bounce), explosive concentric</td><td>Time under tension goes up 2&ndash;3&times; at the same load &mdash; this alone will make your current top DB feel meaningfully heavier within one session.</td></tr>
+                    <tr><td><strong>1.5-rep press</strong></td><td>Full rep down and up, then a half-rep (lower to chest, press to half-lockout, back to chest), then the concentric to finish &mdash; that's 1 rep</td><td>Doubles time under tension in the hardest part of the range (the bottom third) where you're currently weakest.</td></tr>
+                    <tr><td><strong>Eccentric-overload single-arm lower</strong></td><td>Press both DBs up together, then remove one hand and lower that single DB alone under control (~4 sec), pressing distributions on the concentric with both hands again next rep</td><td>The lowering muscles can handle roughly 20&ndash;30% more load than the lifting muscles &mdash; this briefly loads the eccentric well past what your DBs allow concentrically. Needs a spotless setup and full control; stop the set if form breaks.</td></tr>
+                    <tr><td><strong>Mechanical drop-set</strong></td><td>DB flat press to failure at 12&ndash;15 reps, rack the DBs immediately, continue straight into diamond push-ups to failure with zero rest</td><td>Extends the set past where your dumbbells top out by switching to a bodyweight-loaded pattern that hits the same muscles from a different leverage.</td></tr>
+                  </tbody>
+                </table>
+                <strong style="display:block;margin-top:10px;">Rotate through these week to week</strong> rather than always defaulting to one &mdash; tempo/1.5-rep in Weeks 1&ndash;3, mechanical drop-sets and eccentric overload once you're fat-adapted and recovery is more reliable (Week 4+). All four stay well clear of the deep-stretch bottom position that a barbell bench forces, so none of them add tendon risk. If your dumbbells are adjustable and you can add plates, that's still the simplest first move &mdash; check before leaning on these techniques as a permanent fix.
+              </div>
               <table class="data-table">
-                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets&times;Reps</th><th>Notes</th></tr></thead>
                 <tbody>
-                  <tr><td>DB Flat Press (neutral grip, elbows 45°)</td><td><span class="eq-icon">DB</span></td><td>3×12–15</td><td>Slow 3-sec descent</td></tr>
-                  <tr><td>DB Incline Press (30° bench or floor angle)</td><td><span class="eq-icon">DB</span></td><td>3×12</td><td>Neutral grip, no flare</td></tr>
-                  <tr><td>DB Chest Fly (flat, slow eccentric)</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Slight elbow bend, don't overstretch</td></tr>
-                  <tr><td>DB Lateral Raise (seated or standing)</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Pain-free arc only, light weight</td></tr>
-                  <tr><td>KB/DB Overhead Tricep Extension (1 arm)</td><td><span class="eq-icon">DB</span><span class="eq-icon eq-kb">KB</span></td><td>3×15/side</td><td>Elbow stable, full extension</td></tr>
-                  <tr><td>Diamond Push-Up</td><td><span class="eq-icon eq-bw">BW</span></td><td>3×12</td><td>Elbows in, tricep isolation</td></tr>
+                  <tr><td><strong>DB Flat Press (neutral grip, elbows 45&deg;)</strong> <span class="text-mist">(intensified &mdash; see box above)</span></td><td><span class="eq-icon">DB</span></td><td>3&times;12&ndash;15</td><td>Apply one intensification technique per session. Slow 3-sec descent baseline; extend per the table above.</td></tr>
+                  <tr><td>DB Incline Press (30&deg; bench or floor angle)</td><td><span class="eq-icon">DB</span></td><td>3&times;12</td><td>Neutral grip, no flare</td></tr>
+                  <tr><td>DB Squeeze Press <span class="text-mist">(replaces the fly &mdash; flies moved to Friday cables)</span></td><td><span class="eq-icon">DB</span></td><td>3&times;12&ndash;15</td><td>Two DBs pressed hard together throughout. Adduction stimulus with none of the stretched-position shoulder load.</td></tr>
+                  <tr><td>DB Lateral Raise (seated or standing)</td><td><span class="eq-icon">DB</span></td><td>3&times;15</td><td>Pain-free arc only, light weight</td></tr>
+                  <tr><td>KB/DB Overhead Tricep Extension (1 arm)</td><td><span class="eq-icon">DB</span><span class="eq-icon eq-kb">KB</span></td><td>3&times;15/side</td><td>Elbow stable, full extension</td></tr>
+                  <tr><td>Diamond Push-Up</td><td><span class="eq-icon eq-bw">BW</span></td><td>3&times;12</td><td>Elbows in, tricep isolation. Skip this one on mechanical-drop-set weeks &mdash; you already did it.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -677,20 +775,20 @@
 
           <div class="workout-day">
             <div class="workout-day-header">
-              <span class="workout-day-title">Tuesday — Pull (Back / Rear Delts)</span>
+              <span class="workout-day-title">Tuesday &mdash; Pull (Back / Rear Delts) <span class="loc loc-home">Home Gym</span></span>
               <span class="badge badge-green">HYPERTROPHY</span>
             </div>
             <div class="workout-day-body">
-              <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:12px;">⚠ Rower warm-up: 3 min at easy pace (damper 3–4). No aggressive drive through the biceps on right arm — let back do the work.</div>
+              <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:12px;">&#9888; Rower warm-up: 3 min at easy pace (damper 3&ndash;4). No aggressive drive through the biceps on right arm &mdash; let back do the work.</div>
               <table class="data-table">
-                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets&times;Reps</th><th>Notes</th></tr></thead>
                 <tbody>
-                  <tr><td>Neutral-Grip Pull-Up (or band-assisted)</td><td><span class="eq-icon eq-bw">BW</span></td><td>3×6–10</td><td>Full hang, controlled descent</td></tr>
-                  <tr><td>BB Bent-Over Row (overhand, hip hinge)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×10–12</td><td>Keep chest up, drive elbows back</td></tr>
-                  <tr><td>Single-Arm DB Row (brace on bench)</td><td><span class="eq-icon">DB</span></td><td>3×12/side</td><td>Full ROM, slow return</td></tr>
-                  <tr><td>KB Gorilla Row (alternating)</td><td><span class="eq-icon eq-kb">KB</span></td><td>3×10/side</td><td>Feet wide, hinge position</td></tr>
-                  <tr><td>Face Pull sub: Band/DB Rear Delt Row (elbows wide)</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Prone on incline bench</td></tr>
-                  <tr><td>Prone Y-T-W (light DB or bodyweight)</td><td><span class="eq-icon">DB</span></td><td>2×10 each</td><td>Scapular control — rehab focus</td></tr>
+                  <tr><td>Neutral-Grip Pull-Up (or band-assisted)</td><td><span class="eq-icon eq-bw">BW</span></td><td>3&times;6&ndash;10</td><td>Full hang, controlled descent</td></tr>
+                  <tr><td>BB Bent-Over Row (overhand, hip hinge)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3&times;10&ndash;12</td><td>Keep chest up, drive elbows back</td></tr>
+                  <tr><td>Single-Arm DB Row (brace on bench)</td><td><span class="eq-icon">DB</span></td><td>3&times;12/side</td><td>Full ROM, slow return</td></tr>
+                  <tr><td>KB Gorilla Row (alternating)</td><td><span class="eq-icon eq-kb">KB</span></td><td>3&times;10/side</td><td>Feet wide, hinge position</td></tr>
+                  <tr><td>Face Pull sub: Band/DB Rear Delt Row (elbows wide)</td><td><span class="eq-icon">DB</span></td><td>3&times;15</td><td>Prone on incline bench</td></tr>
+                  <tr><td>Prone Y-T-W (light DB or bodyweight)</td><td><span class="eq-icon">DB</span></td><td>2&times;10 each</td><td>Scapular control &mdash; rehab focus</td></tr>
                 </tbody>
               </table>
             </div>
@@ -698,16 +796,25 @@
 
           <div class="workout-day">
             <div class="workout-day-header">
-              <span class="workout-day-title">Wednesday — Full REST</span>
-              <span class="badge badge-amber">RECOVERY</span>
+              <span class="workout-day-title">Wednesday &mdash; Anterior Leg (Quad-Dominant) <span class="loc loc-gym">Paid Gym</span></span>
+              <span class="badge badge-blue">MACHINE LOAD</span>
             </div>
             <div class="workout-day-body">
-              <ul class="plain">
-                <li>Mid-week full rest — sits between the upper-body block (Mon/Tue) and legs (Thu) so you hit the heaviest lower-body session fresh.</li>
-                <li>No structured training. Morning mobility flow (15 min — see Mobility tab).</li>
-                <li>Full daily mobility routine + shoulder rehab protocol.</li>
-                <li>Foam rolling, sleep, hydration focus.</li>
-              </ul>
+              <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:12px;">The reason this day moved to the paid gym: leg press and hack squat let you load the quads heavily with a fraction of the axial spinal compression and stabilizer fatigue of a back squat &mdash; which is exactly the trade you want mid-week in a deficit, one day before an upper-body session. Warm up 5 min bike/treadmill + 2 ramp sets on the leg press.</div>
+              <table class="data-table">
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets&times;Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>Leg Press (feet low/narrow &mdash; quad bias)</td><td><span class="eq-icon eq-mach">MCH</span></td><td>4&times;10&ndash;12</td><td>Primary. Full depth without lumbar rounding. Do not lock out hard.</td></tr>
+                  <tr><td>Hack Squat (or Smith front squat)</td><td><span class="eq-icon eq-mach">MCH</span></td><td>3&times;10&ndash;12</td><td>Second quad compound. Upright torso, knees track over toes.</td></tr>
+                  <tr><td>Leg Extension</td><td><span class="eq-icon eq-mach">MCH</span></td><td>3&times;12&ndash;15</td><td>Pure rectus femoris/VMO. 1-sec squeeze at top. Drop set on last set from Wk 2.</td></tr>
+                  <tr><td>Bulgarian Split Squat (rear foot on bench)</td><td><span class="eq-icon">DB</span></td><td>3&times;10/leg</td><td>Unilateral quad/glute. DBs at sides, neutral grip &mdash; shoulder safe.</td></tr>
+                  <tr><td>Walking Lunge (turf or floor)</td><td><span class="eq-icon">DB</span></td><td>2&times;12/leg</td><td>Long stride = more glute; short stride = more quad. Use short here.</td></tr>
+                  <tr><td>Leg Curl <span class="text-mist">(optional, 1 set)</span></td><td><span class="eq-icon eq-mach">MCH</span></td><td>1&times;15</td><td>Not hamstring training &mdash; a light pump set to balance knee-joint circulation after heavy quad work. Saturday does the real posterior volume.</td></tr>
+                </tbody>
+              </table>
+              <div class="info-box green" style="padding:10px 14px;font-size:13px;margin:12px 0 0;">
+                <strong>&#10003; This day is now purely anterior, as intended.</strong> Calf work and all hamstring/glute volume moved to Saturday's posterior day, four days out &mdash; near-ideal spacing for two lower-body sessions. The posterior-insurance block that previously lived here has been removed; it existed only because there was no second leg day.
+              </div>
             </div>
           </div>
 
@@ -716,72 +823,114 @@
 
           <div class="workout-day">
             <div class="workout-day-header">
-              <span class="workout-day-title">Thursday — Legs (Combined: Quads + Posterior Chain)</span>
-              <span class="badge badge-blue">STRENGTH + SIZE</span>
+              <span class="workout-day-title">Thursday &mdash; Active Recovery + Zone 2 + Core <span class="loc loc-home">Home Gym</span></span>
+              <span class="badge badge-amber">LOW STRESS</span>
             </div>
             <div class="workout-day-body">
-              <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:12px;">Single weekly leg session, placed the day after Wednesday's rest so you come in fresh. Covers quads, hamstrings, glutes, calves, and core in one. Warm up 5 min bike + 2 ramp sets on the squat. In a deep deficit, if recovery lags you may drop the calf raise and one unilateral movement — keep the two compounds (squat + RDL) non-negotiable.</div>
+              <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:12px;"><strong>Intensity ceiling: conversational.</strong> If you cannot hold a conversation or breathe through your nose, you are going too hard for this day. Quads are still repairing from Wednesday, Friday needs a fresh CNS, and Saturday's hinge work needs a recovered posterior chain. <strong>This is the single most protected day in the week &mdash; if you are dragging, cut it to mobility and a walk.</strong></div>
               <table class="data-table">
-                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
+                <thead><tr><th>Block</th><th>Equip</th><th>Prescription</th><th>Notes</th></tr></thead>
                 <tbody>
-                  <tr><td>BB Back Squat (in rack)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×8–12</td><td>Primary quad compound. Below parallel, brace tight, use safeties.</td></tr>
-                  <tr><td>BB Romanian Deadlift</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×10–12</td><td>Primary posterior chain. Hip hinge, flat back, feel the hamstring stretch.</td></tr>
-                  <tr><td>DB Walking Lunge</td><td><span class="eq-icon">DB</span></td><td>3×12/leg</td><td>Unilateral quad/glute. DBs at sides, neutral grip.</td></tr>
-                  <tr><td>BB Hip Thrust (shoulders on bench)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×12–15</td><td>Pad the barbell. Full glute lockout.</td></tr>
-                  <tr><td>KB Swing (two-hand)</td><td><span class="eq-icon eq-kb">KB</span></td><td>3×15</td><td>Explosive hip hinge — posterior chain + conditioning finisher.</td></tr>
-                  <tr><td>Standing Calf Raise (BB or DB loaded)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3×15–20</td><td>Full stretch at bottom, pause. Drop first if recovery is limited.</td></tr>
-                  <tr><td>Nordic Curl (feet under rack bar)</td><td><span class="eq-icon eq-bw">BW</span></td><td>2×3</td><td>6-sec eccentric descent only. Do not progress reps until Week 4 — hamstring connective tissue must adapt first.</td></tr>
-                  <tr><td>Plank + Dead Bug alternating</td><td><span class="eq-icon eq-bw">BW</span></td><td>3×45s + 3×10/side</td><td>Core stability, anti-extension.</td></tr>
+                  <tr><td>Zone 2 steady state</td><td><span class="eq-icon eq-bike">BIKE</span><span class="eq-icon eq-row">ROW</span></td><td>40&ndash;50 min</td><td>AeroBike preferred (zero shoulder involvement). Target ~105&ndash;123 bpm (60&ndash;70% of ~175 est. max HR). Fasted AM optional &mdash; take the BCAA if so.</td></tr>
+                  <tr><td>Hanging Knee Raise</td><td><span class="eq-icon eq-bw">BW</span></td><td>3&times;12&ndash;15</td><td>Controlled, no swing. Posterior pelvic tilt at the top.</td></tr>
+                  <tr><td>Cable or KB Woodchop</td><td><span class="eq-icon eq-kb">KB</span></td><td>3&times;12/side</td><td>Anti-rotation. Light load, hips square.</td></tr>
+                  <tr><td>Hollow Body Hold</td><td><span class="eq-icon eq-bw">BW</span></td><td>3&times;30&ndash;40s</td><td>Lower back stays pinned to floor. Regress by tucking knees.</td></tr>
+                  <tr><td>Side Plank</td><td><span class="eq-icon eq-bw">BW</span></td><td>3&times;30s/side</td><td>Obliques + QL. Stack shoulders, don't sag.</td></tr>
                 </tbody>
               </table>
-            </div>
-          </div>
-
-          <div class="workout-day">
-            <div class="workout-day-header">
-              <span class="workout-day-title">Friday — Shoulders / Arms</span>
-              <span class="badge badge-purple">ISOLATION</span>
-            </div>
-            <div class="workout-day-body">
-              <table class="data-table">
-                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets×Reps</th><th>Notes</th></tr></thead>
-                <tbody>
-                  <tr><td>DB Seated Shoulder Press (neutral grip)</td><td><span class="eq-icon">DB</span></td><td>3×10–12</td><td>Pain-free ROM, no shrug at top</td></tr>
-                  <tr><td>DB Lateral Raise</td><td><span class="eq-icon">DB</span></td><td>3×15</td><td>Light weight, slow tempo</td></tr>
-                  <tr><td>DB Upright Row (wide grip, elbow height)</td><td><span class="eq-icon">DB</span></td><td>3×12</td><td>Only if pain-free</td></tr>
-                  <tr><td>Close-Grip Push-Up</td><td><span class="eq-icon eq-bw">BW</span></td><td>3×15</td><td>Tricep focus, elbows track back</td></tr>
-                  <tr><td>DB Skull Crusher (EZ grip)</td><td><span class="eq-icon">DB</span></td><td>3×12</td><td>Lying on bench, careful elbow position</td></tr>
-                  <tr><td>DB Hammer Curl (LEFT arm only, Wks 1–5)</td><td><span class="eq-icon">DB</span></td><td>3×12</td><td>Right side: eccentric-only at light load from Wk 3</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="workout-day">
-            <div class="workout-day-header">
-              <span class="workout-day-title">Saturday — Active Recovery</span>
-              <span class="badge badge-amber">RECOVERY</span>
-            </div>
-            <div class="workout-day-body">
-              <ul class="plain">
-                <li><span class="eq-icon eq-bike">BIKE</span> or <span class="eq-icon eq-row">ROW</span> — 25–35 min Zone 2, easy pace. AeroBike preferred (no shoulder involvement). Row at light damper if chosen.</li>
-                <li>Full daily mobility routine (see Mobility tab)</li>
-                <li>Shoulder rehab protocol</li>
-                <li>Foam rolling, contrast shower, 8+ hrs sleep priority</li>
+              <ul class="plain" style="margin-top:12px;">
+                <li>Full daily mobility routine (see Mobility tab) + shoulder rehab protocol</li>
+                <li>Foam rolling &mdash; prioritize quads and IT band after Wednesday</li>
+                <li><strong>No intervals, no sprints, no circuits on this day.</strong> With five lifting sessions a week, this is the only recovery valve you have &mdash; conditioning lives at the end of Saturday instead.</li>
               </ul>
             </div>
           </div>
 
           <div class="workout-day">
             <div class="workout-day-header">
-              <span class="workout-day-title">Sunday — Full REST</span>
+              <span class="workout-day-title">Friday &mdash; Shoulders + Arms + Chest/Back Ancillary <span class="loc loc-gym">Paid Gym</span></span>
+              <span class="badge badge-purple">ISOLATION</span>
+            </div>
+            <div class="workout-day-body">
+              <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:12px;">Cables are the reason this day belongs at the gym: constant tension through the full arc, and lateral/rear delt and tricep work that free weights load poorly at the stretched position. <strong>Chest fly volume now lives here rather than Monday</strong> — correct call: cables load the adduction arc with constant tension and keep peak load off the stretched position, which a DB fly cannot do. The back block stays ancillary at RPE 7; the fly block can be worked closer to RPE 8.</div>
+              <table class="data-table">
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets&times;Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Shoulders</strong> &mdash; Machine or DB Shoulder Press (neutral grip)</td><td><span class="eq-icon eq-mach">MCH</span><span class="eq-icon">DB</span></td><td>3&times;10&ndash;12</td><td>Pain-free ROM, no shrug at top. Machine allows a fixed safe path.</td></tr>
+                  <tr><td>Cable Lateral Raise (single arm)</td><td><span class="eq-icon eq-cbl">CBL</span></td><td>3&times;15/side</td><td>Constant tension through the arc. Light &mdash; this is the one that goes wrong with ego.</td></tr>
+                  <tr><td>Reverse Pec Deck / Cable Rear Delt Fly</td><td><span class="eq-icon eq-mach">MCH</span><span class="eq-icon eq-cbl">CBL</span></td><td>3&times;15</td><td>Rear delt + posture. High value given the tendinitis.</td></tr>
+                  <tr><td><strong>Triceps</strong> &mdash; Rope Pushdown</td><td><span class="eq-icon eq-cbl">CBL</span></td><td>3&times;12&ndash;15</td><td>Elbows pinned. Spread the rope at lockout.</td></tr>
+                  <tr><td>Overhead Cable Tricep Extension</td><td><span class="eq-icon eq-cbl">CBL</span></td><td>3&times;12</td><td>Loads the long head in the stretched position &mdash; the one free weights miss.</td></tr>
+                  <tr><td><strong>Biceps</strong> &mdash; DB Hammer Curl (LEFT arm only, Wks 1&ndash;5)</td><td><span class="eq-icon">DB</span></td><td>3&times;12</td><td>Right side: eccentric-only at light load from Wk 3. Neutral grip only.</td></tr>
+                  <tr><td>Cable Curl (neutral/rope, LEFT arm Wks 1&ndash;5)</td><td><span class="eq-icon eq-cbl">CBL</span></td><td>2&times;15</td><td>Rope attachment keeps the wrist neutral &mdash; less biceps-tendon insult than a straight bar.</td></tr>
+                  <tr><td><strong>Chest &mdash; Cable Fly (mid-height)</strong> <span class="text-mist">(moved from Monday)</span></td><td><span class="eq-icon eq-cbl">CBL</span></td><td>3&times;12&ndash;15</td><td>You were right that this belongs on a cable. Constant tension through the whole adduction arc, and the load is highest at mid-range instead of at the stretched position — which is precisely why it is safer here than as a DB fly at home. Slight elbow bend, stop the eccentric at chest width, do not chase a deep stretch on the right side.</td></tr>
+                  <tr><td>Cable Fly (low-to-high) <span class="text-mist">or Pec Deck</span></td><td><span class="eq-icon eq-cbl">CBL</span><span class="eq-icon eq-mach">MCH</span></td><td>2&times;15</td><td>Upper-chest fibre bias. Pec deck is the fallback if the cable station is busy — set the seat so hands start no wider than shoulder line.</td></tr>
+                  <tr><td><strong>Back ancillary</strong> &mdash; Neutral-Grip Lat Pulldown</td><td><span class="eq-icon eq-mach">MCH</span></td><td>2&times;12</td><td>Neutral handle only. Drive elbows to hips.</td></tr>
+                  <tr><td><strong>Back ancillary</strong> &mdash; Seated Cable Row (neutral)</td><td><span class="eq-icon eq-cbl">CBL</span></td><td>2&times;12</td><td>Chest tall, no torso rock. RPE 7.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Saturday &mdash; Posterior Leg (Hamstring / Glute / Calf) <span class="loc loc-home">Home Gym</span></span>
+              <span class="badge badge-green">HINGE + POSTERIOR</span>
+            </div>
+            <div class="workout-day-body">
+              <div class="info-box" style="padding:10px 14px;font-size:13px;margin-bottom:12px;">The posterior counterpart to Wednesday, four days out. Barbell hinge anchors the day; the KB and rower finisher folds the week's conditioning in here rather than costing a separate session. Warm up 5 min bike + 2 ramp sets on the RDL. Sunday is complete rest, so this is the right place to spend what is left in the tank.</div>
+              <div class="info-box red" style="padding:10px 14px;font-size:13px;margin-bottom:12px;">
+                <strong>&#9888; Grip rule &mdash; non-negotiable with the right biceps tendinitis:</strong> on every barbell hinge, use a <strong>double-overhand grip or lifting straps</strong>. <strong>Never use a mixed (over/under) grip.</strong> The supinated hand puts the long head of the biceps under passive tension at the exact moment the bar is heaviest &mdash; it is the single most common mechanism of distal biceps tears in otherwise healthy lifters, and you are already symptomatic on that side. Straps are the right answer here; they are not cheating.
+              </div>
+              <table class="data-table">
+                <thead><tr><th>Exercise</th><th>Equip</th><th>Sets&times;Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>BB Romanian Deadlift</td><td><span class="eq-icon eq-bb">BB</span></td><td>4&times;8&ndash;10</td><td>Primary. Hip hinge, flat back, bar tracks the thighs. Stop the descent where the hamstring stretch ends &mdash; not where the floor is. Straps or double overhand.</td></tr>
+                  <tr><td>BB Hip Thrust (shoulders on bench)</td><td><span class="eq-icon eq-bb">BB</span></td><td>3&times;10&ndash;12</td><td>Primary glute. Pad the bar. Full lockout, ribs down, 1-sec squeeze at the top.</td></tr>
+                  <tr><td>Nordic Curl (feet under rack bar)</td><td><span class="eq-icon eq-bw">BW</span></td><td>2&times;3&ndash;5</td><td>6-sec eccentric descent only, push back up with hands. <strong>Do not progress reps until Week 4</strong> &mdash; hamstring connective tissue adapts slower than the muscle.</td></tr>
+                  <tr><td>Single-Leg DB RDL</td><td><span class="eq-icon">DB</span></td><td>3&times;10/leg</td><td>Unilateral hinge + hip stability. Light DB, hips square, slow. Corrects the side-to-side asymmetry the bilateral RDL hides.</td></tr>
+                  <tr><td>Bench Reverse Hyperextension (hips on bench)</td><td><span class="eq-icon eq-bw">BW</span></td><td>3&times;15</td><td>Glute/erector work with near-zero spinal compression. Add a light DB between the feet from Week 3.</td></tr>
+                  <tr><td>Standing Calf Raise (BB in rack or DB)</td><td><span class="eq-icon eq-bb">BB</span><span class="eq-icon">DB</span></td><td>4&times;15&ndash;20</td><td>Gastrocnemius. Full stretch at the bottom, 1-sec pause. Moved here from Wednesday &mdash; it is a posterior muscle.</td></tr>
+                  <tr><td>Seated Calf Raise (DB on knee) <span class="text-mist">(optional)</span></td><td><span class="eq-icon">DB</span></td><td>2&times;20</td><td>Soleus, which the standing version barely touches. Drop first if time or recovery is short.</td></tr>
+                </tbody>
+              </table>
+
+              <div class="info-box teal" style="padding:10px 14px;font-size:13px;margin:12px 0 0;">
+                <strong>Conditioning finisher &mdash; pick ONE, not both.</strong> Both are hip-hinge patterns, which is why they belong on this day rather than on Thursday. ~10&ndash;15 min. Skip entirely in a deload week or if the RDL felt heavy.
+                <table class="data-table" style="margin-top:10px;">
+                  <thead><tr><th>Option</th><th>Equip</th><th>Prescription</th><th>Notes</th></tr></thead>
+                  <tbody>
+                    <tr><td>A &mdash; KB Swing EMOM</td><td><span class="eq-icon eq-kb">KB</span></td><td>10 min: 15 two-hand swings on the minute</td><td>Explosive hip snap, not a squat. Two-hand only &mdash; single-arm swings load the shoulder. Rest is whatever is left in the minute.</td></tr>
+                    <tr><td>B &mdash; Rower Intervals</td><td><span class="eq-icon eq-row">ROW</span></td><td>6 &times; 250m, 90s rest</td><td>Damper 3&ndash;5, relaxed overhand grip, drive with legs. Do not pull into deep elbow flexion on the right side. Aim for &lt;2% split drop across the six.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <table class="data-table" style="margin-top:12px;">
+                <thead><tr><th>Core &mdash; brief, 2 movements only</th><th>Equip</th><th>Sets&times;Reps</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>Plank + Dead Bug (alternating)</td><td><span class="eq-icon eq-bw">BW</span></td><td>2&times;45s + 2&times;10/side</td><td>Anti-extension. Ribs down, no lumbar arch. The main core block is Thursday &mdash; this is a top-up.</td></tr>
+                  <tr><td>Suitcase Carry</td><td><span class="eq-icon eq-kb">KB</span></td><td>3&times;30s/side</td><td>Anti-lateral-flexion, and it finishes the grip work the RDL started. Walk tall, do not lean.</td></tr>
+                </tbody>
+              </table>
+
+              <ul class="plain" style="margin-top:12px;">
+                <li>Full daily mobility routine + shoulder rehab protocol &mdash; prioritize hamstrings and hip flexors</li>
+                <li>Contrast shower, foam rolling, 8+ hrs sleep priority. Sunday is complete rest &mdash; use it.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="workout-day">
+            <div class="workout-day-header">
+              <span class="workout-day-title">Sunday &mdash; Complete REST</span>
               <span class="badge badge-amber">RECOVERY</span>
             </div>
             <div class="workout-day-body">
               <ul class="plain">
-                <li>No structured training</li>
-                <li>Morning mobility flow (15 min — see Mobility tab)</li>
-                <li>CJC-1295 + Ipamorelin before bed — maximize GH during deep sleep</li>
+                <li>No structured training of any kind &mdash; this is the one true off day in the week</li>
+                <li>Morning mobility flow (15 min &mdash; see Mobility tab) is optional, not prescribed</li>
+                <li>CJC-1295 + Ipamorelin before bed &mdash; maximize GH during deep sleep</li>
                 <li>Meal prep for the week, hydration focus</li>
               </ul>
             </div>
@@ -804,10 +953,10 @@
           <tbody>
             <tr><td>Sets per exercise</td><td>3–4</td><td>4–5</td></tr>
             <tr><td>Rep range</td><td>12–15</td><td>8–12</td></tr>
-            <tr><td>BB Squat load</td><td>Technique priority</td><td>+15–20% from Wk 4 weight</td></tr>
-            <tr><td>BB Romanian Deadlift</td><td>Moderate load</td><td>Push toward 60–70% 1RM</td></tr>
+            <tr><td>Leg press / hack squat load</td><td>Technique priority</td><td>+15–20% from Wk 4 weight</td></tr>
+            <tr><td>BB Romanian Deadlift</td><td>Moderate load</td><td>Push toward 60–70% 1RM. This is now a primary lift, not an accessory.</td></tr>
             <tr><td>Pull-ups</td><td>Bodyweight or assisted</td><td>Add weight via DB between legs or belt</td></tr>
-            <tr><td>KB Swings</td><td>Technique + endurance</td><td>Heavier KB, more explosive</td></tr>
+            <tr><td>BB Hip Thrust</td><td>Moderate load</td><td>Progress toward bodyweight on the bar by Wk 6</td></tr>
             <tr><td>Biceps (right side)</td><td>None (or eccentric only)</td><td>Wk 6+: Hammer curl neutral grip</td></tr>
             <tr><td>Techniques</td><td>Straight sets</td><td>Drop sets (DB isolation), paused reps (BB squat, RDL)</td></tr>
           </tbody>
@@ -818,23 +967,23 @@
         <div class="card green">
           <div class="card-title">Key Phase 2 Exercise Upgrades</div>
           <ul class="plain">
-            <li><strong class="highlight">BB Squat:</strong> Introduce paused squat (2-sec pause at bottom) 1 set per session from Week 6</li>
+            <li><strong class="highlight">Leg Press:</strong> Introduce a 2-sec pause in the bottom position, 1 set per session from Week 6</li>
             <li><strong class="highlight">Pull-Ups:</strong> Add weighted variation — hold DB between feet or use belt (Week 6+)</li>
-            <li><strong class="highlight">BB Bent-Over Row:</strong> Switch to underhand grip (supinated) to target lower lats more — if shoulder is pain-free</li>
-            <li><strong class="highlight">KB Swings:</strong> Progress to single-arm swings Week 7 for oblique and stabilizer development</li>
-            <li><strong class="highlight">Nordic Curl:</strong> Increase reps to 8–10. Add a 2-sec pause at the bottom of the descent</li>
+            <li><strong class="highlight">Hack Squat:</strong> Add a 1.5-rep variation (full rep + bottom half) on the final set from Week 6</li>
+            <li><strong class="highlight">Cable Lateral Raise:</strong> Add a drop set on the final set — cables make this safe at low load</li>
+            <li><strong class="highlight">Nordic Curl:</strong> Increase to 3×6–8 from Week 4. Add a 2-sec pause at the bottom of the descent from Week 6</li>
             <li><strong class="highlight">DB Press:</strong> Introduce tempo — 3-second descent, 1-second pause at chest, explosive up</li>
           </ul>
         </div>
         <div class="card blue">
           <div class="card-title">Week 7–8 Advanced Techniques</div>
           <ul class="plain">
-            <li>Drop sets on final set of: DB lateral raise, DB hammer curl, DB fly, DB skull crusher</li>
+            <li>Drop sets on final set of: cable lateral raise, leg extension, cable fly, rope pushdown</li>
             <li>Superset: BB RDL + Nordic Curl (posterior chain giant set)</li>
             <li>Superset: DB press + DB fly (chest pre-exhaust)</li>
             <li>Rest-pause: final set of pull-ups — hit failure, rest 15 sec, hit 2–3 more reps</li>
-            <li>Increase BB hip thrust load toward bodyweight on bar</li>
-            <li>Add 15–20 min AeroBike Zone 2 post-weight session 2x per week</li>
+            <li>Add a leg-press drop set Wednesday and a KB swing ladder Saturday (20-15-10) on final sets only</li>
+            <li>Extend Thursday Zone 2 from 35–45 min toward 50 min if recovery allows</li>
           </ul>
         </div>
       </div>
@@ -851,23 +1000,23 @@
         <table class="data-table">
           <thead><tr><th>Day</th><th>Session Type</th><th>Primary Method</th></tr></thead>
           <tbody>
-            <tr><td>Monday</td><td>Push Supersets</td><td>DB Press + DB Fly superset / DB Shoulder + Tricep superset</td></tr>
-            <tr><td>Tuesday</td><td>Pull Supersets</td><td>Pull-Up + BB Row superset / KB Row + Rear Delt tri-set</td></tr>
-            <tr><td>Wednesday</td><td>Full Rest</td><td>Mid-week rest before legs. Morning mobility flow only.</td></tr>
-            <tr><td>Thursday</td><td>Legs Giant Sets (combined)</td><td>BB Squat + BB RDL + DB Lunge + KB Swing per round (3 rounds)</td></tr>
-            <tr><td>Friday</td><td>Shoulders / Arms</td><td>DB/BB shoulder + arm compound and isolation, moderate RPE</td></tr>
-            <tr><td>Saturday</td><td>Active Recovery <span class="text-mist">(optional circuit)</span></td><td>30–35 min AeroBike Zone 2 + mobility. Optional: the metabolic circuit below if you want extra conditioning during the final cut.</td></tr>
-            <tr><td>Sunday</td><td>Full Rest</td><td>Morning mobility flow only</td></tr>
+            <tr><td>Monday <span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Push Supersets</td><td>DB Press + DB Fly superset / DB Shoulder + Tricep superset</td></tr>
+            <tr><td>Tuesday <span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Pull Supersets</td><td>Pull-Up + BB Row superset / KB Row + Rear Delt tri-set</td></tr>
+            <tr><td>Wednesday <span class="loc loc-gym" style="margin-left:0;">Gym</span></td><td>Anterior Leg Giant Sets</td><td>Leg Press + Leg Extension + Bulgarian Split Squat per round (3 rounds), then the posterior insurance block straight through</td></tr>
+            <tr><td>Thursday <span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Zone 2 + Core</td><td>Unchanged and non-negotiable — this stays the low day even in Phase 3. Do not convert it to a circuit.</td></tr>
+            <tr><td>Friday <span class="loc loc-gym" style="margin-left:0;">Gym</span></td><td>Shoulders / Arms + Chest &amp; Back Ancillary</td><td>Cable and machine isolation, tri-sets, moderate RPE</td></tr>
+            <tr><td>Saturday <span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Posterior Leg Giant Sets</td><td>BB RDL + BB Hip Thrust + Single-Leg RDL per round (3 rounds), then Nordics, calves, and the conditioning finisher.</td></tr>
+            <tr><td>Sunday</td><td>Complete Rest</td><td>Optional morning mobility flow only</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="info-box green">
-        <strong>Phase 3 OPTIONAL Metabolic Circuit (Saturday, only if you choose to push it):</strong> Saturday is an active-recovery day — this circuit is available if you want to add conditioning during the final cut, otherwise keep Saturday to easy Zone 2 + mobility. 5 rounds. 40 sec on / 20 sec off. No rest between movements in a round. 90 sec between rounds. Movements: <span class="eq-icon eq-row">ROW</span> 250m max effort → <span class="eq-icon eq-kb">KB</span> Goblet Squat → <span class="eq-icon eq-kb">KB</span> Single-Arm Swing (right side only if shoulder pain-free) → <span class="eq-icon eq-bw">BW</span> Step-Ups on bench → <span class="eq-icon eq-bike">BIKE</span> 30s max sprint. Duration: ~28–32 min.
+        <strong>Phase 3 OPTIONAL Metabolic Circuit (Saturday — replaces the conditioning finisher, does not stack on top of it):</strong> If you run this, it takes the place of the KB EMOM / rower interval finisher. Do not do both; that is a volume error, not extra fat loss. 5 rounds. 40 sec on / 20 sec off. No rest between movements in a round. 90 sec between rounds. Movements: <span class="eq-icon eq-row">ROW</span> 250m max effort → <span class="eq-icon eq-kb">KB</span> Goblet Squat → <span class="eq-icon eq-kb">KB</span> Single-Arm Swing (left side; right only if shoulder pain-free) → <span class="eq-icon eq-bw">BW</span> Step-Ups on bench → <span class="eq-icon eq-bike">BIKE</span> 30s max sprint. Duration: ~28–32 min. Runs at home — no gym equipment needed.
       </div>
 
       <div class="info-box teal">
-        <strong>Phase 3 Barbell Complex (Fridays — added after main work):</strong> All movements with same barbell, no rest between exercises, 60 sec rest between rounds. 4 rounds × 6 reps each: <span class="eq-icon eq-bb">BB</span> RDL → BB Bent-Over Row → BB Hang Clean (power) → BB Front Squat → BB Good Morning. Use ~40–50% of squat 1RM. Outstanding metabolic and hypertrophic stimulus with zero shoulder stress.
+        <strong>Phase 3 Barbell Complex (optional, run at home on Monday or Tuesday after main work — <em>not</em> Friday, which is now a gym day):</strong> All movements with same barbell, no rest between exercises, 60 sec rest between rounds. 4 rounds × 6 reps each: <span class="eq-icon eq-bb">BB</span> RDL → BB Bent-Over Row → BB Hang Clean (power) → BB Front Squat → BB Good Morning. Use ~40–50% of squat 1RM. Outstanding metabolic and hypertrophic stimulus with zero shoulder stress. Skip it entirely if Wednesday's leg session is still sore.
       </div>
     </div><!-- end phase3 -->
 
@@ -893,7 +1042,7 @@
     </div>
 
     <div class="info-box red">
-      <strong>⚑ ApoB 128 mg/dL — Fat QUALITY Now Matters as Much as Fat Quantity:</strong> Your latest ApoB (128) is the strongest single predictor of atherosclerotic risk in this entire protocol, and it sits well above the longevity target (&lt;80 general; &lt;60–70 for aggressive prevention given a smoking history). Keto itself isn't the problem — the <em>saturated-fat sourcing</em> is. Saturated fat raises ApoB/LDL-particle number in most people, and the lean-mass-hyper-responder pattern can amplify it. <strong>The fix keeps you in ketosis but shifts the fat ratio toward monounsaturated (MUFA):</strong> make olive oil, avocado/avocado oil, macadamia, and fatty fish the <em>default</em> fats, and treat 80/20 beef, bacon, heavy cream, butter, and duck fat as the <em>rotation</em> rather than the base. Target a rough 2:1 MUFA-leaning:saturated split. Swap ribeye → sirloin/filet or salmon several dinners/week; swap heavy cream → unsweetened nut milk or a splash of olive oil; keep egg yolks (neutral-to-favorable). <strong>Re-check ApoB (not just standard lipids) at the Wk-4/Wk-8 draw</strong> — it's the number to steer by. If ApoB stays &gt;100 after the dietary shift, that's a pharmacologic conversation (e.g., low-dose statin/ezetimibe) with your physician, independent of the cut.
+      <strong>⚑ ApoB 146 mg/dL — Fat QUALITY Now Matters as Much as Fat Quantity:</strong> Your latest ApoB (146 on 7/21/2026, up from 128 on 5/11) is the strongest single predictor of atherosclerotic risk in this entire protocol, and it sits well above the longevity target (&lt;80 general; &lt;60–70 for aggressive prevention given a smoking history). Keto itself isn't the problem — the <em>saturated-fat sourcing</em> is. Saturated fat raises ApoB/LDL-particle number in most people, and the lean-mass-hyper-responder pattern can amplify it. <strong>The fix keeps you in ketosis but shifts the fat ratio toward monounsaturated (MUFA):</strong> make olive oil, avocado/avocado oil, macadamia, and fatty fish the <em>default</em> fats, and treat 80/20 beef, bacon, heavy cream, butter, and duck fat as the <em>rotation</em> rather than the base. Target a rough 2:1 MUFA-leaning:saturated split. Swap ribeye → sirloin/filet or salmon several dinners/week; swap heavy cream → unsweetened nut milk or a splash of olive oil; keep egg yolks (neutral-to-favorable). <strong>Re-check ApoB (not just standard lipids) at the Wk-4/Wk-8 draw</strong> — it's the number to steer by. If ApoB stays &gt;100 after the dietary shift, that's a pharmacologic conversation (e.g., low-dose statin/ezetimibe) with your physician, independent of the cut.
     </div>
 
 
@@ -1164,23 +1313,23 @@
 
     <h3>Phase 3 — AeroBike Tabata Variation</h3>
     <div class="info-box">
-      <strong>AeroBike Tabata (Saturdays, Phase 3 only):</strong> 8 rounds × 20 sec max sprint / 10 sec passive rest. Total: 4 minutes. Can repeat 2–3 times with 3 min full rest between sets. Brutal metabolic demand in short window. Pair with 15 min Zone 2 cool-down row after. Slots onto the Saturday active-recovery/conditioning day (optional — skip if recovery is limited in the deep cut).
+      <strong>AeroBike Tabata (Phase 3 only — Saturday finisher substitute):</strong> 8 rounds × 20 sec max sprint / 10 sec passive rest. Total: 4 minutes. Can repeat 2–3 times with 3 min full rest between sets. Brutal metabolic demand in short window. Pair with 15 min Zone 2 cool-down row after. Substitutes for the Saturday conditioning finisher, after the posterior lifting work (optional — skip if recovery is limited in the deep cut).
     </div>
 
     <h3>Weekly Overview — 50g Net Carbs / All Days</h3>
     <table class="data-table" style="margin-bottom:16px;">
       <thead><tr><th>Day</th><th>Training</th><th>Calories</th><th>Net Carbs</th><th>Cardio Tool</th></tr></thead>
       <tbody>
-        <tr><td>Monday</td><td>Push (weights)</td><td>~2,200</td><td>~45g (shake: ~20g + dinner: ~25g + breakfast: ~3g)</td><td>Pre-training: black coffee. Intra: electrolytes only.</td></tr>
-        <tr><td>Tuesday</td><td>Pull (weights)</td><td>~2,200</td><td>~45g</td><td>500m Row warm-up + optional 20 min post Bike</td></tr>
-        <tr><td>Wednesday</td><td>Full Rest <span class="text-mist">(mid-week)</span></td><td>~1,900</td><td>~45g</td><td>No training. Mobility + shoulder rehab only.</td></tr>
-        <tr><td>Thursday</td><td>Legs (weights) — combined</td><td>~2,200</td><td>~45g</td><td>5 min Bike warm-up. Full lower body in one session.</td></tr>
-        <tr><td>Friday</td><td>Shoulders / Arms (weights)</td><td>~2,200</td><td>~45g</td><td>500m Row warm-up</td></tr>
-        <tr><td>Saturday</td><td>Active Recovery</td><td>~1,900</td><td>~45g</td><td>30–40 min fasted Bike Zone 2 + mobility</td></tr>
-        <tr><td>Sunday</td><td>Full Rest</td><td>~1,900</td><td>~45g</td><td>30 min easy fasted Bike or walk (optional)</td></tr>
+        <tr><td>Monday <span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Push (weights)</td><td>~2,200</td><td>~45g (shake: ~20g + dinner: ~25g + breakfast: ~3g)</td><td>Pre-training: black coffee. Intra: electrolytes only.</td></tr>
+        <tr><td>Tuesday <span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Pull (weights)</td><td>~2,200</td><td>~45g</td><td>500m Row warm-up + optional 20 min post Bike</td></tr>
+        <tr><td>Wednesday <span class="loc loc-gym" style="margin-left:0;">Gym</span></td><td>Anterior Leg (weights)</td><td>~2,200</td><td>~45g</td><td>5 min bike/treadmill warm-up + 2 ramp sets on leg press.</td></tr>
+        <tr><td>Thursday <span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Zone 2 + Core</td><td>~2,000</td><td>~45g</td><td>40–50 min fasted Bike Zone 2 + core + mobility. BCAA if fasted.</td></tr>
+        <tr><td>Friday <span class="loc loc-gym" style="margin-left:0;">Gym</span></td><td>Shoulders / Arms + Ancillary</td><td>~2,200</td><td>~45g</td><td>5 min treadmill/elliptical warm-up</td></tr>
+        <tr><td>Saturday <span class="loc loc-home" style="margin-left:0;">Home</span></td><td>Posterior Leg (weights) + finisher</td><td>~2,200</td><td>~45g</td><td>5 min Bike warm-up + 2 ramp sets on RDL. KB EMOM or 6×250m row to finish.</td></tr>
+        <tr><td>Sunday</td><td>Complete Rest</td><td>~1,900</td><td>~45g</td><td>Optional easy walk. No structured training.</td></tr>
       </tbody>
     </table>
-    <p class="text-mist">Training days: ~2,200 kcal. Rest days: ~1,900 kcal (drop ~30g fat). Carbs uniform across all days at <strong>≤50g net</strong>, concentrated at dinner from broccoli, broccolini, and onion in modest portions. Breakfast and lunch remain virtually carb-free, preserving fasted AM fat oxidation and sustained ketosis. The lower carb ceiling amplifies retatrutide's glucagon-driven lipolysis and deepens the nightly GH pulse from the 300/300 CJC/Ipa stack.</p>
+    <p class="text-mist">Lifting days (Mon/Tue/Wed/Fri/Sat): ~2,200 kcal. Thursday (Zone 2 + core): ~2,000 kcal. Sunday (complete rest): ~1,900 kcal (drop ~30g fat). Carbs uniform across all days at <strong>≤50g net</strong>, concentrated at dinner from broccoli, broccolini, and onion in modest portions. Breakfast and lunch remain virtually carb-free, preserving fasted AM fat oxidation and sustained ketosis. The lower carb ceiling amplifies retatrutide's glucagon-driven lipolysis and deepens the nightly GH pulse from the 300/300 CJC/Ipa stack.</p>
   </div>
 </div>
 
@@ -1447,7 +1596,7 @@
       <div class="sup-card">
         <div class="sup-name">Testosterone Cypionate</div>
         <div class="sup-dose">160 mg/week Total — 50 mg Mon + 110 mg Thu | Twice-Weekly SubQ/IM</div>
-        <div class="sup-desc">Maintains testosterone in the upper physiological-to-supraphysiological range. <strong style="color:var(--chalk)">Current protocol (v2.9): a split twice-weekly injection — 50 mg Monday + 110 mg Thursday, 160 mg/week total</strong>, per prescribing physician, replacing the prior daily micro-dose scheme. <strong style="color:var(--chalk)">On cypionate's ~8-day half-life, twice-weekly dosing gives a flatter serum curve than once-weekly but with more peak-to-trough movement than daily dosing</strong> — expect a modest post-injection peak (largest after the Thursday dose) and a shallow trough before the next shot. The asymmetric split is pharmacokinetically sensible: the larger 110 mg dose precedes the longer inter-injection interval (Thu → Mon, ~4 days), while the smaller 50 mg dose covers the shorter Mon → Thu gap (~3 days), which helps even out the trough across unequal intervals. <strong style="color:var(--chalk)">Lab context (5/11/2026, drawn on the prior ~140 mg/wk equivalent):</strong> Total T 1121 ng/dL (range 300–890), Free T 251 pg/mL (range 47–244), E2 58.5 pg/mL (range ≤60.7), HCT 43.2%. Both Total and Free T were already above lab reference at that weekly dose; 160 mg/wk is ~14% higher, so expect Total and Free T to rise modestly further — and note that a twice-weekly schedule means the <em>timing</em> of the draw now matters (a Thursday-evening/Friday post-peak draw will read higher than a Monday pre-dose trough). Standardize draw timing so labs are comparable across visits. <strong style="color:var(--amber)">Mandatory monitoring:</strong> E2, HCT/HGB, lipid panel, PSA every 6–8 weeks. Have anastrozole 0.25 mg available for gyno/water retention if E2 climbs above 60 pg/mL. <strong style="color:var(--red)">⚑ Evidence note for physician discussion:</strong> Free T was already above range (251 pg/mL) at the prior weekly dose; 160 mg/wk keeps you in supraphysiologic territory. The published dose-response is clear that LBM/strength benefits largely plateau in the high-normal range while hematocrit and adverse lipid/ApoB shifts continue to climb with dose — i.e., the marginal muscle-preservation gain from going supraphysiologic is small and the cardiovascular cost is not, especially with your ApoB at 128 and a smoking history. Reasonable to ask whether a slightly lower weekly total targeting high-normal (Total T ~800–1000, Free T at/near the top of range) achieves the same LBM protection with a cleaner risk profile.</div>
+        <div class="sup-desc">Maintains testosterone in the upper physiological-to-supraphysiological range. <strong style="color:var(--chalk)">Current protocol (v2.9): a split twice-weekly injection — 50 mg Monday + 110 mg Thursday, 160 mg/week total</strong>, per prescribing physician, replacing the prior daily micro-dose scheme. <strong style="color:var(--chalk)">On cypionate's ~8-day half-life, twice-weekly dosing gives a flatter serum curve than once-weekly but with more peak-to-trough movement than daily dosing</strong> — expect a modest post-injection peak (largest after the Thursday dose) and a shallow trough before the next shot. The asymmetric split is pharmacokinetically sensible: the larger 110 mg dose precedes the longer inter-injection interval (Thu → Mon, ~4 days), while the smaller 50 mg dose covers the shorter Mon → Thu gap (~3 days), which helps even out the trough across unequal intervals. <strong style="color:var(--chalk)">Lab context (5/11/2026, drawn on the prior ~140 mg/wk equivalent):</strong> Total T 1121 ng/dL (range 300–890), Free T 251 pg/mL (range 47–244), E2 58.5 pg/mL (range ≤60.7), HCT 43.2%. Both Total and Free T were already above lab reference at that weekly dose; 160 mg/wk is ~14% higher, so expect Total and Free T to rise modestly further — and note that a twice-weekly schedule means the <em>timing</em> of the draw now matters (a Thursday-evening/Friday post-peak draw will read higher than a Monday pre-dose trough). Standardize draw timing so labs are comparable across visits. <strong style="color:var(--amber)">Mandatory monitoring:</strong> E2, HCT/HGB, lipid panel, PSA every 6–8 weeks. Have anastrozole 0.25 mg available for gyno/water retention if E2 climbs above 60 pg/mL. <strong style="color:var(--red)">⚑ Evidence note for physician discussion:</strong> Free T was already above range (251 pg/mL) at the prior weekly dose; 160 mg/wk keeps you in supraphysiologic territory. The published dose-response is clear that LBM/strength benefits largely plateau in the high-normal range while hematocrit and adverse lipid/ApoB shifts continue to climb with dose — i.e., the marginal muscle-preservation gain from going supraphysiologic is small and the cardiovascular cost is not, especially with your ApoB at 146, Lp(a) at 138 nmol/L, and a smoking history. Reasonable to ask whether a slightly lower weekly total targeting high-normal (Total T ~800–1000, Free T at/near the top of range) achieves the same LBM protection with a cleaner risk profile.</div>
       </div>
       <div class="sup-card">
         <div class="sup-name">Retatrutide</div>
@@ -1892,7 +2041,8 @@
         <div class="card-title">SAFE — Shoulder-Friendly Alternatives</div>
         <ul class="plain">
           <li>Neutral-grip pull-ups and rows (reduces bicep tendon stress)</li>
-          <li>DB flat/incline press with elbows at 45° (not flared)</li>
+          <li>Cable fly — peak load at mid-range rather than at the stretched position</li>
+          <li>DB flat/incline press with elbows at 45° (not flared); DB squeeze press</li>
           <li>AeroBike — zero shoulder involvement</li>
           <li>Rower at light resistance, relaxed overhand grip — no aggressive arm curl</li>
           <li>KB swings — posterior chain dominant, no bicep stress</li>
@@ -1971,7 +2121,7 @@
       <div class="section-title">Tracking &<br><span>Milestones</span></div>
     </div>
 
-<!-- ══════════ INTERACTIVE TREND TRACKER (v2.9) ══════════ -->
+<!-- ══════════ INTERACTIVE TREND TRACKER (v3.0) ══════════ -->
 <style id="trk-styles">
   .trk{margin-bottom:34px;border:1px solid var(--iron);border-radius:14px;background:linear-gradient(180deg,rgba(37,37,48,.35),rgba(17,17,20,.2));padding:18px 16px 16px;}
   .trk-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;}
@@ -2037,6 +2187,10 @@
   .trk-donation-status.overdue b{color:var(--red);}
   .trk-field select{width:100%;background:var(--carbon);border:1px solid var(--iron);color:var(--chalk);border-radius:6px;padding:8px 10px;font-family:'Barlow',sans-serif;font-size:13px;}
 </style>
+
+    <div class="info-box teal">
+      <strong>v3.0 &mdash; 7/21/2026 panel loaded.</strong> The Ascension advanced cardiovascular panel (ApoB, Lp(a), NMR LipoProfile, hs-CRP, cystatin C) is now in the Bloodwork tab, and <strong>seven new metrics are tracked</strong>: Lp(a), hs-CRP, LDL-P, small LDL-P, HDL-P, LDL size, cystatin C, and cystatin C&ndash;derived eGFR. New baseline entries merge into your existing on-device log automatically &mdash; nothing you have entered manually is overwritten, and you do <em>not</em> need to hit "Reset to baseline."
+    </div>
 
     <div class="trk">
       <div class="trk-head">
@@ -2208,7 +2362,7 @@
     </div>
 
     <div class="footnote">
-      <strong>FORGE Protocol v2.9 — 8-Week Aggressive Cut Edition.</strong> <strong>v2.9 changes:</strong> (1) <strong>TRT restructured to a twice-weekly split — 50 mg Mon + 110 mg Thu (160 mg/wk)</strong>, replacing daily dosing; peak/trough and lab-draw-timing notes updated throughout. (2) <strong>hCG (Pregnyl) 400 IU Mon/Wed/Fri (1,200 IU/wk) added as an active compound</strong> for intratesticular T + fertility, running alongside Kisspeptin-10; E2 interpretation updated for hCG-driven aromatization. (3) <strong>Interactive Trend Tracker added</strong> to the Tracking tab (DEXA + bloodwork logging with on-device charts, pre-seeded with 2/22 &amp; 5/16 DEXA and 5/11 labs). <em>Physician-set doses reflect the current prescription; verify against your latest instructions.</em> <strong>v2.8 changes:</strong> (1) <strong>Cardarine (GW-501516) discontinued and removed entirely</strong> — multi-organ rodent carcinogenicity + no long-term human safety data; (2) <strong>two leg days merged into one combined session and the training week restructured</strong> to Mon push · Tue pull · Wed rest · Thu legs · Fri shoulders/arms · Sat active recovery · Sun rest (2 full rest days: Wed + Sun, plus Sat active recovery). <strong>Carried from v2.8 evidence review:</strong> 4 physician-discussion flags (ApoB 128, supraphysiologic T, reflexive-AI caution, ocrelizumab immune monitoring); keto fat sources rebalanced toward monounsaturated for ApoB; NAD⁺/NMN pharmacology corrected (NR better-evidenced than subQ NAD⁺); protein-distribution + BCAA-redundancy notes; ApoB/Lp(a)/immunoglobulins added to bloodwork; stale dinner-macro and phase-timeline figures fixed. Baseline from DEXA 5/16/2026: 207.6 lb / 18.1% BF / 162.2 LBM. Bloodwork baseline 5/11/2026 (CPL Austin, Dr. Triantis). TRT 160 mg/wk (50 mg Mon + 110 mg Thu). Retatrutide 2.5–3 mg/wk. GH peptides CJC-1295 300 mcg + Ipamorelin 300 mcg. Full compound protocol: testosterone cypionate 50 mg Mon + 110 mg Thu, hCG 400 IU Mon/Wed/Fri (1,200 IU/wk), 2.5–3 mg retatrutide weekly, CJC-1295 300 mcg, ipamorelin 300 mcg, kisspeptin-10 200 mcg 3x/week, BPC-157, TB-500, GHK-Cu, KPV, SS-31, MOTS-c. Micronutrients: Methylfolate 1 mg, PQQ 20 mg, Ubiquinol 100 mg, full daily stack. Nutrition: 50g net carb max / strict keto, MUFA-forward fat sourcing, dinner carbs from broccoli, broccolini, and onion in modest portions. Calorie targets: ~2,200 training day / ~1,900 rest day. Protein floor: 230g daily. Mandatory E2/HCT/PSA/IGF-1/ApoB recheck at Wk 4 and Wk 8. For educational and informational purposes only. Not medical advice. All pharmaceutical and dietary protocols must be managed by a licensed healthcare provider. Individual results vary.
+      <strong>FORGE Protocol v3.0 — 8-Week Aggressive Cut Edition (Home + Commercial Gym).</strong> <strong>v3.0 changes:</strong> (1) <strong>Training week rebuilt across two locations</strong> following the paid gym membership — Mon Push (home) · Tue Pull (home) · Wed Anterior Leg (gym) · Thu Zone 2 + Core (home) · Fri Shoulders/Arms + Chest &amp; Back Ancillary (gym) · Sat Posterior Leg (home) · Sun complete rest. Machine (MCH) and cable (CBL) equipment icons and Home/Paid Gym location tags added throughout. (2) <strong>Legs split anterior/posterior across two days four days apart</strong> — Wednesday is quad-dominant on gym machines (leg press, hack squat, leg extension, split squats); Saturday is hinge-dominant at home (BB RDL, hip thrust, Nordic curl, single-leg RDL, reverse hyper). <strong>Calf work moved to Saturday</strong> and the Wednesday posterior-insurance block removed — Saturday supersedes it. (3) <strong>Conditioning folded into the end of Saturday</strong> as a KB swing EMOM or 6×250m rower finisher (pick one, never both), so <strong>Thursday stays the week's only recovery valve</strong> at conversational Zone 2 + core. (4) <strong>Recovery-load flag</strong>: the week now carries 5 lifting sessions and 1 true rest day — recovery capacity, not volume, is the binding constraint in an aggressive deficit. (5) <strong>Grip rule added for all barbell hinges</strong>: double-overhand or straps only, never mixed grip, given the right biceps tendinitis. (6) <strong>Barbell bench press considered and rejected for Monday</strong> — briefly staged in as a fix for the DB-flat-press weight ceiling, then swapped back out once the real problem (dumbbells topping out too light) had a better fix. <strong>DB flat press intensified instead</strong> via tempo/pause reps, the 1.5-rep method, single-arm eccentric overload, and mechanical drop-sets into diamond push-ups — all add difficulty without adding load or reintroducing tendon-stretch risk. Barbell bench press, barbell curls, and behind-the-neck work remain fully excluded, as in v2.8&ndash;v2.9. (7) <strong>Chest fly volume moved Monday → Friday and upgraded to cable</strong> (3×12–15 mid-height + 2×15 low-to-high); Monday's fly slot replaced with <strong>DB squeeze press</strong>, which delivers the adduction stimulus without the stretched-position shoulder load. (8) <strong>Bloodwork 7/21/2026 added</strong> (Ascension, PA Chrane): ApoB 146, Lp(a) 138.1 nmol/L, hs-CRP 2.23, cystatin C 0.91, LDL-P 2468, small LDL-P 771, HDL-P 27.9, LDL size 21.3, LP-IR &lt;25, TC 301 / LDL 216 / HDL 65 / TG 97. Seven new tracked metrics; non-destructive seed merge so existing on-device logs are preserved. (9) <strong>Lipid alert added to Overview</strong> — ApoB up 128→146 with a newly-identified high-risk Lp(a) on top of a non-zero LAD CAC and smoking history; flagged as a cardiology-level discussion for the 7/31 visit. (10) <strong>Cystatin C resolves the kidney question</strong> — eGFR ~90–95 mL/min/1.73m², confirming the low creatinine-based eGFR (46–59) was a lean-mass artifact. <strong>v2.9 changes:</strong> (1) <strong>TRT restructured to a twice-weekly split — 50 mg Mon + 110 mg Thu (160 mg/wk)</strong>, replacing daily dosing; peak/trough and lab-draw-timing notes updated throughout. (2) <strong>hCG (Pregnyl) 400 IU Mon/Wed/Fri (1,200 IU/wk) added as an active compound</strong> for intratesticular T + fertility, running alongside Kisspeptin-10; E2 interpretation updated for hCG-driven aromatization. (3) <strong>Interactive Trend Tracker added</strong> to the Tracking tab (DEXA + bloodwork logging with on-device charts, pre-seeded with 2/22 &amp; 5/16 DEXA and 5/11 labs). <em>Physician-set doses reflect the current prescription; verify against your latest instructions.</em> <strong>v2.8 changes:</strong> (1) <strong>Cardarine (GW-501516) discontinued and removed entirely</strong> — multi-organ rodent carcinogenicity + no long-term human safety data; (2) <strong>two leg days merged into one combined session and the training week restructured</strong> to Mon push · Tue pull · Wed rest · Thu legs · Fri shoulders/arms · Sat active recovery · Sun rest (2 full rest days: Wed + Sun, plus Sat active recovery). <strong>Carried from v2.8 evidence review:</strong> 4 physician-discussion flags (ApoB 128, supraphysiologic T, reflexive-AI caution, ocrelizumab immune monitoring); keto fat sources rebalanced toward monounsaturated for ApoB; NAD⁺/NMN pharmacology corrected (NR better-evidenced than subQ NAD⁺); protein-distribution + BCAA-redundancy notes; ApoB/Lp(a)/immunoglobulins added to bloodwork; stale dinner-macro and phase-timeline figures fixed. Baseline from DEXA 5/16/2026: 207.6 lb / 18.1% BF / 162.2 LBM. Bloodwork baseline 5/11/2026 (CPL Austin, Dr. Triantis). TRT 160 mg/wk (50 mg Mon + 110 mg Thu). Retatrutide 2.5–3 mg/wk. GH peptides CJC-1295 300 mcg + Ipamorelin 300 mcg. Full compound protocol: testosterone cypionate 50 mg Mon + 110 mg Thu, hCG 400 IU Mon/Wed/Fri (1,200 IU/wk), 2.5–3 mg retatrutide weekly, CJC-1295 300 mcg, ipamorelin 300 mcg, kisspeptin-10 200 mcg 3x/week, BPC-157, TB-500, GHK-Cu, KPV, SS-31, MOTS-c. Micronutrients: Methylfolate 1 mg, PQQ 20 mg, Ubiquinol 100 mg, full daily stack. Nutrition: 50g net carb max / strict keto, MUFA-forward fat sourcing, dinner carbs from broccoli, broccolini, and onion in modest portions. Calorie targets: ~2,200 training day / ~1,900 rest day. Protein floor: 230g daily. Mandatory E2/HCT/PSA/IGF-1/ApoB recheck at Wk 4 and Wk 8. For educational and informational purposes only. Not medical advice. All pharmaceutical and dietary protocols must be managed by a licensed healthcare provider. Individual results vary.
     </div>
   </div>
 </div>
@@ -2265,7 +2419,7 @@
   // ── Service Worker Registration ──
   if ('serviceWorker' in navigator) {
     const swCode = `
-const CACHE = 'forge-v2.9';
+const CACHE = 'forge-v3.0';
 const OFFLINE_URL = location.href;
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -2330,7 +2484,13 @@ self.addEventListener('fetch', e => {
         {key:'e2',    label:'Estradiol',  unit:'pg/mL', dec:1, high:60.7},
         {key:'hct',   label:'Hematocrit', unit:'%',     dec:1, low:40,   high:51, ceiling:52},
         {key:'hgb',   label:'Hemoglobin', unit:'g/dL',  dec:1, low:13.5, high:17},
-        {key:'apob',  label:'ApoB',       unit:'mg/dL', dec:0, target:80, dir:'down'},
+        {key:'apob',  label:'ApoB',       unit:'mg/dL', dec:0, target:80, high:90, ceiling:130, dir:'down'},
+        {key:'lpa',   label:'Lp(a)',      unit:'nmol/L',dec:1, high:75,  ceiling:125, dir:'down'},
+        {key:'crp',   label:'hs-CRP',     unit:'mg/L',  dec:2, high:1,   ceiling:3, dir:'down'},
+        {key:'ldlp',  label:'LDL-P',      unit:'nmol/L',dec:0, high:1000,ceiling:2000, dir:'down'},
+        {key:'sdldlp',label:'Small LDL-P',unit:'nmol/L',dec:0, high:527, dir:'down'},
+        {key:'hdlp',  label:'HDL-P',      unit:'umol/L',dec:1, low:30.5, dir:'up'},
+        {key:'ldlsize',label:'LDL Size',  unit:'nm',    dec:1, low:20.5, dir:'up'},
         {key:'igf1',  label:'IGF-1',      unit:'ng/mL', dec:0, low:200,  high:350, ceiling:400},
         {key:'psa',   label:'PSA',        unit:'ng/mL', dec:2},
         {key:'hba1c', label:'HbA1c',      unit:'%',     dec:1, dir:'down'},
@@ -2341,7 +2501,9 @@ self.addEventListener('fetch', e => {
         {key:'tg',    label:'Triglycerides', unit:'mg/dL', dec:0, high:150, dir:'down'},
         {key:'gluc',  label:'Glucose',    unit:'mg/dL', dec:0, low:70,  high:99},
         {key:'creat', label:'Creatinine', unit:'mg/dL', dec:2, low:0.76, high:1.27},
-        {key:'egfr',  label:'eGFR',       unit:'mL/min',dec:0, low:60,  high:120, dir:'up'}
+        {key:'egfr',  label:'eGFR (creat)',unit:'mL/min',dec:0, low:60,  high:120, dir:'up'},
+        {key:'cysc',  label:'Cystatin C', unit:'mg/L',  dec:2, low:0.6,  high:1.0, dir:'down'},
+        {key:'egfrcys',label:'eGFR (cys-C)',unit:'mL/min',dec:0, low:60, high:120, dir:'up'}
       ]
     },
     donations: {
@@ -2362,7 +2524,8 @@ self.addEventListener('fetch', e => {
       {date:'2026-05-11', tt:1121, ft:251.1, shbg:39.7, e2:58.5, hct:43.2, hgb:14.0, apob:128},
       {date:'2026-06-01', vitd:83.5, gluc:96, creat:1.84, egfr:46},
       {date:'2026-06-02', tt:862, e2:31, shbg:37, hct:47.1, hgb:15.7, hba1c:5.0, vitd:109, chol:273, ldl:192, hdl:63, tg:92, gluc:86, creat:1.49, egfr:59},
-      {date:'2026-07-10', tt:584, ft:116.1, shbg:37.7, e2:32, hct:48.8}
+      {date:'2026-07-10', tt:584, ft:116.1, shbg:37.7, e2:32, hct:48.8},
+      {date:'2026-07-21', apob:146, lpa:138.1, crp:2.23, cysc:0.91, egfrcys:94, chol:301, ldl:216, hdl:65, tg:97, ldlp:2468, sdldlp:771, hdlp:27.9, ldlsize:21.3}
     ],
     donations: [
       {date:'2026-05-04', method:'Whole Blood'}
@@ -2382,6 +2545,28 @@ self.addEventListener('fetch', e => {
     if(!Array.isArray(state.dexa)) state.dexa = [];
     if(!Array.isArray(state.labs)) state.labs = [];
     if(!Array.isArray(state.donations)) state.donations = [];
+    mergeSeed();
+  }
+
+  /* v3.0 — merge newly-shipped baseline entries into an existing on-device log
+     without touching anything the user has entered. Runs once per seed version. */
+  const SEED_VERSION = 'v3.0-2026-07-21';
+  function mergeSeed(){
+    let done = null;
+    try { done = localStorage.getItem(LS_KEY + '-seed'); } catch(e){}
+    if(done === SEED_VERSION) return;
+    let added = 0;
+    ['dexa','labs','donations'].forEach(k=>{
+      (SEED[k]||[]).forEach(seedEntry=>{
+        if(!state[k].some(e=>e.date===seedEntry.date)){
+          state[k].push(JSON.parse(JSON.stringify(seedEntry)));
+          added++;
+        }
+      });
+      state[k].sort((a,b)=> a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
+    });
+    if(added) save();
+    try { localStorage.setItem(LS_KEY + '-seed', SEED_VERSION); } catch(e){}
   }
   function save(){ try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e){} }
 
